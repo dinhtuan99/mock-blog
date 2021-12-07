@@ -9,15 +9,15 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div *ngIf="isLogin" class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <a class="nav-link text-nowrap" [routerLink]="['']" routerLinkActive="active"><i
+            <div class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                <a class="nav-link text-nowrap" [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i
                         class="fas fa-home"></i> Home</a>
                 <a class="nav-link text-nowrap" [routerLink]="['editor']" routerLinkActive="active"><i
                         class="fas fa-edit"></i> New Article</a>
                 <a class="nav-link text-nowrap" [routerLink]="['settings']" routerLinkActive="active"><i
                         class="fas fa-cog"></i> Settings</a>
                 <a class="nav-link text-nowrap" [routerLink]="['profile', user.user.username]"
-                    routerLinkActive="active">{{user.user.username}}</a>
+                    routerLinkActive="active"><img class='rounded-circle' *ngIf="user.user.image" [src]="user.user.image" alt="Avatar" height="35px" width="35px"> {{user.user.username}}</a>
             </div>
         </div>
     </div>
