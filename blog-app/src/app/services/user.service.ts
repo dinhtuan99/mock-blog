@@ -63,7 +63,7 @@ export class UserService {
     }
 
     getProfile(username: string) {
-        const url = `${this.BASE_URL}profile/${username}`;
+        const url = `${this.BASE_URL}profiles/${username}`;
         const httpOptions = {
             headers: new HttpHeaders({
                 "Content-Type": "application/json; charset=utf-8"
@@ -75,7 +75,7 @@ export class UserService {
     }
 
     followUser(username: string) {
-        const url = `${this.BASE_URL}profile/${username}/follow`;
+        const url = `${this.BASE_URL}profiles/${username}/follow`;
         const httpOptions = {
             headers: new HttpHeaders({
                 "Content-Type": "application/json; charset=utf-8",
@@ -88,7 +88,7 @@ export class UserService {
     }
 
     unfollowUser(username: string) {
-        const url = `${this.BASE_URL}profile/${username}/follow`;
+        const url = `${this.BASE_URL}profiles/${username}/follow`;
         const httpOptions = {
             headers: new HttpHeaders({
                 "Content-Type": "application/json; charset=utf-8",
