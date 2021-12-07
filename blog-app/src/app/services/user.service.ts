@@ -22,6 +22,10 @@ export class UserService {
         return this.currentUserSubject.value;
     }
 
+    public currentUser(): Observable<IUser> {
+        return this.currentUserSubject;
+    }
+
     public setCurrentUser(user: IUser) {
         this.currentUserSubject.next(user);
     }
