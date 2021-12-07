@@ -31,7 +31,7 @@ export class UserService {
     }
 
     getCurrentUser(): Observable<IUser> {
-        const url = `${this.BASE_URL}users`;
+        const url = `${this.BASE_URL}user`;
         const httpOptions = {
             headers: new HttpHeaders({
                 "Content-Type": "application/json; charset=utf-8",
@@ -48,7 +48,7 @@ export class UserService {
     }
 
     updateUser(userUpdate : IUserUpdate) {
-        const url = `${this.BASE_URL}users`;
+        const url = `${this.BASE_URL}user`;
         const body: IUserUpdate = userUpdate
         const httpOptions = {
             headers: new HttpHeaders({

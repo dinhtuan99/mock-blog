@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { IUser, IUserUpdate } from '../models/user.model';
@@ -17,7 +18,7 @@ export class AuthService {
         })
     }
 
-    constructor(private httpClient: HttpClient, private userService : UserService) {
+    constructor(private httpClient: HttpClient, private userService : UserService, private router : Router) {
     }
 
     logIn(email: string, password: string): Observable<IUser> {
@@ -55,27 +56,11 @@ export class AuthService {
         )
     }
 
-    //   logOut() {
-    //     const url = `${this.BASE_URL}api/auth/logout`;
-
-    //     let httpOptions = {
-    //       headers: new HttpHeaders({
-    //         "Content-Type": "application/json; charset=utf-8",
-    //         "Authorization": `Bearer ${this.currentUserValue().token}`
-    //       })
-    //     }
-
-    //     return this.httpClient.post(url, {}, httpOptions).pipe(
-    //       catchError(this.handleError),
-    //       tap((isLogout) => {
-    //         if(isLogout) {
-    //           this.router.navigate(['login'])
-    //           localStorage.removeItem('currentUser');
-    //           this.currentUserSubject.next(null as unknown as IUser);
-    //         }
-    //       })
-    //     )
-    //   }
+      logOut() {
+        localStorage.removeItem('currentUser');
+        this.userService.setCurrentUser(null as any);
+        this.router.navigate(['login']);
+      }
 
     private handleError(error: HttpErrorResponse) {
         if (error.status === 0) {
