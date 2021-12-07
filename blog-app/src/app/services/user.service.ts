@@ -84,7 +84,6 @@ export class UserService {
 
   followUser(username: string) {
     const url = `${this.BASE_URL}profiles/${username}/follow`;
-
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8',
