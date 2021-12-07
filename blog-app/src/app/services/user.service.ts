@@ -78,6 +78,19 @@ export class UserService {
         )
     }
 
+    getProfileWithToken(username: string) {
+        const url = `${this.BASE_URL}profiles/${username}`;
+        const httpOptions = {
+            headers: new HttpHeaders({
+                "Content-Type": "application/json; charset=utf-8",
+                "Authorization": `Token ${this.currentUserValue().user.token}`
+            })
+        }
+        return this.httpClient.get<IProfile>(url, httpOptions).pipe(
+            catchError(this.handleError)
+        )
+    }
+
     followUser(username: string) {
         const url = `${this.BASE_URL}profiles/${username}/follow`;
         const httpOptions = {
