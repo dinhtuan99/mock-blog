@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 import { IProfile } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
@@ -10,19 +12,41 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ProfileComponent implements OnInit {
   profile!: IProfile;
-
-  constructor(private auth: AuthService, private serviceProfile: UserService) {}
+  checkFollow!: boolean;
+  constructor(
+    private auth: AuthService,
+    private serviceProfile: UserService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.auth.logIn('ngocson@gmail.com', '123456').subscribe((data) => {
-      this.getInfor();
+    this.activatedRoute.params
+      .pipe(
+        switchMap((data) => {
+          return this.serviceProfile.getProfile(data.username);
+        })
+      )
+      .subscribe((data) => {
+        this.profile = data;
+        this.checkFollow = data.profile.following;
+        console.log(data);
+        console.log(this.checkFollow);
+      });
+  }
+
+  follow(userName: string): void {
+    this.serviceProfile.followUser(userName).subscribe((data) => {
+      this.checkFollow = data.profile.following;
+      console.log(data);
+
+      console.log(this.checkFollow);
     });
   }
 
-  getInfor() {
-    this.serviceProfile.getProfile('SonDN22').subscribe((data) => {
-      this.profile = data;
-      console.log(this.profile);
+  unFollow(userName: string): void {
+    this.serviceProfile.unfollowUser(userName).subscribe((data) => {
+      this.checkFollow = data.profile.following;
+      console.log(this.checkFollow);
     });
   }
 }
