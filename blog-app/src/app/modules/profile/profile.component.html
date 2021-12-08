@@ -8,7 +8,7 @@
 
           <button
             class="btn btn-sm btn-outline-secondary action-btn"
-            *ngIf="checkFollow"
+            *ngIf="checkFollow "
             (click)="unFollow(profile.profile.username)"
           >
             <i class="ion-plus-round"></i>
@@ -22,7 +22,7 @@
           >
             <i class="ion-plus-round"></i>
             &nbsp; Follow {{ profile?.profile?.username }}
-            <span class="counter">()</span>
+
           </button>
         </div>
       </div>
