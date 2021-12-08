@@ -17,8 +17,10 @@ export class HeaderComponent implements OnInit {
       if (data != null) {
         this.user = data
         this.isLogin = true;
+      } else {
+        this.user = null as any;
+        this.isLogin = false;
       };
     })
   }
-
 }

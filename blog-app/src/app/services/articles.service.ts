@@ -113,7 +113,7 @@ export class ArticlesService {
         )
     }
 
-    cerateArticle(articleCreate: IArticleCreate) {
+    createArticle(articleCreate: IArticleCreate) {
         const url = `${this.BASE_URL}articles`;
         const body: IArticleCreate = articleCreate
         const httpOptions = {
