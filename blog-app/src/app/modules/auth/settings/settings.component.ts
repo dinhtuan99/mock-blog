@@ -23,12 +23,14 @@ export class SettingsComponent implements OnInit {
       email: this.fb.control(''),
       password: this.fb.control(''),
     })
-      this.currentUser =  JSON.parse(localStorage.getItem('currentUser') || 'null');
-      this.settingsForm.patchValue({
-        imageUrl: this.currentUser.user.image,
-        username: this.currentUser.user.username,
-        bio: this.currentUser.user.bio,
-        email: this.currentUser.user.email
+    this.userService.getCurrentUser().subscribe(data => {
+        this.currentUser =  data;
+        this.settingsForm.patchValue({
+          imageUrl: this.currentUser.user.image,
+          username: this.currentUser.user.username,
+          bio: this.currentUser.user.bio,
+          email: this.currentUser.user.email
+        })
       })
   }
 

@@ -27,11 +27,37 @@ export class ArticlesService {
         )
     }
 
+    getListArticlesWithToken(): Observable<IArticles> {
+        const url = `${this.BASE_URL}articles`;
+        const httpOptions = {
+            headers: new HttpHeaders({
+                "Content-Type": "application/json; charset=utf-8",
+                "Authorization": `Token ${this.userService.currentUserValue().user.token}`
+            })
+        }
+        return this.httpClient.get<IArticles>(url, httpOptions).pipe(
+            catchError(this.handleError)
+        )
+    }
+
     getListArticlesByTag(tagName: string): Observable<IArticles> {
         const url = `${this.BASE_URL}articles?tag=${tagName}`;
         const httpOptions = {
             headers: new HttpHeaders({
                 "Content-Type": "application/json; charset=utf-8"
+            })
+        }
+        return this.httpClient.get<IArticles>(url, httpOptions).pipe(
+            catchError(this.handleError)
+        )
+    }
+
+    getListArticlesByTagWithToken(tagName: string): Observable<IArticles> {
+        const url = `${this.BASE_URL}articles?tag=${tagName}`;
+        const httpOptions = {
+            headers: new HttpHeaders({
+                "Content-Type": "application/json; charset=utf-8",
+                "Authorization": `Token ${this.userService.currentUserValue().user.token}`
             })
         }
         return this.httpClient.get<IArticles>(url, httpOptions).pipe(
@@ -51,11 +77,37 @@ export class ArticlesService {
         )
     }
 
+    getListArticlesByAuthorWithToken(author: string): Observable<IArticles> {
+        const url = `${this.BASE_URL}articles?author=${author}`;
+        const httpOptions = {
+            headers: new HttpHeaders({
+                "Content-Type": "application/json; charset=utf-8",
+                "Authorization": `Token ${this.userService.currentUserValue().user.token}`
+            })
+        }
+        return this.httpClient.get<IArticles>(url, httpOptions).pipe(
+            catchError(this.handleError)
+        )
+    }
+    
     getListArticlesByFavorited(favorited: string): Observable<IArticles> {
         const url = `${this.BASE_URL}articles?favorited=${favorited}`;
         const httpOptions = {
             headers: new HttpHeaders({
                 "Content-Type": "application/json; charset=utf-8"
+            })
+        }
+        return this.httpClient.get<IArticles>(url, httpOptions).pipe(
+            catchError(this.handleError)
+        )
+    }
+
+    getListArticlesByFavoritedWithToken(favorited: string): Observable<IArticles> {
+        const url = `${this.BASE_URL}articles?favorited=${favorited}`;
+        const httpOptions = {
+            headers: new HttpHeaders({
+                "Content-Type": "application/json; charset=utf-8",
+                "Authorization": `Token ${this.userService.currentUserValue().user.token}`
             })
         }
         return this.httpClient.get<IArticles>(url, httpOptions).pipe(
@@ -75,7 +127,33 @@ export class ArticlesService {
         )
     }
 
+    getListArticlesByPageWithToken(top: number, skip: number): Observable<IArticles> {
+        const url = `${this.BASE_URL}articles?limit=${top}&offset=${skip}`;
+        const httpOptions = {
+            headers: new HttpHeaders({
+                "Content-Type": "application/json; charset=utf-8",
+                "Authorization": `Token ${this.userService.currentUserValue().user.token}`
+            })
+        }
+        return this.httpClient.get<IArticles>(url, httpOptions).pipe(
+            catchError(this.handleError)
+        )
+    }
+
     getFeedArticles() {
+        const url = `${this.BASE_URL}articles/feed`;
+        const httpOptions = {
+            headers: new HttpHeaders({
+                "Content-Type": "application/json; charset=utf-8",
+                "Authorization": `Token ${this.userService.currentUserValue().user.token}`
+            })
+        }
+        return this.httpClient.get<IArticles>(url, httpOptions).pipe(
+            catchError(this.handleError)
+        )
+    }
+
+    getFeedArticlesWithToken() {
         const url = `${this.BASE_URL}articles/feed`;
         const httpOptions = {
             headers: new HttpHeaders({

@@ -18,7 +18,7 @@ export class AuthService {
         })
     }
 
-    constructor(private httpClient: HttpClient, private userService : UserService, private router : Router) {
+    constructor(private httpClient: HttpClient, private userService: UserService, private router: Router) {
     }
 
     logIn(email: string, password: string): Observable<IUser> {
@@ -56,11 +56,11 @@ export class AuthService {
         )
     }
 
-      logOut() {
+    logOut() {
         localStorage.removeItem('currentUser');
         this.userService.setCurrentUser(null as any);
         this.router.navigate(['login']);
-      }
+    }
 
     private handleError(error: HttpErrorResponse) {
         if (error.status === 0) {
