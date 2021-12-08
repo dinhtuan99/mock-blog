@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { IProfile } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,13 +17,22 @@ export class ProfileComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private serviceProfile: UserService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params
       .pipe(
         switchMap((data) => {
+          if (
+            this.serviceProfile.currentUserValue().user.username ==
+            data.username
+          ) {
+            this.checkUser = true;
+          } else {
+            this.checkUser = false;
+          }
           return this.getProfile(data.username);
         })
       )
@@ -49,5 +58,9 @@ export class ProfileComponent implements OnInit {
     this.serviceProfile.unfollowUser(userName).subscribe((data) => {
       this.checkFollow = data.profile.following;
     });
+  }
+
+  editProfile() {
+    this.router.navigate(['settings']);
   }
 }
