@@ -1,0 +1,52 @@
+<div class="container my-4">
+    <h2>Your settings</h2>
+    <form [formGroup]="settingsForm" style="max-width: 400px;" (ngSubmit)="submitForm()" class="my-4">
+        <div class="mb-3">
+            <label for="imageUrl" class="form-label bold">Image URL:</label>
+            <input type="text" class="form-control" id="imageUrl" formControlName='imageUrl'
+                aria-describedby="imageUrlHelp">
+            <!-- <small id="imageUrlHelp" class="text-danger"
+                *ngIf="settingsForm.get('imageUrl')?.errors?.required && settingsForm.get('imageUrl')?.touched">Image URL is
+                required!</small> -->
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label bold">Username:</label>
+            <input type="text" class="form-control" id="username" formControlName='username'
+                aria-describedby="usernameHelp">
+            <!-- <small id="usernameHelp" class="text-danger"
+                *ngIf="settingsForm.get('username')?.errors?.required && settingsForm.get('username')?.touched">Username is
+                required!</small> -->
+        </div>
+        <div class="mb-3">
+            <label for="bio" class="form-label bold">Bio:</label>
+            <textarea type="text" class="form-control" id="bio" formControlName='bio'
+                aria-describedby="bioHelp"></textarea>
+            <!-- <small id="bioHelp" class="text-danger"
+                *ngIf="settingsForm.get('bio')?.errors?.required && settingsForm.get('bio')?.touched">Bio is
+                required!</small> -->
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label bold">Email:</label>
+            <input type="email" class="form-control" id="email" formControlName='email'
+                aria-describedby="emailHelp">
+            <!-- <small id="emailHelp" class="text-danger"
+                *ngIf="settingsForm.get('email')?.errors?.required && settingsForm.get('email')?.touched">Email is
+                required!</small> -->
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label bold">Password:</label>
+            <input type="password" class="form-control" id="password" formControlName='password' aria-describedby="passwordHelp">
+            <!-- <small id="passwordHelp" class="text-danger"
+                *ngIf="settingsForm.get('password')?.errors?.required && settingsForm.get('password')?.touched">Password is
+                required!</small> -->
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-success" style="margin-right: 10px; "
+                [disabled]="settingsForm.invalid">Update</button>
+        </div>
+    </form>
+    <div class="mb-3">
+        <button type="button" class="btn btn-danger" style="margin-right: 10px; "
+            (click)="logout()" >Logout</button>
+    </div>
+</div>

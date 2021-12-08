@@ -26,16 +26,8 @@ export class UserService {
     return this.currentUserSubject.value;
   }
 
-  public currentUser(): Observable<IUser> {
-    return this.currentUserSubject;
-  }
-
-  public setCurrentUser(user: IUser) {
-    this.currentUserSubject.next(user);
-  }
-
   getCurrentUser(): Observable<IUser> {
-    const url = `${this.BASE_URL}users`;
+    const url = `${this.BASE_URL}user`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8',
@@ -52,7 +44,7 @@ export class UserService {
   }
 
   updateUser(userUpdate: IUserUpdate) {
-    const url = `${this.BASE_URL}users`;
+    const url = `${this.BASE_URL}user`;
     const body: IUserUpdate = userUpdate;
     const httpOptions = {
       headers: new HttpHeaders({
