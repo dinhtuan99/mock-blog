@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
     this.activatedRoute.params
       .pipe(
         switchMap((data) => {
-          return this.serviceProfile.getProfile(data.username);
+          return this.getProfile(data.username);
         })
       )
       .subscribe((data) => {
@@ -32,6 +32,12 @@ export class ProfileComponent implements OnInit {
         console.log(data);
         console.log(this.checkFollow);
       });
+  }
+
+  getProfile(username: string) {
+    if (!localStorage.getItem('currentUser'))
+      return this.serviceProfile.getProfile(username);
+    return this.serviceProfile.getProfileWithToken(username);
   }
 
   follow(userName: string): void {
