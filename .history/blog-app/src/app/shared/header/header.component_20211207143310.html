@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 rounded">
+  <div class="container">
+    <a class="navbar-brand h1 text-nowrap" [routerLink]="['']"><i class="fab fa-angular"></i> Blog</a>
+    <form class="d-flex justify-content-center w-100">
+      <input class="form-control w-50" type="search" placeholder="Search" aria-label="Search">
+    </form>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div *ngIf="isLogin" class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <a class="nav-link text-nowrap" [routerLink]="['']" routerLinkActive="active"><i class="fas fa-home"></i>
+          Home</a>
+        <a class="nav-link text-nowrap" [routerLink]="['editor']" routerLinkActive="active"><i class="fas fa-edit"></i>
+          New Article</a>
+        <a class="nav-link text-nowrap" [routerLink]="['settings']" routerLinkActive="active"><i class="fas fa-cog"></i>
+          Settings</a>
+        <a class="nav-link text-nowrap" [routerLink]="['profile', user.user.username]"
+          routerLinkActive="active">{{user.user.username}}</a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!isLogin" class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <a class="nav-link text-nowrap" [routerLink]="['']" routerLinkActive="active"><i class="fas fa-home"></i>
+        Home</a>
+      <a class="nav-link text-nowrap" [routerLink]="['login']" routerLinkActive="active">Sign in</a>
+      <a class="nav-link text-nowrap" [routerLink]="['register']" routerLinkActive="active">Sign up</a>
+    </div>
+  </div>
+</nav>

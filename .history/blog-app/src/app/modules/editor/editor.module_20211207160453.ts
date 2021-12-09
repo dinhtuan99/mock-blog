@@ -6,7 +6,6 @@ import { NewArticleComponent } from './new-article/new-article.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ArticleCommentComponent } from './article-detail/article-comment/article-comment.component';
 
 
 
@@ -16,7 +15,6 @@ import { ArticleCommentComponent } from './article-detail/article-comment/articl
     NewArticleComponent,
     EditArticleComponent,
     ArticleDetailComponent,
-    ArticleCommentComponent
   ],
   imports: [
     CommonModule,
