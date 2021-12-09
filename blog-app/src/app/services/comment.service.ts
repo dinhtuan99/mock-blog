@@ -23,7 +23,7 @@ export class CommentService {
     }
 
     addCommentArticle(bodyComment: string, slug: string) {
-        const url = `${this.BASE_URL}articles/${slug}/comment`;
+        const url = `${this.BASE_URL}articles/${slug}/comments`;
         const body = {
             comment: {
                 body: bodyComment
