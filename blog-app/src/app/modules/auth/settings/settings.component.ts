@@ -21,7 +21,6 @@ export class SettingsComponent implements OnInit {
       username: this.fb.control(''),
       bio: this.fb.control(''),
       email: this.fb.control(''),
-      password: this.fb.control(''),
     })
     this.userService.getCurrentUser().subscribe(data => {
         this.currentUser =  data;
@@ -40,7 +39,6 @@ export class SettingsComponent implements OnInit {
         email: this.settingsForm.value.email,
         bio: this.settingsForm.value.bio,
         image: this.settingsForm.value.imageUrl,
-        password: this.settingsForm.value.password,
         username: this.settingsForm.value.username
       }
     };
