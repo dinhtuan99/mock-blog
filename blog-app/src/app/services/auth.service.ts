@@ -1,9 +1,9 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { IUser, IUserUpdate } from '../models/user.model';
+import { IUser } from '../models/user.model';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -58,8 +58,6 @@ export class AuthService {
     }
 
     private handleError(error: HttpErrorResponse) {
-        console.log(error);
-        
         if (error.status === 0) {
             // A client-side or network error occurred. Handle it accordingly.
             console.error('An error occurred:', error.error);
