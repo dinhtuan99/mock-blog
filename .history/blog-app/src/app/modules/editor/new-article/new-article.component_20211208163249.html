@@ -1,0 +1,32 @@
+<div class="container my-5">
+  <div class="header mb-4">
+    <h3>Post New Article</h3>
+  </div>
+  <div class="new-article">
+    <form action="" [formGroup]="formArt">
+      <div class="mb-3 form-group">
+        <input class="form-control form-control-lg" type="text" placeholder="Article Title" formControlName='title'>
+      </div>
+      <div class="mb-3 form-group">
+        <input type="text" class="form-control" id="" placeholder="What's this article about? "
+          formControlName='description'>
+      </div>
+      <div class="mb-3 form-group">
+        <textarea class="form-control" id="" rows="6" placeholder="Write your article (in markdown)"
+          formControlName='body'></textarea>
+      </div>
+      <div class="mb-3 form-group">
+        <input type="text" class="form-control" id="" placeholder="Enter tag" formControlName="tagForm"
+          (keyup.enter)="onAddTag()">
+        <div class="tag">
+          <span class="badge bg-secondary rounded-pill" *ngFor="let tag of tags">
+            <i class="fas fa-times" (click)="removeTag(tag)"></i> {{tag}}
+          </span>
+        </div>
+      </div>
+      <div class="form-group d-flex justify-content-end">
+        <button type="button" class="btn btn-success" (click)="onSubmit()">Publish Article</button>
+      </div>
+    </form>
+  </div>
+</div>
