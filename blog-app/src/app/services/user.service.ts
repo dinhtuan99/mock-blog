@@ -32,13 +32,7 @@ export class UserService {
 
     getCurrentUser(): Observable<IUser> {
         const url = `${this.BASE_URL}user`;
-        const httpOptions = {
-            headers: new HttpHeaders({
-                "Content-Type": "application/json; charset=utf-8",
-                "Authorization": `Token ${this.currentUserValue().user.token}`
-            })
-        }
-        return this.httpClient.get<IUser>(url, httpOptions).pipe(
+        return this.httpClient.get<IUser>(url).pipe(
             catchError(this.handleError),
             tap((user) => {
                 localStorage.setItem('currentUser', JSON.stringify(user));
@@ -50,14 +44,7 @@ export class UserService {
     updateUser(userUpdate : IUserUpdate) {
         const url = `${this.BASE_URL}user`;
         const body: IUserUpdate = userUpdate
-        const httpOptions = {
-            headers: new HttpHeaders({
-                "Content-Type": "application/json; charset=utf-8",
-                "Authorization": `Token ${this.currentUserValue().user.token}`
-            })
-        }
-
-        return this.httpClient.put<IUser>(url, body, httpOptions).pipe(
+        return this.httpClient.put<IUser>(url, body).pipe(
             catchError(this.handleError),
             tap((user) => {
                 localStorage.setItem('currentUser', JSON.stringify(user));
@@ -68,51 +55,21 @@ export class UserService {
 
     getProfile(username: string) {
         const url = `${this.BASE_URL}profiles/${username}`;
-        const httpOptions = {
-            headers: new HttpHeaders({
-                "Content-Type": "application/json; charset=utf-8"
-            })
-        }
-        return this.httpClient.get<IProfile>(url, httpOptions).pipe(
-            catchError(this.handleError)
-        )
-    }
-
-    getProfileWithToken(username: string) {
-        const url = `${this.BASE_URL}profiles/${username}`;
-        const httpOptions = {
-            headers: new HttpHeaders({
-                "Content-Type": "application/json; charset=utf-8",
-                "Authorization": `Token ${this.currentUserValue().user.token}`
-            })
-        }
-        return this.httpClient.get<IProfile>(url, httpOptions).pipe(
+        return this.httpClient.get<IProfile>(url).pipe(
             catchError(this.handleError)
         )
     }
 
     followUser(username: string) {
         const url = `${this.BASE_URL}profiles/${username}/follow`;
-        const httpOptions = {
-            headers: new HttpHeaders({
-                "Content-Type": "application/json; charset=utf-8",
-                "Authorization": `Token ${this.currentUserValue().user.token}`
-            })
-        }
-        return this.httpClient.post<IProfile>(url, {}, httpOptions).pipe(
+        return this.httpClient.post<IProfile>(url, {}).pipe(
             catchError(this.handleError))
 
     }
 
     unfollowUser(username: string) {
         const url = `${this.BASE_URL}profiles/${username}/follow`;
-        const httpOptions = {
-            headers: new HttpHeaders({
-                "Content-Type": "application/json; charset=utf-8",
-                "Authorization": `Token ${this.currentUserValue().user.token}`
-            })
-        }
-        return this.httpClient.delete<IProfile>(url, httpOptions).pipe(
+        return this.httpClient.delete<IProfile>(url).pipe(
             catchError(this.handleError))
     }
 
