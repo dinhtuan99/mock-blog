@@ -19,20 +19,12 @@ export class ArticleHomeListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.feedChange.getFeed().subscribe(data => {
-    //   console.log(data);
-    //   console.log('aaa');
-
-    // })
     this.homeService.tag.subscribe((res: any) => {
-      console.log("ffff");
-
       if (res.type === 'all') {
         this.connectApiService.getFeedArticlesByPage(10,0).subscribe((data) => {
           if (data) {
             this.loading = false;
             this.results = data.articles;
-            // console.log(this.results);
           }
         });
       } else if (res.type === 'feed') {
@@ -40,7 +32,6 @@ export class ArticleHomeListComponent implements OnInit {
           if (data) {
             this.loading = false;
             this.results = data.articles;
-            // console.log(this.results);
           }
         });
       }

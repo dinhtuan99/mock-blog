@@ -27,11 +27,6 @@ export class ArticleFeedComponent implements OnInit {
     // this.router.navigateByUrl('/login');
     // return;
     // }
-
-    // Otherwise, set the list object
-    console.log(type);
-
-    // this.feedChange.setFeed(type);
     this.homeService.setTag({ type: type, filters: filters });
   }
 }

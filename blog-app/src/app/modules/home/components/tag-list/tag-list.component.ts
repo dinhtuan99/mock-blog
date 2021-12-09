@@ -19,7 +19,7 @@ export class TagListComponent implements OnInit {
 
   constructor(
     private homeService: HomeService,
-    private connectApiService: ArticlesService
+    private connectApiService: ArticlesService,
   ) {}
 
   ngOnInit(): void {
@@ -28,9 +28,14 @@ export class TagListComponent implements OnInit {
     });
 
     this.connectApiService.getFeedArticlesByPage(10,0).subscribe((data) => {
-      data.articles.forEach((el) => this.tags.push(el.tagList));
-      this.tags = new Set(this.tags.flat());
+      if(data){
+        this.tagsLoaded = true;
+        data.articles.forEach((el) => this.tags.push(el.tagList));
+        this.tags = new Set(this.tags.flat());
+      }
+
     });
+
   }
   setListTo(type: string = '', filters: any) {
     // If feed is requested but user is not authenticated, redirect to login
