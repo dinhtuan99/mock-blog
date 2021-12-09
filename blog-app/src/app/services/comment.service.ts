@@ -16,7 +16,7 @@ export class CommentService {
     }
 
     getComment(slug: string): Observable<IComments> {
-        const url = `${this.BASE_URL}articles/comments`;
+        const url = `${this.BASE_URL}articles/${slug}/comments`;
         return this.httpClient.get<IComments>(url).pipe(
             catchError(this.handleError)
         )
