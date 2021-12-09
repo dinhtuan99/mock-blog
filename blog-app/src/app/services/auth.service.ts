@@ -12,11 +12,6 @@ import { UserService } from './user.service';
 export class AuthService {
     BASE_URL = "https://conduit.productionready.io/api/";
 
-    httpOptions = {
-        headers: new HttpHeaders({
-            "Content-Type": "application/json; charset=utf-8",
-        })
-    }
 
     constructor(private httpClient: HttpClient, private userService: UserService, private router: Router) {
     }
@@ -29,7 +24,7 @@ export class AuthService {
                 password: password
             }
         }
-        return this.httpClient.post<IUser>(url, body, this.httpOptions).pipe(
+        return this.httpClient.post<IUser>(url, body).pipe(
             catchError(this.handleError),
             tap((user) => {
                 localStorage.setItem('currentUser', JSON.stringify(user));
@@ -47,7 +42,7 @@ export class AuthService {
                 password: password
             }
         }
-        return this.httpClient.post<IUser>(url, body, this.httpOptions).pipe(
+        return this.httpClient.post<IUser>(url, body).pipe(
             catchError(this.handleError),
             tap((user) => {
                 localStorage.setItem('currentUser', JSON.stringify(user));
@@ -63,6 +58,8 @@ export class AuthService {
     }
 
     private handleError(error: HttpErrorResponse) {
+        console.log(error);
+        
         if (error.status === 0) {
             // A client-side or network error occurred. Handle it accordingly.
             console.error('An error occurred:', error.error);
