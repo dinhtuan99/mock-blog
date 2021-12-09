@@ -13,7 +13,7 @@ export class MyPostComponent implements OnInit {
   myPost!: IArticles;
   constructor(
     private serviecArticles: ArticlesService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
   ) {}
 
   ngOnInit() {

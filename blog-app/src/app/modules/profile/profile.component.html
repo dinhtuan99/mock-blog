@@ -42,10 +42,10 @@
         <div class="posts-toggle">
           <ul class="nav nav-pills outline-active">
             <li class="nav-item">
-              <a class="nav-link active" href="#">My Posts</a>
+              <a class="nav-link" routerLink="/profile/{{ profile?.profile?.username}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">My Posts</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Favorited Posts</a>
+              <a class="nav-link" [routerLink]="['favorites']" routerLinkActive="active">Favorited Posts</a>
             </li>
           </ul>
         </div>

@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
     private auth: AuthService,
     private serviceProfile: UserService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -43,9 +43,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getProfile(username: string) {
-    if (!localStorage.getItem('currentUser'))
       return this.serviceProfile.getProfile(username);
-    return this.serviceProfile.getProfileWithToken(username);
   }
 
   follow(userName: string): void {
