@@ -17,12 +17,7 @@ export class CommentService {
 
     getComment(slug: string): Observable<IComments> {
         const url = `${this.BASE_URL}articles/comments`;
-        const httpOptions = {
-            headers: new HttpHeaders({
-                "Content-Type": "application/json; charset=utf-8"
-            })
-        }
-        return this.httpClient.get<IComments>(url, httpOptions).pipe(
+        return this.httpClient.get<IComments>(url).pipe(
             catchError(this.handleError)
         )
     }
@@ -34,26 +29,14 @@ export class CommentService {
                 body: bodyComment
             }
         }
-        const httpOptions = {
-            headers: new HttpHeaders({
-                "Content-Type": "application/json; charset=utf-8",
-                "Authorization": `Token ${this.userService.currentUserValue().user.token}`
-            })
-        }
-        return this.httpClient.post<IComment>(url, body, httpOptions).pipe(
+        return this.httpClient.post<IComment>(url, body).pipe(
             catchError(this.handleError)
         )
     }
 
     deleteComment(slug: string, id : number) {
         const url = `${this.BASE_URL}articles/${slug}/comments/${id}`;
-        const httpOptions = {
-            headers: new HttpHeaders({
-                "Content-Type": "application/json; charset=utf-8",
-                "Authorization": `Token ${this.userService.currentUserValue().user.token}`
-            })
-        }
-        return this.httpClient.delete(url, httpOptions).pipe(
+        return this.httpClient.delete(url).pipe(
             catchError(this.handleError)
         )
     }

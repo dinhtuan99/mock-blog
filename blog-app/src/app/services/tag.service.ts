@@ -17,12 +17,7 @@ export class TagService {
 
     getTags(): Observable<ITag> {
         const url = `${this.BASE_URL}tags`;
-        const httpOptions = {
-            headers: new HttpHeaders({
-                "Content-Type": "application/json; charset=utf-8"
-            })
-        }
-        return this.httpClient.get<ITag>(url, httpOptions).pipe(
+        return this.httpClient.get<ITag>(url).pipe(
             catchError(this.handleError)
         )
     }
