@@ -26,9 +26,7 @@ export class ArticleDetailComponent implements OnInit {
   constructor(private activateRoute: ActivatedRoute, private articleService: ArticlesService, private userService: UserService, private router: Router, private commentService: CommentService) { }
   ngOnInit(): void {
 
-    this.isAuth = this.userService.currentUserValue() != null;
-    console.log(this.userService.currentUserValue());
-
+    this.isAuth = this.userService.currentUserValue().user != null
 
     this.activateRoute.paramMap.subscribe(params => {
       console.log(params);

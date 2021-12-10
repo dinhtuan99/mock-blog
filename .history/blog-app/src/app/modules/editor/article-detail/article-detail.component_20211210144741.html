@@ -63,10 +63,7 @@
     <div class="comment my-4">
       <div class="row">
         <div class="col-xs-12 col-md-8 offset-md-2">
-          <div class="" *ngIf="!isAuth">
-            <p>Sign in or sign up to add comments on this article.</p>
-          </div>
-          <form action="" class="card comment-form mb-4" *ngIf="isAuth">
+          <form action="" class="card comment-form mb-4" *ngIf="">
             <div class="card-body">
               <textarea class="form-control" placeholder="Write a comment..." [formControl]="commentControl"
                 rows="3"></textarea>
