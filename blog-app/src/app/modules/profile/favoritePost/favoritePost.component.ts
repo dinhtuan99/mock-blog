@@ -11,19 +11,37 @@ import { ArticlesService } from 'src/app/services/articles.service';
 })
 export class FavoritePostComponent implements OnInit {
   favoritePost!: IArticles;
+  top!:number ;
+  skip!:number;
 
   constructor(
     private serviecArticles: ArticlesService,
     private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
-    this.activatedRoute.parent?.params.pipe(
+    if(this.top == undefined) {
+      this.top = 1;
+    }
+    if(this.skip == undefined) {
+      this.skip = 0;
+    }
+    this.getMyFavorives(this.top, this.skip)
+
+  }
+
+  getMyFavorives(top: number, skip: number) {
+    return this.activatedRoute.parent?.params.pipe(
       switchMap(data => {
       return this.serviecArticles.getListArticlesByFavorited(data.username)
     })).subscribe(data => {
       this.favoritePost = data
     })
+  }
 
+  paging(e:any):void {
+    this.top = e.top;
+    this.skip = e.skip;
+    this.getMyFavorives(this.top, this.skip)
   }
 
 }

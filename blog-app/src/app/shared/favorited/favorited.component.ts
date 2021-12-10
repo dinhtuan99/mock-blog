@@ -14,7 +14,7 @@ export class FavoritedComponent implements OnInit {
   constructor(private articlesService: ArticlesService) { }
 
   ngOnInit(): void {
-    console.log(this.article);
+    
   }
 
   like() {
