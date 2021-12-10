@@ -1,1 +1,3 @@
-<app-article-list [articles]="results"></app-article-list>
+<div *ngIf="results">
+    <app-article-list [articles]="results" (paging)="paging($event)"></app-article-list>
+</div>

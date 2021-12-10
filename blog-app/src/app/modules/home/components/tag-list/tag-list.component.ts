@@ -26,7 +26,7 @@ export class TagListComponent implements OnInit {
     this.homeService.tag.subscribe((res) => {
       this.listConfig = res;
     });
-    this.connectApiService.getListArticlesByPage(10,0).subscribe((data) => {
+    this.connectApiService.getListArticles().subscribe((data) => {
       if(data){
         this.tagsLoaded = true;
         data.articles.forEach((el) => this.tags.push(el.tagList));

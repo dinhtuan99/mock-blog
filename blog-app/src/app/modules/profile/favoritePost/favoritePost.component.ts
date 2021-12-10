@@ -20,7 +20,7 @@ export class FavoritePostComponent implements OnInit {
 
   ngOnInit() {
     if(this.top == undefined) {
-      this.top = 1;
+      this.top = 20;
     }
     if(this.skip == undefined) {
       this.skip = 0;
@@ -32,7 +32,7 @@ export class FavoritePostComponent implements OnInit {
   getMyFavorives(top: number, skip: number) {
     return this.activatedRoute.parent?.params.pipe(
       switchMap(data => {
-      return this.serviecArticles.getListArticlesByFavorited(data.username)
+      return this.serviecArticles.getListArticlesByFavorited(data.username, top, skip)
     })).subscribe(data => {
       this.favoritePost = data
     })

@@ -41,3 +41,11 @@ export interface Article {
         following: boolean
     }
 }
+
+export interface ArticleListConfig {
+    tag?: string,
+    author?: string,
+    favorited?: string,
+    limit?: number,
+    offset?: number
+}

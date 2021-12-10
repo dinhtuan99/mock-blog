@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { Article, IArticles } from '../../models/articles.model';
 
@@ -7,23 +7,28 @@ import { Article, IArticles } from '../../models/articles.model';
   templateUrl: './article-list.component.html',
   styleUrls: ['./article-list.component.css']
 })
-export class ArticleListComponent implements OnInit {
+export class ArticleListComponent implements OnInit, OnChanges{
   isSubmitting: boolean = false;
   @Input() articles!: IArticles;
   @Output() paging = new EventEmitter<{ top: number, skip: number }>();
   skip: number = 0;
-  top: number = 1;
+  top: number = 20;
   length: number = 0;
   totalPage: number[] = [];
   index: number = 0;
 
   constructor(private articlesService: ArticlesService) { }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.articles) {
+      this.totalPage = Array(Math.ceil(this.articles.articlesCount / this.top));
+    }
+  }
+
   ngOnInit(): void {
-      if (this.articles.articlesCount > 0) {
-        this.totalPage = Array(Math.ceil(this.articles?.articlesCount / this.top));
-        console.log(this.articles);
-      }
+    if (this.articles) {
+      this.totalPage = Array(Math.ceil(this.articles.articlesCount / this.top));
+    }
   }
 
   changePagging(t: number, s: number) {

@@ -20,7 +20,7 @@ export class MyPostComponent implements OnInit {
 
   ngOnInit() {
     if(this.top == undefined) {
-      this.top = 1;
+      this.top = 20;
     }
     if(this.skip == undefined) {
       this.skip = 0;

@@ -1,9 +1,9 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { IArticle, IArticleCreate, IArticles, IArticleUpdate } from '../models/articles.model';
+import { ArticleListConfig, IArticle, IArticleCreate, IArticles, IArticleUpdate } from '../models/articles.model';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -15,6 +15,21 @@ export class ArticlesService {
     constructor(private httpClient: HttpClient) {
     }
 
+    getListArticlesByPage(config: ArticleListConfig): Observable<IArticles> {
+        const url = `${this.BASE_URL}articles`;
+        const params: any = {};
+
+        Object.keys(config)
+            .forEach((key) => {
+                params[key] = config[key as keyof ArticleListConfig];
+            });
+        const httpParam = new HttpParams({ fromObject: params })
+        return this.httpClient.get<IArticles>(url, { params: httpParam }).pipe(
+            catchError(this.handleError)
+        )
+    }
+
+
     getListArticles(): Observable<IArticles> {
         const url = `${this.BASE_URL}articles`;
         return this.httpClient.get<IArticles>(url).pipe(
@@ -22,8 +37,8 @@ export class ArticlesService {
         )
     }
 
-    getListArticlesByTag(tagName: string): Observable<IArticles> {
-        const url = `${this.BASE_URL}articles?tag=${tagName}`;
+    getListArticlesByTag(tagName: string, top: number, skip: number): Observable<IArticles> {
+        const url = `${this.BASE_URL}articles?tag=${tagName}&limit=${top}&offset=${skip}`;
         return this.httpClient.get<IArticles>(url).pipe(
             catchError(this.handleError)
         )
@@ -36,15 +51,8 @@ export class ArticlesService {
         )
     }
 
-    getListArticlesByFavorited(favorited: string): Observable<IArticles> {
-        const url = `${this.BASE_URL}articles?favorited=${favorited}`;
-        return this.httpClient.get<IArticles>(url).pipe(
-            catchError(this.handleError)
-        )
-    }
-
-    getListArticlesByPage(top: number, skip: number): Observable<IArticles> {
-        const url = `${this.BASE_URL}articles?limit=${top}&offset=${skip}`;
+    getListArticlesByFavorited(favorited: string, top: number, skip: number): Observable<IArticles> {
+        const url = `${this.BASE_URL}articles?favorited=${favorited}&limit=${top}&offset=${skip}`;
         return this.httpClient.get<IArticles>(url).pipe(
             catchError(this.handleError)
         )
@@ -57,9 +65,16 @@ export class ArticlesService {
         )
     }
 
-    getFeedArticlesByPage(top: number, skip: number): Observable<IArticles> {
-        const url = `${this.BASE_URL}articles/feed?limit=${top}&offset=${skip}`;
-        return this.httpClient.get<IArticles>(url).pipe(
+    getFeedArticlesByPage(config: ArticleListConfig): Observable<IArticles> {
+        const url = `${this.BASE_URL}articles/feed`;
+        const params: any = {};
+
+        Object.keys(config)
+            .forEach((key) => {
+                params[key] = config[key as keyof ArticleListConfig];
+            });
+        const httpParam = new HttpParams({ fromObject: params })
+        return this.httpClient.get<IArticles>(url, { params: httpParam }).pipe(
             catchError(this.handleError)
         )
     }
