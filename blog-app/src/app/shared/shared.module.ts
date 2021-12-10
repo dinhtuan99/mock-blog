@@ -4,13 +4,15 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
+import { FavoritedComponent } from './favorited/favorited.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    ArticleListComponent
+    ArticleListComponent,
+    FavoritedComponent
   ],
   imports: [
     CommonModule,

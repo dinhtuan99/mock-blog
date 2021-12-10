@@ -1,0 +1,3 @@
+<button class="btn btn-primary" (click)="like()" *ngIf="!article.favorited" >vote</button>
+<button class="btn btn-primary" (click)="unLike()" *ngIf="article.favorited" >un vote</button>
+{{article.favoritesCount}}
