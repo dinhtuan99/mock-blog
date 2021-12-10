@@ -1,23 +1,31 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { Article, IArticles } from '../../models/articles.model';
 
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
-  styleUrls: ['./article-list.component.css']
+  styleUrls: ['./article-list.component.css'],
 })
-export class ArticleListComponent implements OnInit, OnChanges{
+export class ArticleListComponent implements OnInit, OnChanges {
   isSubmitting: boolean = false;
   @Input() articles!: IArticles;
-  @Output() paging = new EventEmitter<{ top: number, skip: number }>();
+  @Output() paging = new EventEmitter<{ top: number; skip: number }>();
   skip: number = 0;
   top: number = 20;
   length: number = 0;
   totalPage: number[] = [];
   index: number = 0;
 
-  constructor(private articlesService: ArticlesService) { }
+  constructor(private articlesService: ArticlesService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.articles) {
@@ -32,11 +40,10 @@ export class ArticleListComponent implements OnInit, OnChanges{
   }
 
   changePagging(t: number, s: number) {
-    this.paging.emit(
-      {
-        top: t,
-        skip: s
-      });
+    this.paging.emit({
+      top: t,
+      skip: s,
+    });
   }
 
   changePage(i: number) {
