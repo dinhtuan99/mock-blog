@@ -11,6 +11,8 @@ import { ArticlesService } from 'src/app/services/articles.service';
 })
 export class MyPostComponent implements OnInit {
   myPost!: IArticles;
+  top = 20;
+  skip = 0;
   constructor(
     private serviecArticles: ArticlesService,
     private activatedRoute: ActivatedRoute,
@@ -20,7 +22,7 @@ export class MyPostComponent implements OnInit {
     this.activatedRoute.params
       .pipe(
         switchMap((params) => {
-          return this.serviecArticles.getListArticlesByAuthor(params.username);
+          return this.serviecArticles.getListArticlesByAuthor(params.username, this.top, this.skip);
         })
       )
       .subscribe((data) => {

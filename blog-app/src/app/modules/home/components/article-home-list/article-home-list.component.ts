@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from 'src/app/models/articles.model';
+import { Article, IArticles } from 'src/app/models/articles.model';
 import { ArticlesService } from 'src/app/services/articles.service';
 
 import { HomeService } from '../services/home.service';
@@ -10,7 +10,7 @@ import { HomeService } from '../services/home.service';
   styleUrls: ['./article-home-list.component.css']
 })
 export class ArticleHomeListComponent implements OnInit {
-  results: Article[] = [];
+  results!: IArticles;
   loading: boolean = true;
 
   constructor(
@@ -24,14 +24,14 @@ export class ArticleHomeListComponent implements OnInit {
         this.connectApiService.getListArticlesByPage(10,0).subscribe((data) => {
           if (data) {
             this.loading = false;
-            this.results = data.articles;
+            this.results = data;
           }
         });
       } else if (res.type === 'feed') {
         this.connectApiService.getFeedArticlesByPage(10,0).subscribe((data) => {
           if (data) {
             this.loading = false;
-            this.results = data.articles;
+            this.results = data;
           }
         });
       }
@@ -40,7 +40,7 @@ export class ArticleHomeListComponent implements OnInit {
       this.connectApiService
         .getListArticlesByTag(res)
         .subscribe((data) => {
-          this.results = data.articles;
+          this.results = data;
         });
     });
   }

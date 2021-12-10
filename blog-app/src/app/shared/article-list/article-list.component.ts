@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { ArticlesService } from 'src/app/services/articles.service';
-import { Article } from '../../models/articles.model';
+import { Article, IArticles } from '../../models/articles.model';
 
 @Component({
   selector: 'app-article-list',
@@ -10,7 +10,8 @@ import { Article } from '../../models/articles.model';
 })
 export class ArticleListComponent implements OnInit {
   isSubmitting: boolean = false;
-  @Input() articles: Article[] = [];
+  @Input()
+  articles!: IArticles;
 
   constructor(private articlesService: ArticlesService) { }
 
