@@ -21,6 +21,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     EditorRoutingModule,
     ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class EditorModule { }
