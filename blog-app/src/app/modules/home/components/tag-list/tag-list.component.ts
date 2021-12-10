@@ -26,16 +26,13 @@ export class TagListComponent implements OnInit {
     this.homeService.tag.subscribe((res) => {
       this.listConfig = res;
     });
-
     this.connectApiService.getListArticlesByPage(10,0).subscribe((data) => {
       if(data){
         this.tagsLoaded = true;
         data.articles.forEach((el) => this.tags.push(el.tagList));
         this.tags = new Set(this.tags.flat());
       }
-
     });
-
   }
   setListTo(type: string = '', filters: any) {
     // If feed is requested but user is not authenticated, redirect to login

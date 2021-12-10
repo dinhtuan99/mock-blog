@@ -29,8 +29,8 @@ export class ArticlesService {
         )
     }
 
-    getListArticlesByAuthor(author: string): Observable<IArticles> {
-        const url = `${this.BASE_URL}articles?author=${author}`;
+    getListArticlesByAuthor(author: string, top: number, skip: number): Observable<IArticles> {
+        const url = `${this.BASE_URL}articles?author=${author}&limit=${top}&offset=${skip}`;
         return this.httpClient.get<IArticles>(url).pipe(
             catchError(this.handleError)
         )
