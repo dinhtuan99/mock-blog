@@ -1,9 +1,9 @@
-<div class="feed-toggle" style="height: auto">
-  <ul class="nav nav-pills outline-active">
+<div class="feed-toggle mb-4" style="height: auto">
+  <ul class="nav nav-pills">
     <li class="nav-item">
       <button
         class="nav-link"
-        [ngClass]="{ active: listConfig.type === 'feed' }"
+        [ngClass]="{ activeDanger: listConfig.type === 'feed' }"
         (click)="setListTo('feed')"
       >
         Your Feed
@@ -13,15 +13,19 @@
       <button
         class="nav-link"
         [ngClass]="{
-          active: listConfig.type === 'all' && !listConfig.filters.tag
+          activeDanger: listConfig.type === 'all' && !listConfig.filters.tag
         }"
         (click)="setListTo('all')"
       >
         Global Feed
       </button>
     </li>
-    <li class="nav-item" [hidden]="!listConfig.filters.tag">
-      <button class="nav-link active">
+    <li
+      class="nav-item activeDanger"
+      style="border-radius: 3px"
+      [hidden]="!listConfig.filters.tag"
+    >
+      <button class="nav-link text-white">
         <i class="ion-pound"></i> {{ listConfig.filters.tag }}
       </button>
     </li>

@@ -1,17 +1,24 @@
-<div class="col-md-4">
-  <p>Popular Tags</p>
+<div class="col-md-4 m-auto">
+  <p
+    style="
+      background-color: black;
+      color: white;
+      padding: 8px 5px;
+      text-align: center;
+      border-radius: 3px;
+    "
+  >
+    Popular Tags
+  </p>
 
-  <div class="tag-list d-flex my-4">
+  <div class="tag-list my-4">
     <button
       *ngFor="let tag of tags"
       (click)="setListTo('', { tag: tag })"
-      class="btn btn-sm btn-primary m-1"
+      class="btn btn-sm btn-dark m-1"
     >
       {{ tag }}
     </button>
   </div>
-
   <div [hidden]="tagsLoaded">Loading tags...</div>
-
-  <div [hidden]="!tagsLoaded || tags.length > 0">No tags are here... yet.</div>
 </div>
