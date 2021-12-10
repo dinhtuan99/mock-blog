@@ -24,7 +24,7 @@ export class MyPostComponent implements OnInit {
         })
       )
       .subscribe((data) => {
-        this.myPost = data;
+          this.myPost = data;
       });
   }
 }
