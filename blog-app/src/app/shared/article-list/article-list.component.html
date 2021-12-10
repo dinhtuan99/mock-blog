@@ -1,4 +1,4 @@
-<div class="article-preview row" *ngFor="let article of articles.articles">
+<div class="article-preview row" *ngFor="let article of articles?.articles">
   <div class="col-2">
     <app-favorited [article]="article" ></app-favorited>
   </div>
@@ -30,20 +30,20 @@
     </div>
   </div>
 
-  <!-- <div [hidden]="!loadData">Loading articles...</div> -->
 
-  <!-- <div *ngIf="article.tagList.length">No articles are here... yet.</div> -->
-
-  <!-- <nav [hidden]="loading || totalPages.length <= 1">
+</div>
+<nav aria-label="Page navigation example">
   <ul class="pagination">
-    <li
-      class="page-item"
-      [ngClass]="{ active: pageNumber === currentPage }"
-      *ngFor="let pageNumber of totalPages"
-      (click)="setPageTo(pageNumber)"
-    >
-      <a class="page-link">{{ pageNumber }}</a>
+    <li class="page-item" (click)="previousPage()" [ngClass]="skip == 0 ? 'disabled' : ''">
+      <a class="page-link" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item" *ngFor="let page of totalPage; let i = index " [ngClass]="index == i ? 'active' : ''"  (click)='changePage(i)'><a class="page-link">{{i+1}}</a></li>
+    <li class="page-item" [ngClass]="skip >= length - top ? 'disabled' : ''" (click)="nextPage()">
+      <a class="page-link" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
     </li>
   </ul>
-</nav> -->
-</div>
+</nav>
