@@ -1,40 +1,34 @@
-<div class="article-preview" *ngFor="let article of articles">
-  <div class="article-meta">
-    <a [routerLink]="['/profile', article.author.username]">
-      <img [src]="article.author.image" style="width: 30px; height: 30px" />
-    </a>
-
-    <div class="info">
-      <a class="author" [routerLink]="['/profile']">
-        {{ article.author.username }}
+<div class="article-preview row" *ngFor="let article of articles">
+  <div class="col-2">
+    <app-favorited [article]="article" ></app-favorited>
+  </div>
+  <div class="col-10">
+    <div class="article-meta">
+      <a [routerLink]="['/profile', article.author.username]">
+        <img [src]="article.author.image" style="width: 30px; height: 30px" />
       </a>
-      <span class="date">
-        {{ article.createdAt | date: "longDate" }}
-      </span>
-    </div>
-    <!--
-    <app-favorite-button
-      [article]="article"
-      (toggle)="onToggleFavorite($event)"
-      class="pull-xs-right"
-    >
-      {{ article.favoritesCount }}
-    </app-favorite-button>
-  </div> -->
 
-    <a [routerLink]="['/article', article.slug]" class="preview-link">
-      <h1>{{ article.title }}</h1>
-      <p>{{ article.description }}</p>
-      <span>Read more...</span>
-      <ul class="tag-list">
-        <li
-          class="tag-default tag-pill tag-outline"
-          *ngFor="let tag of article.tagList"
-        >
-          {{ tag }}
-        </li>
-      </ul>
-    </a>
+      <div class="info">
+        <a class="author" [routerLink]="['/profile']">
+          {{ article.author.username }}
+        </a>
+        <span class="date">
+          {{ article.createdAt | date: "longDate" }}
+        </span>
+      </div>
+
+
+      <a [routerLink]="['/article', article.slug]" class="preview-link">
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.description }}</p>
+        <span>Read more...</span>
+        <ul class="tag-list">
+          <li class="tag-default tag-pill tag-outline" *ngFor="let tag of article.tagList">
+            {{ tag }}
+          </li>
+        </ul>
+      </a>
+    </div>
   </div>
 
   <!-- <div class="app-article-preview" [hidden]="!loading">Loading articles...</div>
