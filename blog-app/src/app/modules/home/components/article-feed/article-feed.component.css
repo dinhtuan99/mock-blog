@@ -1,0 +1,8 @@
+.activeDanger {
+  background-color: black;
+  color: white;
+}
+* {
+  color: black;
+  font-weight: 600;
+}

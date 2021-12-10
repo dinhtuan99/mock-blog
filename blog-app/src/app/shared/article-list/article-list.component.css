@@ -1,0 +1,12 @@
+a {
+  text-decoration: none;
+}
+* {
+  color: black;
+}
+li {
+  list-style: none;
+  background-color: rgb(24, 20, 20);
+  border-radius: 3px;
+  color: white;
+}
