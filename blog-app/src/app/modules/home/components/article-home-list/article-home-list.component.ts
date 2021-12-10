@@ -21,7 +21,7 @@ export class ArticleHomeListComponent implements OnInit {
   ngOnInit(): void {
     this.homeService.tag.subscribe((res: any) => {
       if (res.type === 'all') {
-        this.connectApiService.getFeedArticlesByPage(10,0).subscribe((data) => {
+        this.connectApiService.getListArticlesByPage(10,0).subscribe((data) => {
           if (data) {
             this.loading = false;
             this.results = data.articles;
