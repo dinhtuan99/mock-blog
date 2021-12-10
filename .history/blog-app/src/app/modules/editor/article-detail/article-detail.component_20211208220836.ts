@@ -17,7 +17,7 @@ export class ArticleDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe((_data: {}) => {
-      console.log(_data);
+      
 
     })
 

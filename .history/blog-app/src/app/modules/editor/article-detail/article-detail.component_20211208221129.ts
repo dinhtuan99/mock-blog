@@ -20,7 +20,7 @@ export class ArticleDetailComponent implements OnInit {
 
 
     this.activateRoute.params.subscribe(params => {
-      console.log(params);
+      
 
     })
 

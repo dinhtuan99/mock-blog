@@ -29,16 +29,16 @@ export class ArticleDetailComponent implements OnInit {
     this.isAuth = this.userService.currentUserValue().user != null
 
     this.activateRoute.paramMap.subscribe(params => {
-      console.log(params);
+      
       this.slugA = params.get('slug') as string;
-      console.log(this.slugA);
+      
 
       this.articleService.getArticleBySlug(this.slugA).subscribe(res => {
-        console.log('ok1', res.article.author.username, this.userService.currentUserValue()?.user.username);
+        
         this.isCurrentUser = res.article.author.username == this.userService.currentUserValue()?.user.username;
         if (res) {
           this.articles = res.article;
-          console.log(this.articles);
+          
         }
         this.getComment()
       })
@@ -52,7 +52,7 @@ export class ArticleDetailComponent implements OnInit {
 
   getComment() {
     this.commentService.getComment(this.slugA).subscribe(res => {
-      console.log('comall', res);
+      
       this.comment = res.comments
 
     })
@@ -60,10 +60,10 @@ export class ArticleDetailComponent implements OnInit {
 
   addComment() {
     const commentBody = this.commentControl.value;
-    console.log(commentBody);
+    
 
     this.commentService.addCommentArticle(commentBody, this.slugA).subscribe(res => {
-      console.log(res);
+      
       this.commentCre.unshift(res);
       this.commentControl.reset('');
       this.getComment();

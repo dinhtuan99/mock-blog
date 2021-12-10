@@ -20,11 +20,11 @@ export class ArticleDetailComponent implements OnInit {
 
 
     this.activateRoute.params.subscribe(params => {
-      console.log(params);
+      
       let slugArt = params.get('slug');
       // this.slug = slugArt
       this.articleService.getArticleBySlug(slugArt).subscribe(data => {
-        console.log(data);
+        
 
       })
 

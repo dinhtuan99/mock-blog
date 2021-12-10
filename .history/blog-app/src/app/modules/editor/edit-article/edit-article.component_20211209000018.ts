@@ -24,10 +24,10 @@ export class EditArticleComponent implements OnInit {
       tagForm: ''
     })
     this.activateRoute.data.subscribe(params => {
-      console.log(params);
+      
 
       // this.slugA = params.get('slug') as string;
-      // console.log(this.slugA);
+      // 
 
     })
   }
@@ -38,7 +38,7 @@ export class EditArticleComponent implements OnInit {
 
   }
   onAddTag() {
-    console.log(this.iF.tagForm.value);
+    
     if (this.iF.tagForm.value) {
       if (this.tags.indexOf(this.iF.tagForm.value) < 0) {
         this.tags.push(this.iF.tagForm.value)

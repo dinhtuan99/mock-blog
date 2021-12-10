@@ -39,12 +39,12 @@ export class NewArticleComponent implements OnInit {
     }
     this.articleService.createArticle(this.articles).subscribe(res => {
       this.router.navigateByUrl('article' + res.article.slug)
-      console.log(res);
+      
     })
 
   }
   onAddTag() {
-    console.log(this.iF.tagForm.value);
+    
     if (this.iF.tagForm.value) {
       if (this.tags.indexOf(this.iF.tagForm.value) < 0) {
         this.tags.push(this.iF.tagForm.value)

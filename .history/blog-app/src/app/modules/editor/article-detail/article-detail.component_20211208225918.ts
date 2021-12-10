@@ -18,13 +18,13 @@ export class ArticleDetailComponent implements OnInit {
   ngOnInit(): void {
 
     // this.activateRoute.data.subscribe(data => {
-    //   console.log(data);
+    //   
 
     // })
     this.activateRoute.paramMap.subscribe(params => {
-      console.log(params);
+      
       let slugA = params.get('slug')
-      console.log(slugA);
+      
 
 
 

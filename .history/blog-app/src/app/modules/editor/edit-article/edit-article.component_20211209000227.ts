@@ -26,7 +26,7 @@ export class EditArticleComponent implements OnInit {
     this.activateRoute.paramMap.subscribe(params => {
       this.slugA = params.get('slug') as string;
       this.articleService.updateArticle(this.articles, this.slugA).subscribe(res => {
-        console.log(res);
+        
 
       })
 
@@ -39,7 +39,7 @@ export class EditArticleComponent implements OnInit {
 
   }
   onAddTag() {
-    console.log(this.iF.tagForm.value);
+    
     if (this.iF.tagForm.value) {
       if (this.tags.indexOf(this.iF.tagForm.value) < 0) {
         this.tags.push(this.iF.tagForm.value)

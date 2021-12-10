@@ -38,7 +38,7 @@ export class NewArticleComponent implements OnInit {
       }
     }
     this.articleService.cerateArticle(this.articles).subscribe(res => {
-      console.log(res);
+      
 
     })
 

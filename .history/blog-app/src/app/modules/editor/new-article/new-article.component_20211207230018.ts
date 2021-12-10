@@ -38,12 +38,12 @@ export class NewArticleComponent implements OnInit {
       }
     }
     this.articleService.cerateArticle(this.articles).subscribe(res => {
-      console.log(res);
+      
     })
 
   }
   onAddTag() {
-    console.log(this.iF.tagForm.value);
+    
     if (this.iF.tagForm.value) {
       if (this.tags.indexOf(this.iF.tagForm.value) < 0) {
         this.tags.push(this.iF.tagForm.value)

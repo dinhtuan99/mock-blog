@@ -29,8 +29,8 @@ export class ProfileComponent implements OnInit {
       .subscribe((data) => {
         this.profile = data;
         this.checkFollow = data.profile.following;
-        console.log(data);
-        console.log(this.checkFollow);
+        
+        
       });
   }
 
@@ -43,16 +43,16 @@ export class ProfileComponent implements OnInit {
   follow(userName: string): void {
     this.serviceProfile.followUser(userName).subscribe((data) => {
       this.checkFollow = data.profile.following;
-      console.log(data);
+      
 
-      console.log(this.checkFollow);
+      
     });
   }
 
   unFollow(userName: string): void {
     this.serviceProfile.unfollowUser(userName).subscribe((data) => {
       this.checkFollow = data.profile.following;
-      console.log(this.checkFollow);
+      
     });
   }
 }

@@ -27,7 +27,7 @@ export class EditArticleComponent implements OnInit {
     this.activateRoute.paramMap.subscribe(params => {
       this.slugA = params.get('slug') as string;
       this.articleService.getArticleBySlug(this.slugA).subscribe(res => {
-        console.log(res);
+        
         this.iF.title.setValue(res.article.title);
         this.iF.description.setValue(res.article.description);
         this.iF.body.setValue(res.article.body);
@@ -50,11 +50,11 @@ export class EditArticleComponent implements OnInit {
     // }
     this.articleService.updateArticle(this.articles, this.slugA).subscribe(res => {
       this.router.navigateByUrl('/article/' + res.article.slug)
-      console.log(res);
+      
     })
   }
   onAddTag() {
-    console.log(this.iF.tagForm.value);
+    
     if (this.iF.tagForm.value) {
       if (this.tags.indexOf(this.iF.tagForm.value) < 0) {
         this.tags.push(this.iF.tagForm.value)

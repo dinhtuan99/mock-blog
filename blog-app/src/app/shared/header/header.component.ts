@@ -14,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 export class HeaderComponent implements OnInit {
   isLogin: boolean = false;
   user!: IUser;
-  selected: string = '';
+  selected: string = 'all';
 
   searchControl = new FormControl();
   constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
@@ -46,18 +46,22 @@ export class HeaderComponent implements OnInit {
   searchSelected() {
     this.searchControl.reset();
     this.searchControl.valueChanges.pipe(debounceTime(1500)).subscribe(value => {
-      switch (this.selected) {
-        case 'tag':
-          this.router.navigate([], { queryParams: { tag: value } });
-          break;
-        case 'author':
-          this.router.navigate([], { queryParams: { author: value } });
-          break;
-        case 'favorited':
-          this.router.navigate([], { queryParams: { favorited: value } });
-          break;
-        case '':
-          this.router.navigate([], {
+      if (value) {
+        switch (this.selected) {
+          case 'tag':
+            this.router.navigate(['/'], { queryParams: { tag: value } });
+            break;
+          case 'author':
+            this.router.navigate(['/'], { queryParams: { author: value } });
+            break;
+          case 'favorited':
+            this.router.navigate(['/'], { queryParams: { favorited: value } });
+            break;
+        }
+        this.searchControl.reset();
+      } else {
+        if (this.selected == 'all') {
+          this.router.navigate(['/'], {
             queryParams: {
               'tag': null,
               'author': null,
@@ -65,7 +69,7 @@ export class HeaderComponent implements OnInit {
             },
             queryParamsHandling: 'merge'
           });
-          break;
+        }
       }
     })
   }

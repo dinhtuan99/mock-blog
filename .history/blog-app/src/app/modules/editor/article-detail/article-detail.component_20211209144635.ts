@@ -24,28 +24,28 @@ export class ArticleDetailComponent implements OnInit {
   ngOnInit(): void {
 
     this.activateRoute.paramMap.subscribe(params => {
-      console.log(params);
+      
       this.slugA = params.get('slug') as string;
-      console.log(this.slugA);
+      
 
       this.articleService.getArticleBySlug(this.slugA).subscribe(res => {
         if (res) {
           this.articles = res.article;
-          console.log(this.articles);
+          
         }
       })
     })
   }
   deleteArticle() {
     this.articleService.deleteArticle(this.slugA).subscribe(res => {
-      console.log(res);
+      
     })
   }
 
   addComment() {
     const commentBody = this.commentControl.value;
     this.commentService.addCommentArticle(this.slugA, commentBody).subscribe(res => {
-      console.log(res);
+      
       this.comments.unshift(res);
       this.commentControl.reset('')
     })

@@ -26,7 +26,7 @@ export class EditArticleComponent implements OnInit {
     return this.formArt.controls;
   }
   onAddTag() {
-    console.log(this.iF.tagForm.value);
+    
     if (this.iF.tagForm.value) {
       if (this.tags.indexOf(this.iF.tagForm.value) < 0) {
         this.tags.push(this.iF.tagForm.value)

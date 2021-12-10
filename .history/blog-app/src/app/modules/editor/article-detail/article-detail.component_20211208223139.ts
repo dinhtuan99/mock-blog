@@ -19,7 +19,7 @@ export class ArticleDetailComponent implements OnInit {
 
 
     this.activateRoute.paramMap.subscribe(params => {
-      console.log(params);
+      
       let slugA = params.get('slug')
 
     })

@@ -9,7 +9,7 @@
       </a>
 
       <div class="info">
-        <a class="author" [routerLink]="['/profile']">
+        <a class="author" [routerLink]="['/profile', article.author.username]">
           {{ article.author.username }}
         </a>
         <span class="date">
