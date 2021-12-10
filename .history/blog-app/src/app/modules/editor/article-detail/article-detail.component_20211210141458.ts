@@ -21,9 +21,8 @@ export class ArticleDetailComponent implements OnInit {
   comment: Comment[] = [];
   commentControl = new FormControl();
   isCurrentUser!: boolean;
-  checkFollow!: boolean;
-
   constructor(private activateRoute: ActivatedRoute, private articleService: ArticlesService, private userService: UserService, private router: Router, private commentService: CommentService) { }
+  // @Input() article: Article[] = [];
   ngOnInit(): void {
 
     this.activateRoute.paramMap.subscribe(params => {
@@ -44,7 +43,7 @@ export class ArticleDetailComponent implements OnInit {
   }
   deleteArticle() {
     this.articleService.deleteArticle(this.slugA).subscribe(res => {
-      this.router.navigateByUrl('/')
+      console.log(res);
     })
   }
 
@@ -83,17 +82,5 @@ export class ArticleDetailComponent implements OnInit {
     this.articleService.unfavoriteArticle(this.articles.slug).subscribe((data) => {
       this.articles = data.article;
     })
-  }
-
-  follow(userName: string): void {
-    this.userService.followUser(userName).subscribe((data) => {
-      this.checkFollow = data.profile.following;
-    });
-  }
-
-  unFollow(userName: string): void {
-    this.userService.unfollowUser(userName).subscribe((data) => {
-      this.checkFollow = data.profile.following;
-    });
   }
 }

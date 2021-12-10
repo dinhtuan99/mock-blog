@@ -13,27 +13,9 @@
             <p>{{articles.createdAt|date : 'MMMM d, y'}}</p>
           </div>
         </div>
-        <div class="info-button col-md-10" *ngIf="isCurrentUser">
+        <div class="info-button col-md-10">
           <a class="btn btn-outline-secondary" [routerLink]="['/edit/', slugA]">Edit Article</a>&nbsp;
           <button type="button" class="btn btn-outline-danger" (click)="deleteArticle()">Delete</button>
-        </div>
-        <div class="info-button col-md-10" *ngIf="!isCurrentUser">
-          <button class="btn btn-sm btn-outline-secondary action-btn" *ngIf="checkFollow"
-            (click)="unFollow(articles.author.username)">
-            <i class="ion-plus-round"></i>
-            &nbsp; Unfollow {{ articles.author.username }}
-          </button>
-          <button class="btn btn-sm btn-outline-secondary action-btn" *ngIf="!checkFollow"
-            (click)="follow(articles.author.username)">
-            <i class="ion-plus-round"></i>
-            &nbsp; Follow {{ articles.author.username }}
-          </button>
-          &nbsp;
-          <button class="btn btn-success" (click)="like()" *ngIf="!articles.favorited">Favorite Article
-            ({{articles.favoritesCount}})</button>
-          <button class="btn btn-success" (click)="unLike()" *ngIf="articles.favorited">UnFavorite Article
-            ({{articles.favoritesCount}})</button>
-
         </div>
       </div>
     </div>
@@ -84,7 +66,7 @@
               </div>
               <div class="card-footer">
                 <a class="comment-author" [routerLink]="">
-                  <img [src]="item.author.image" class="rounded-circle w-25" />
+                  <img [src]="item.author.image" class="comment-author-img rounded-circle" />
                 </a>
                 &nbsp;
                 <a class="comment-author text-decoration-none" [routerLink]="">
@@ -93,8 +75,8 @@
                 <span class="date-posted">
                   {{ item.createdAt | date: 'MMMM d, y' }}
                 </span>
-                <span class="mod-options" style="cursor: pointer;" *ngIf="isCurrentUser">
-                  <i class="fas fa-trash-alt" (click)="deleteComment(item)"></i>
+                <span class="mod-options">
+
                 </span>
               </div>
             </div>

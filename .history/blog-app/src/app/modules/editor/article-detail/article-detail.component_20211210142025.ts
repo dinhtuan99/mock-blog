@@ -44,7 +44,7 @@ export class ArticleDetailComponent implements OnInit {
   }
   deleteArticle() {
     this.articleService.deleteArticle(this.slugA).subscribe(res => {
-      this.router.navigateByUrl('/')
+      console.log(res);
     })
   }
 

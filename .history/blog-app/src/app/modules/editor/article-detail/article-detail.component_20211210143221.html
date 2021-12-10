@@ -28,12 +28,10 @@
             <i class="ion-plus-round"></i>
             &nbsp; Follow {{ articles.author.username }}
           </button>
-          &nbsp;
-          <button class="btn btn-success" (click)="like()" *ngIf="!articles.favorited">Favorite Article
-            ({{articles.favoritesCount}})</button>
-          <button class="btn btn-success" (click)="unLike()" *ngIf="articles.favorited">UnFavorite Article
-            ({{articles.favoritesCount}})</button>
 
+          <button class="btn btn-success" (click)="like()" *ngIf="!articles.favorited">Favorite Article</button>
+          <button class="btn btn-success" (click)="unLike()" *ngIf="articles.favorited">UnFavorite Article</button>
+          {{articles.favoritesCount}}
         </div>
       </div>
     </div>

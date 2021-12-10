@@ -21,19 +21,17 @@
           <button class="btn btn-sm btn-outline-secondary action-btn" *ngIf="checkFollow"
             (click)="unFollow(articles.author.username)">
             <i class="ion-plus-round"></i>
-            &nbsp; Unfollow {{ articles.author.username }}
+            &nbsp; Unfollow {{ articles?.author?.username }}
           </button>
           <button class="btn btn-sm btn-outline-secondary action-btn" *ngIf="!checkFollow"
             (click)="follow(articles.author.username)">
             <i class="ion-plus-round"></i>
-            &nbsp; Follow {{ articles.author.username }}
+            &nbsp; Follow {{ articles?.author?.username }}
           </button>
-          &nbsp;
-          <button class="btn btn-success" (click)="like()" *ngIf="!articles.favorited">Favorite Article
-            ({{articles.favoritesCount}})</button>
-          <button class="btn btn-success" (click)="unLike()" *ngIf="articles.favorited">UnFavorite Article
-            ({{articles.favoritesCount}})</button>
 
+          <button class="btn btn-primary" (click)="like()" *ngIf="!articles.favorited">vote</button>
+          <button class="btn btn-primary" (click)="unLike()" *ngIf="articles.favorited">un vote</button>
+          {{articles.favoritesCount}}
         </div>
       </div>
     </div>

@@ -6,7 +6,6 @@ import { NewArticleComponent } from './new-article/new-article.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -20,7 +19,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     EditorRoutingModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ]
 })
 export class EditorModule { }
