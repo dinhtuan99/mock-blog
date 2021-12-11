@@ -52,6 +52,7 @@ export class ArticleHomeListComponent implements OnInit {
               this.query.offset = this.skip;
               return this.connectApiService.getFeedArticlesByPage(this.query);
             } else {
+              this.query = {};
               return this.connectApiService.getListArticlesByTag(
                 res.filters.tag,
                 this.top,
@@ -70,7 +71,6 @@ export class ArticleHomeListComponent implements OnInit {
   paging(e: any): void {
     this.top = e.top;
     this.skip = e.skip;
-
     this.homeService.tag
       .pipe(
         switchMap((res: any) => {

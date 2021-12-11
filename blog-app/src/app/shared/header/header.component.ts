@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { IUser } from 'src/app/models/user.model';
+import { HomeService } from 'src/app/modules/home/components/services/home.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
   selected: string = 'all';
 
   searchControl = new FormControl();
-  constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
+  constructor(private userService: UserService, private authService: AuthService, private router: Router, private homeService: HomeService) { }
 
   ngOnInit(): void {
     this.userService.currentUser().subscribe(data => {
@@ -43,34 +44,36 @@ export class HeaderComponent implements OnInit {
     return matchpattern.test(_string);
   }
 
-  searchSelected() {
-    this.searchControl.reset();
-    this.searchControl.valueChanges.pipe(debounceTime(1500)).subscribe(value => {
-      if (value) {
-        switch (this.selected) {
-          case 'tag':
-            this.router.navigate(['/'], { queryParams: { tag: value } });
-            break;
-          case 'author':
-            this.router.navigate(['/'], { queryParams: { author: value } });
-            break;
-          case 'favorited':
-            this.router.navigate(['/'], { queryParams: { favorited: value } });
-            break;
-        }
-        this.searchControl.reset();
-      } else {
-        if (this.selected == 'all') {
-          this.router.navigate(['/'], {
-            queryParams: {
-              'tag': null,
-              'author': null,
-              'favorited': null
-            },
-            queryParamsHandling: 'merge'
-          });
-        }
+  home(){
+    this.router.navigate(["/"]);
+    this.homeService.setTag({ type: 'all', filters: {} });
+  }
+
+  search(){
+    if (this.searchControl.value) {
+      switch (this.selected) {
+        case 'tag':
+          this.router.navigate(['/'], { queryParams: { tag: this.searchControl.value } });
+          break;
+        case 'author':
+          this.router.navigate(['/'], { queryParams: { author: this.searchControl.value } });
+          break;
+        case 'favorited':
+          this.router.navigate(['/'], { queryParams: { favorited: this.searchControl.value } });
+          break;
       }
-    })
+      this.searchControl.reset();
+    } else {
+      if (this.selected == 'all') {
+        this.router.navigate(['/'], {
+          queryParams: {
+            'tag': null,
+            'author': null,
+            'favorited': null
+          },
+          queryParamsHandling: 'merge'
+        });
+      }
+    }
   }
 }

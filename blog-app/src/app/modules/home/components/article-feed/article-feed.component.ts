@@ -33,6 +33,7 @@ export class ArticleFeedComponent implements OnInit {
   }
 
   setListTo(type: string = '', filters: Object = {}) {
+    this.route.navigate(["/"]);
     if (type === 'feed' && !this.isAuthenticated) {
       this.route.navigateByUrl('/login');
       return;
