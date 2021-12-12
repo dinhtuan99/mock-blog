@@ -1,0 +1,61 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 rounded">
+    <div class="container-fluid">
+        <a class="navbar-brand h1 text-nowrap" (click)="home()"><i class="fab fa-angular fa-2x"></i></a>
+
+        <div class="d-flex justify-content-center w-100">
+            <select [(ngModel)]="selected" class="form-select" aria-label="Default select example" style="width: 10%; margin-right: 10px;">
+                <option value="all" selected>Search By</option>
+                <option value="tag">Tag</option>
+                <option value="author">Author</option>
+                <option value="favorited">Favorited</option>
+            </select>
+            <form class="w-50 ml-2">
+                <div class="input-group rounded">
+                    <input type="search" (keyup.enter)="search()" [formControl]="searchControl" class="form-control rounded "
+                        placeholder="Search Blog" aria-label="Search" aria-describedby="search-addon" />
+                    <span class="input-group-text border-0 bg-light" id="search-addon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+            </form>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div *ngIf="isLogin" class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                <a class="nav-link text-nowrap" (click)="home()" ><i class="fas fa-home"></i> Home</a>
+                <a class="nav-link text-nowrap" [routerLink]="['new']" routerLinkActive="active"><i
+                        class="fas fa-edit"></i> New Article</a>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class='rounded-circle' *ngIf="user.user.image" [src]="user.user.image" alt="Avatar"
+                            height="35px" width="35px"> {{user.user.username}}
+                    </button>
+                    <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" [routerLink]="['profile', user.user.username]"
+                                routerLinkActive="active"><i class="fas fa-user-circle"></i> Profile</a></li>
+                        <li><a class="dropdown-item text-nowrap" [routerLink]="['settings']"
+                                routerLinkActive="active"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><a class="dropdown-item text-nowrap" (click)="logout()"><i class="fas fa-sign-out-alt"></i>
+                                Logout</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!isLogin" class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <a class="nav-link text-nowrap" [routerLink]="['']" routerLinkActive="active"><i
+                        class="fas fa-home"></i>
+                    Home</a>
+                <a class="nav-link text-nowrap" [routerLink]="['login']" routerLinkActive="active">Log in</a>
+                <a class="nav-link text-nowrap" [routerLink]="['register']" routerLinkActive="active">Sign up</a>
+            </div>
+        </div>
+    </div>
+</nav> -->

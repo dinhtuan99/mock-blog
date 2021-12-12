@@ -1,0 +1,9 @@
+.buttons a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.post-comment {
+  padding: 5px;
+  border: none;
+  background-color: rgb(48, 187, 106);
+}

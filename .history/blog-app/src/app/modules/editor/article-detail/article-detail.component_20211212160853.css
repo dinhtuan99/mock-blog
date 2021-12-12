@@ -1,0 +1,50 @@
+.btn1 {
+  display: inline-block;
+  font-weight: normal;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+}
+.btn-edit {
+  color: #ccc;
+  background-image: none;
+  background-color: transparent;
+  border-color: #ccc;
+}
+.article-page .banner .btn:hover {
+  transition: 0.1s all;
+  opacity: 1;
+}
+.article-page .banner .btn {
+  opacity: 0.8;
+}
+.btn-outline-secondary:hover {
+  color: #fff;
+  background-color: #ccc;
+  border-color: #ccc;
+}
+.btn:focus,
+.btn:hover {
+  text-decoration: none;
+}
+a:focus,
+a:hover {
+  color: #3d8b3d;
+  text-decoration: underline;
+}
+a:hover {
+  outline: 0;
+}
+.btn-sm,
+.btn-group-sm > .btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  border-radius: 0.2rem;
+}
+
+.btn-outline-secondary {
+}

@@ -1,0 +1,11 @@
+.buttons a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-comment {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  background-color: rgb(48, 187, 106);
+}
