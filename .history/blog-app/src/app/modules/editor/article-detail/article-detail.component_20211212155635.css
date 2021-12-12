@@ -1,0 +1,24 @@
+.btn {
+  padding: 0.5rem 1.5rem;
+  min-width: 8rem;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  border-radius: 5rem;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.btn-cancel {
+  background-color: #d9534f;
+  margin-right: 20px;
+}
+
+.btn-accept {
+  background-color: #5cb85c;
+}

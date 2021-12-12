@@ -1,0 +1,80 @@
+<!-- <div class="container my-5">
+  <div class="header mb-4">
+    <h3>Post New Article</h3>
+  </div>
+  <div class="new-article">
+    <form action="" [formGroup]="formArt">
+      <div class="mb-3 form-group">
+        <input class="form-control form-control-lg" type="text" placeholder="Article Title" formControlName='title'>
+      </div>
+      <div class="mb-3 form-group">
+        <input type="text" class="form-control" id="" placeholder="What's this article about? "
+          formControlName='description'>
+      </div>
+      <div class="mb-3 form-group">
+        <textarea class="form-control" id="" rows="6" placeholder="Write your article (in markdown)"
+          formControlName='body'></textarea>
+      </div>
+      <div class="mb-3 form-group">
+        <input type="text" class="form-control" id="" placeholder="Enter tag" formControlName="tagForm"
+          (keyup.enter)="onAddTag()">
+        <div class="tag mt-1">
+          <span class="badge bg-secondary rounded-pill me-1" *ngFor="let tag of tags">
+            <i class="fas fa-times" (click)="removeTag(tag)" style="cursor: pointer;"></i> {{tag}}
+          </span>
+        </div>
+      </div>
+      <div class="form-group d-flex justify-content-end">
+        <button type="button" class="btn btn-success" (click)="onSubmit()">Publish Article</button>
+      </div>
+    </form>
+  </div>
+</div> -->
+
+
+<section>
+  <div class="gap gray-bg">
+    <div class="container">
+      <div class="row merged20">
+        <div class="col-lg-10">
+          <div class="forum-form">
+            <div class="central-meta">
+              <form [formGroup]="formArt" class="c-form">
+                <div>
+                  <label>Article Title</label>
+                  <input type="text" placeholder="Article Title" formControlName='title'>
+                </div>
+                <div>
+                  <label>Description</label>
+                  <input type="text" placeholder="What's this article about? " formControlName='description'>
+                </div>
+                <div>
+                  <label>Body</label>
+                  <textarea rows="6" placeholder="Write your article (in markdown)" formControlName='body'></textarea>
+                </div>
+                <div>
+                  <label>Choose Optional Tags</label>
+                  <input type="text" placeholder="Enter tag" formControlName="tagForm" (keyup.enter)="onAddTag()">
+                  <div class=" mt-1">
+                    <ul class="tags">
+                      <li class="tag" *ngFor="let tag of tags">
+                        <a href="#"><i class="fas fa-times" (click)="removeTag(tag)" style="cursor: pointer;"></i>
+                          {{tag}}</a>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
+                <div>
+                  <button class="main-btn" type="button" (click)="onSubmit()">Publish Article</button>
+                  <button class="main-btn3" type="button">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,41 @@
+/* .form-control:focus {
+  box-shadow: 0 0 0 0.04rem rgb(13 110 253 / 25%) !important;
+} */
+.tags {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.tag {
+  color: #d0dffc;
+  font-size: 0.7rem;
+  border-radius: 100rem;
+  box-shadow: 0 0 0 2px #d0dffc;
+  background-color: transparent;
+  color: #283b70;
+  font-weight: bold;
+  transition: background-color 250ms ease, box-shadow 250ms ease;
+}
+
+.tag > a {
+  display: inline-block;
+  position: relative;
+  color: #283b70;
+  text-decoration: none;
+  padding: 0.2rem 0.7rem 0.2rem 0.7rem;
+}
+
+/* .tag > a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 100%;
+  background-color: var(--color);
+  transform: translateY(-50%);
+} */

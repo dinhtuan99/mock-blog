@@ -1,0 +1,15 @@
+.btn1 {
+  display: inline-block;
+  font-weight: normal;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+}
+.btn-edit {
+  background-color: rgb(131, 131, 131);
+  text-decoration: none;
+}

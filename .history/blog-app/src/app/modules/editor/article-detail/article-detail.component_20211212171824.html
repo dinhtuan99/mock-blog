@@ -1,0 +1,350 @@
+<!-- <div class="article-page" *ngIf="articles">
+  <div class="banner p-5 bg-dark text-white">
+    <div class="container">
+      <h1 class="text-light">{{articles.title}}</h1>
+      <div class="article-info row">
+        <div class="info-item col-md-2 d-flex">
+          <div class="avt">
+            <img src="{{articles.author.image}}" class="rounded-circle w-50" alt="">
+          </div>
+          <div class="info">
+            <a [routerLink]="['/profile/',articles.author.username ]"
+              class="text-decoration-none text-white">{{articles.author.username}}</a>
+            <p>{{articles.createdAt|date : 'MMMM d, y'}}</p>
+          </div>
+        </div>
+        <div class="info-button col-md-10" *ngIf="isCurrentUser">
+          <a class="btn btn-outline-secondary" [routerLink]="['/edit/', slugA]">Edit Article</a>&nbsp;
+          <button type="button" class="btn btn-outline-danger" (click)="deleteArticle()">Delete</button>
+        </div>
+        <div class="info-button col-md-10" *ngIf="!isCurrentUser">
+          <button class="btn btn-sm btn-outline-secondary action-btn" *ngIf="checkFollow"
+            (click)="unFollow(articles.author.username)">
+            <i class="ion-plus-round"></i>
+            &nbsp; Unfollow {{ articles.author.username }}
+          </button>
+          <button class="btn btn-sm btn-outline-secondary action-btn" *ngIf="!checkFollow"
+            (click)="follow(articles.author.username)">
+            <i class="ion-plus-round"></i>
+            &nbsp; Follow {{ articles.author.username }}
+          </button>
+          &nbsp;
+          <button class="btn btn-success" (click)="like()" *ngIf="!articles.favorited">Favorite Article
+            ({{articles.favoritesCount}})</button>
+          <button class="btn btn-success" (click)="unLike()" *ngIf="articles.favorited">UnFavorite Article
+            ({{articles.favoritesCount}})</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container page">
+    <div class="article-content py-5">
+      <div class="article-content-item">
+        <h5>{{articles.body}}</h5>
+      </div>
+      <div class="tag-list">
+        <span class="badge rounded-pill bg-secondary" *ngFor="let tag of articles.tagList">{{tag}}</span>
+      </div>
+    </div>
+    <hr>
+
+    <div class="comment my-4">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 offset-md-2">
+          <div class="" *ngIf="!isAuth">
+            <p>Sign in or sign up to add comments on this article.</p>
+          </div>
+          <form action="" class="card comment-form mb-4" *ngIf="isAuth">
+            <div class="card-body">
+              <textarea class="form-control" placeholder="Write a comment..." [formControl]="commentControl"
+                rows="3"></textarea>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+              <img src="" class="comment-author-img" />
+              <button class="btn btn-sm btn-success" type="button" (click)="addComment()">
+                Post Comment
+              </button>
+            </div>
+          </form>
+          <div class="comment">
+            <div class="card mb-3" *ngFor="let item of comment">
+              <div class="card-body">
+                <p class="card-text">
+                  {{item.body}}
+                </p>
+              </div>
+              <div class="card-footer">
+                <a class="comment-author" [routerLink]="">
+                  <img [src]="item.author.image" class="rounded-circle w-25" />
+                </a>
+                &nbsp;
+                <a class="comment-author text-decoration-none" [routerLink]="">
+                  {{item.author.username}}
+                </a>
+                <span class="date-posted">
+                  {{ item.createdAt | date: 'MMMM d, y' }}
+                </span>
+                <span class="mod-options" style="cursor: pointer;" *ngIf="isCurrentUser">
+                  <i class="fas fa-trash-alt" (click)="deleteComment(item)"></i>
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<section *ngIf="articles">
+  <div class="gap2">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-8">
+          <figure class="employer-thmb">
+            <img [src]="articles.author.image" alt="">
+          </figure>
+          <div class="employer-info">
+            <a [routerLink]="['/profile/',articles.author.username ]"
+              class="text-decoration-none">{{articles.author.username}}.</a>
+            <h2>{{articles.title}}</h2>
+            <h4>{{articles.createdAt|date : 'MMMM d, y'}}</h4>
+            <ul class="sociaz-media">
+              <li><a title="" href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a title="" href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
+              <li><a title="" href="#" class="google"><i class="fab fa-google"></i></a></li>
+              <li><a title="" href="#" class="vk"><i class="fab fa-vk"></i></a></li>
+              <li><a title="" href="#" class="instagram"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-4">
+          <!-- <div class="buttons" *ngIf="isCurrentUser">
+            <a class="main-btn2" [routerLink]="['/edit/', slugA]"><i class="far fa-edit"></i> Edit Article</a>
+            <a class="main-btn" (click)="deleteArticle()"><i class="far fa-trash-alt"></i> Delete</a>
+          </div> -->
+          <div class="buttons" *ngIf="!isCurrentUser">
+            <a class="main-btn2" *ngIf="checkFollow" (click)="unFollow(articles.author.username)">
+              <i class="ion-plus-round"></i>
+              &nbsp; Unfollow {{ articles.author.username }}
+            </a>
+            <a class="main-btn2" *ngIf="!checkFollow" (click)="follow(articles.author.username)">
+              <i class="ion-plus-round"></i>
+              &nbsp; Follow {{ articles.author.username }}
+            </a>
+            &nbsp;
+            <a class="main-btn" (click)="like()" *ngIf="!articles.favorited">Favorite Article
+              ({{articles.favoritesCount}})</a>
+            <a class="main-btn" (click)="unLike()" *ngIf="articles.favorited">UnFavorite Article
+              ({{articles.favoritesCount}})</a>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="gap2 gray-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row merged20" id="page-contents">
+            <div class="col-lg-12">
+              <div class="post-title gry-bg">
+                <h6><i class="fa fa-link"></i> {{articles.title}}</h6>
+                <span *ngFor="let tag of articles.tagList">{{tag}}</span>&nbsp;
+              </div>
+            </div>
+            <div class="col-lg-9">
+              <div class="central-meta item">
+                <div class="user-post">
+                  <div class="friend-info">
+                    <figure>
+                      <img [src]="articles.author.image" alt="">
+                    </figure>
+                    <div class="friend-name">
+                      <div class="more">
+                        <div class="more-post-optns"><i class="ti-more-alt"></i>
+                          <ul>
+                            <li [routerLink]="['/edit/', slugA]"><i class="fa fa-pencil-square-o"></i>Edit Post</li>
+                            <li (click)="deleteArticle()"><i class="far fa-trash-alt"></i>Delete Post</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <ins><a [routerLink]="['/profile/',articles.author.username ]"
+                          class="text-decoration-none">{{articles.author.username}}</a></ins>
+                      <span>{{articles.createdAt|date : 'MMMM d, y'}}</span>
+                    </div>
+
+                    <div class="post-meta">
+                      <div class="description">
+                        <p>
+                          {{articles.body}}
+                        </p>
+                      </div>
+
+                      <!-- <div class="we-video-info">
+                        <ul>
+                          <li>
+                            <span class="views" title="views">
+                              <i class="fa fa-eye"></i>
+                              <ins>1.2k</ins>
+                            </span>
+                          </li>
+                          <li>
+                            <div class="likes heart" title="Like/Dislike">❤ <span>2K</span></div>
+                          </li>
+                          <li>
+                            <span class="comment" title="Comments">
+                              <i class="fa fa-commenting"></i>
+                              <ins>52</ins>
+                            </span>
+                          </li>
+
+                          <li>
+                            <span>
+                              <a class="share-pst" href="#" title="Share">
+                                <i class="fa fa-share-alt"></i>
+                              </a>
+                              <ins>20</ins>
+                            </span>
+                          </li>
+                        </ul>
+                        <div class="users-thumb-list">
+                          <a data-toggle="tooltip" title="Anderw" href="#">
+                            <img alt="" src="images/resources/userlist-1.jpg">
+                          </a>
+                          <a data-toggle="tooltip" title="frank" href="#">
+                            <img alt="" src="images/resources/userlist-2.jpg">
+                          </a>
+                          <a data-toggle="tooltip" title="Sara" href="#">
+                            <img alt="" src="images/resources/userlist-3.jpg">
+                          </a>
+                          <a data-toggle="tooltip" title="Amy" href="#">
+                            <img alt="" src="images/resources/userlist-4.jpg">
+                          </a>
+                          <a data-toggle="tooltip" title="Ema" href="#">
+                            <img alt="" src="images/resources/userlist-5.jpg">
+                          </a>
+                          <span><strong>You</strong>, <b>Sarah</b> and <a href="#" title="">24+ more</a> liked</span>
+                        </div>
+                      </div> -->
+                    </div>
+                    <div class="" *ngIf="!isAuth">
+                      <span><a routerLink="/login">Sign in</a> or <a routerLink="/register">Sign up</a> to add
+                        comments on this
+                        article.</span>
+                    </div>
+                    <div class="coment-area" style="display: block">
+                      <ul class="we-comet" *ngFor="let item of comment">
+                        <li>
+                          <div class="comet-avatar">
+                            <img [src]="item.author.image" alt="">
+                          </div>
+                          <div class="we-comment">
+                            <h5><a routerLink="" title="">{{item.author.username}}</a></h5>
+                            <p>{{item.body}}</p>
+                            <div class="inline-itms">
+                              <span>{{ item.createdAt | date: 'MMMM d, y' }}</span>
+                              <!-- <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a> -->
+                              <span class="we-reply" style="cursor: pointer;" *ngIf="isCurrentUser">
+                                <i class="fas fa-trash-alt" (click)="deleteComment(item)"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="" *ngIf="isAuth">
+                        <div class="comet-avatar">
+                          <img [src]="articles.author.image" alt="">
+                        </div>
+                        <div class="post-comt-box">
+                          <form method="post">
+                            <textarea placeholder="Write a comment..." [formControl]="commentControl"></textarea>
+                          </form>
+                          <button type="button" class="btn-comment" (click)="addComment()">Post</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- centerl meta -->
+            <div class="col-lg-3">
+              <aside class="sidebar static right">
+                <div class="widget">
+                  <div class="weather-widget low-opacity bluesh">
+                    <div class="bg-image" style="background-image: url(images/resources/weather.jpg)"></div>
+                    <span class="refresh-content"><i class="fa fa-refresh"></i></span>
+                    <div class="weather-week">
+                      <div class="icon sun-shower">
+                        <div class="cloud"></div>
+                        <div class="sun">
+                          <div class="rays"></div>
+                        </div>
+                        <div class="rain"></div>
+                      </div>
+                    </div>
+                    <div class="weather-infos">
+                      <span class="weather-tem">25</span>
+                      <h3>Cloudy Skyes<i>Sicklervilte, New Jersey</i></h3>
+                      <div class="weather-date skyblue-bg">
+                        <span>MAY<strong>21</strong></span>
+                      </div>
+                    </div>
+                    <div class="monthly-weather">
+                      <ul>
+                        <li>
+                          <span>Sun</span>
+                          <a href="#" title=""><i class="wi wi-day-sunny"></i></a>
+                          <em>40°</em>
+                        </li>
+                        <li>
+                          <span>Mon</span>
+                          <a href="#" title=""><i class="wi wi-day-cloudy"></i></a>
+                          <em>10°</em>
+                        </li>
+                        <li>
+                          <span>Tue</span>
+                          <a href="#" title=""><i class="wi wi-day-hail"></i></a>
+                          <em>20°</em>
+                        </li>
+                        <li>
+                          <span>Wed</span>
+                          <a href="#" title=""><i class="wi wi-day-lightning"></i></a>
+                          <em>34°</em>
+                        </li>
+                        <li>
+                          <span>Thu</span>
+                          <a href="#" title=""><i class="wi wi-day-showers"></i></a>
+                          <em>22°</em>
+                        </li>
+                        <li>
+                          <span>Fri</span>
+                          <a href="#" title=""><i class="wi wi-day-windy"></i></a>
+                          <em>26°</em>
+                        </li>
+                        <li>
+                          <span>Sat</span>
+                          <a href="#" title=""><i class="wi wi-day-sunny-overcast"></i></a>
+                          <em>30°</em>
+                        </li>
+                      </ul>
+                    </div>
+
+                  </div><!-- Weather Widget -->
+                </div><!-- weather widget-->
+              </aside>
+            </div><!-- sidebar -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

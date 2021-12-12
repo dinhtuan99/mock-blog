@@ -1,0 +1,153 @@
+<!-- <div class="article-page" *ngIf="articles">
+  <div class="banner p-5 bg-dark text-white">
+    <div class="container">
+      <h1 class="text-light">{{articles.title}}</h1>
+      <div class="article-info row">
+        <div class="info-item col-md-2 d-flex">
+          <div class="avt">
+            <img src="{{articles.author.image}}" class="rounded-circle w-50" alt="">
+          </div>
+          <div class="info">
+            <a [routerLink]="['/profile/',articles.author.username ]"
+              class="text-decoration-none text-white">{{articles.author.username}}</a>
+            <p>{{articles.createdAt|date : 'MMMM d, y'}}</p>
+          </div>
+        </div>
+        <div class="info-button col-md-10" *ngIf="isCurrentUser">
+          <a class="btn btn-outline-secondary" [routerLink]="['/edit/', slugA]">Edit Article</a>&nbsp;
+          <button type="button" class="btn btn-outline-danger" (click)="deleteArticle()">Delete</button>
+        </div>
+        <div class="info-button col-md-10" *ngIf="!isCurrentUser">
+          <button class="btn btn-sm btn-outline-secondary action-btn" *ngIf="checkFollow"
+            (click)="unFollow(articles.author.username)">
+            <i class="ion-plus-round"></i>
+            &nbsp; Unfollow {{ articles.author.username }}
+          </button>
+          <button class="btn btn-sm btn-outline-secondary action-btn" *ngIf="!checkFollow"
+            (click)="follow(articles.author.username)">
+            <i class="ion-plus-round"></i>
+            &nbsp; Follow {{ articles.author.username }}
+          </button>
+          &nbsp;
+          <button class="btn btn-success" (click)="like()" *ngIf="!articles.favorited">Favorite Article
+            ({{articles.favoritesCount}})</button>
+          <button class="btn btn-success" (click)="unLike()" *ngIf="articles.favorited">UnFavorite Article
+            ({{articles.favoritesCount}})</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container page">
+    <div class="article-content py-5">
+      <div class="article-content-item">
+        <h5>{{articles.body}}</h5>
+      </div>
+      <div class="tag-list">
+        <span class="badge rounded-pill bg-secondary" *ngFor="let tag of articles.tagList">{{tag}}</span>
+      </div>
+    </div>
+    <hr>
+
+    <div class="comment my-4">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 offset-md-2">
+          <div class="" *ngIf="!isAuth">
+            <p>Sign in or sign up to add comments on this article.</p>
+          </div>
+          <form action="" class="card comment-form mb-4" *ngIf="isAuth">
+            <div class="card-body">
+              <textarea class="form-control" placeholder="Write a comment..." [formControl]="commentControl"
+                rows="3"></textarea>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+              <img src="" class="comment-author-img" />
+              <button class="btn btn-sm btn-success" type="button" (click)="addComment()">
+                Post Comment
+              </button>
+            </div>
+          </form>
+          <div class="comment">
+            <div class="card mb-3" *ngFor="let item of comment">
+              <div class="card-body">
+                <p class="card-text">
+                  {{item.body}}
+                </p>
+              </div>
+              <div class="card-footer">
+                <a class="comment-author" [routerLink]="">
+                  <img [src]="item.author.image" class="rounded-circle w-25" />
+                </a>
+                &nbsp;
+                <a class="comment-author text-decoration-none" [routerLink]="">
+                  {{item.author.username}}
+                </a>
+                <span class="date-posted">
+                  {{ item.createdAt | date: 'MMMM d, y' }}
+                </span>
+                <span class="mod-options" style="cursor: pointer;" *ngIf="isCurrentUser">
+                  <i class="fas fa-trash-alt" (click)="deleteComment(item)"></i>
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<section *ngIf="articles">
+  <div class="gap2">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-8">
+          <figure class="employer-thmb">
+            <img [src]="articles.author.image" alt="">
+          </figure>
+          <div class="employer-info">
+            <a [routerLink]="['/profile/',articles.author.username ]"
+              class="text-decoration-none">{{articles.author.username}}.</a>
+            <h2>{{articles.title}}</h2>
+            <h4>{{articles.createdAt|date : 'MMMM d, y'}}</h4>
+            <ul class="sociaz-media">
+              <li><a title="" href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a title="" href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
+              <li><a title="" href="#" class="google"><i class="fab fa-google"></i></a></li>
+              <li><a title="" href="#" class="vk"><i class="fab fa-vk"></i></a></li>
+              <li><a title="" href="#" class="instagram"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-4">
+          <div class="info-button col-md-10" *ngIf="isCurrentUser">
+            <a class="btn btn-outline-secondary" [routerLink]="['/edit/', slugA]">Edit Article</a>&nbsp;
+            <button type="button" class="btn btn-outline-danger" (click)="deleteArticle()">Delete</button>
+
+          </div>
+          <div class="info-button col-md-10" *ngIf="!isCurrentUser">
+            <button class="btn btn-sm btn-outline-secondary action-btn" *ngIf="checkFollow"
+              (click)="unFollow(articles.author.username)">
+              <i class="ion-plus-round"></i>
+              &nbsp; Unfollow {{ articles.author.username }}
+            </button>
+            <button class="btn btn-sm btn-outline-secondary action-btn" *ngIf="!checkFollow"
+              (click)="follow(articles.author.username)">
+              <i class="ion-plus-round"></i>
+              &nbsp; Follow {{ articles.author.username }}
+            </button>
+            &nbsp;
+            <button class="btn btn-success" (click)="like()" *ngIf="!articles.favorited">Favorite Article
+              ({{articles.favoritesCount}})</button>
+            <button class="btn btn-success" (click)="unLike()" *ngIf="articles.favorited">UnFavorite Article
+              ({{articles.favoritesCount}})</button>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

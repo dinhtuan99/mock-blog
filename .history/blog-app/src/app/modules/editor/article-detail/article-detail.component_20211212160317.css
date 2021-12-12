@@ -1,0 +1,14 @@
+.btn1 {
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  font-size: 13px;
+  margin-bottom: 10px;
+  padding: 9px;
+  text-align: center;
+  text-transform: capitalize;
+}
+.btn-edit {
+  background-color: rgb(131, 131, 131);
+}
