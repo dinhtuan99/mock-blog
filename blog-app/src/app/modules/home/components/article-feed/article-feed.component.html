@@ -36,9 +36,13 @@
   <span class="create-post">Create post</span>
   <div class="new-postbox">
     <figure>
-      <img src="assets/images/resources/admin.jpg" alt="" />
+      <img
+        src="https://api.realworld.io/images/demo-avatar.png"
+        alt=""
+        style="height: 40px; width: 40px; border-radius: 50%"
+      />
     </figure>
-    <div class="newpst-input">
+    <div class="newpst-input" [routerLink]="['/new']">
       <form method="post">
         <textarea
           rows="2"
@@ -47,13 +51,6 @@
       </form>
     </div>
     <div class="attachments">
-      <ul>
-        <li>
-          <span class="add-loc">
-            <i class="fa fa-map-marker"></i>
-          </span>
-        </li>
-      </ul>
       <button
         class="post-btn"
         type="submit"
@@ -75,11 +72,9 @@
           <input type="text" class="" id="us3-lon" />
         </div>
       </div>
-      <!-- map -->
       <div id="us3"></div>
     </div>
   </div>
 </div>
-<!-- add post new box -->
 
 <app-article-home-list></app-article-home-list>
