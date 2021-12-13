@@ -1,44 +1,52 @@
 <section>
-    <div class="gap no-gap signin whitish medium-opacity">
-        <div class="bg-image" style="background-image:url(assets/images/resources/theme-bg.jpg)"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="big-ad">
-                        <figure><img src="assets/images/logo2.png" alt=""></figure>
-                        <h1>Welcome to the Pitnik</h1>
-                        <p>
-                            Pitnik is a social network template that can be used to connect people. use this template
-                            for multipurpose social activities like job, dating, posting, bloging and much more. Now
-                            join & Make Cool Friends around the world !!!
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="we-login-register">
-                        <div class="form-title">
-                            <i class="fa fa-key"></i>login
-                            <span>sign in now and meet the awesome Friends around the world.</span>
-                        </div>
-                        <form class="we-form" method="post" [formGroup]="loginForm" (ngSubmit)="submitForm()">
-                            <input type="text" placeholder="Email" formControlName='email' aria-describedby="emailHelp">
-                            <small id="emailHelp" class="text-danger"
-                                *ngIf="loginForm.get('email')?.errors?.required && loginForm.get('email')?.touched">Email
-                                is
-                                required!</small>
-                            <input type="password" placeholder="Password" formControlName='password'
-                            aria-describedby="passwordHelp">
-                            <small id="passwordHelp" class="text-danger"
-                *ngIf="loginForm.get('password')?.errors?.required && loginForm.get('password')?.touched">Password is
-                required!</small>
-                            <button type="submit" data-ripple="" [disabled]="loginForm.invalid">sign in</button>
-                        </form>
-                        <span>don't have an account? <a class="we-account underline" [routerLink]="['../', 'register']" title="">register
-                                now</a></span>
-                    </div>
-                </div>
+    <div class="page-header">
+        <div class="header-inner">
+            <h2>Login to Angular Blog</h2>
+            <p>
+                Discover what's happining right now in the world.
+            </p>
+        </div>
+        <figure><img src="../../../../assets/images/resources/baner-forum.png" alt=""></figure>
+    </div>
+</section><!-- sub header -->
 
+<section>
+    <div class="gap gray-bg">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="offset-lg-1 col-lg-10">
+                    <div class="row border-center justify-content-center">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="logout-f">
+                                <h4><i class="fa fa-key"></i> Login</h4>
+                                <div class="logout-form">
+                                    <form class="again-login" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+                                        <input type="email" formControlName='email' placeholder="Email"
+                                            aria-describedby="emailHelp">
+                                        <small id="emailHelp" class="text-danger"
+                                            *ngIf="loginForm.get('email')?.errors?.required && loginForm.get('email')?.touched">Email
+                                            is
+                                            required!</small>
+                                        <input type="password" formControlName='password' placeholder="Password"
+                                            aria-describedby="passwordHelp">
+                                        <small id="passwordHelp" class="text-danger"
+                                            *ngIf="loginForm.get('password')?.errors?.required && loginForm.get('password')?.touched">Password
+                                            is
+                                            required!</small>
+                                        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+                                    </form>
+                                    <p>Create New   <a [routerLink]="['../','register']" title=""> Signup</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+</section>
+<section>
+    <div class="page-header">
+        <figure><img src="../../../../assets/images/resources/baner-forum.png" alt=""></figure>
     </div>
 </section>

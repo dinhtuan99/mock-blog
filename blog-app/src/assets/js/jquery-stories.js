@@ -24,8 +24,10 @@ function initialise() {
   check browser support for your project needs:
   http://caniuse.com/#search=classlist
   */
-  selectorBtns[current].classList.add('selected-btn');
-  updateProgBars();
+ if(selectorBtns[current]?.classList){
+   selectorBtns[current].classList.add('selected-btn');
+   updateProgBars();
+ }
 }
 
 

@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { IUser } from 'src/app/models/user.model';
 import { HomeService } from 'src/app/modules/home/components/services/home.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-header',
@@ -13,14 +14,23 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('childModal')
+  public childModal!: ModalDirective;
+
   isLogin: boolean = false;
   user!: IUser;
   selected: string = 'all';
 
   searchControl = new FormControl();
-  constructor(private userService: UserService, private authService: AuthService, private router: Router, private homeService: HomeService) { }
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,
+    private router: Router,
+    private homeService: HomeService,
+  ) { }
 
   ngOnInit(): void {
+    // this.loadScripts();
     this.userService.currentUser().subscribe(data => {
       if (data != null) {
         this.user = data;
@@ -35,8 +45,18 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  public showChildModal():void {
+    this.childModal.show();
+  }
+  
+  public hideChildModal():void {
+    this.childModal.hide();
+  }
+  
+
   logout() {
     this.authService.logOut();
+    this.hideChildModal();
   }
 
   isValidUrl(_string: string) {
@@ -44,12 +64,12 @@ export class HeaderComponent implements OnInit {
     return matchpattern.test(_string);
   }
 
-  home(){
+  home() {
     this.router.navigate(["/"]);
     this.homeService.setTag({ type: 'all', filters: {} });
   }
 
-  search(){
+  search() {
     if (this.searchControl.value) {
       switch (this.selected) {
         case 'tag':

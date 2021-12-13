@@ -1,41 +1,55 @@
-<div class="container my-4">
-    <h2>Your settings</h2>
-    <form [formGroup]="settingsForm" style="max-width: 400px;" (ngSubmit)="submitForm()" class="my-4">
-        <div class="mb-3">
-            <label for="imageUrl" class="form-label bold">Image URL:</label>
-            <input type="text" class="form-control" id="imageUrl" formControlName='imageUrl'
-                aria-describedby="imageUrlHelp">
-            <!-- <small id="imageUrlHelp" class="text-danger"
-                *ngIf="settingsForm.get('imageUrl')?.errors?.required && settingsForm.get('imageUrl')?.touched">Image URL is
-                required!</small> -->
+<section >
+    <div class="gap gray-bg" style="padding-bottom: 280px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="offset-lg-1 col-lg-10">
+                    <div class="row border-center justify-content-center">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="logout-f">
+                                <h4><i class="fas fa-cog"></i> General Setting</h4>
+                                <div class="logout-form">
+                                    <form class="again-login" [formGroup]="settingsForm" (ngSubmit)="submitForm()">
+                                        <label for="imageUrl" class="form-label bold">Image URL:</label>
+                                        <input type="text" class="form-control" id="imageUrl" formControlName='imageUrl'
+                                            aria-describedby="imageUrlHelp">
+                                        <label for="username" class="form-label bold">Username:</label>
+                                        <input type="text" class="form-control" id="username" formControlName='username'
+                                            aria-describedby="usernameHelp">
+                                        <label for="bio" class="form-label bold">Bio:</label>
+                                        <textarea type="text" class="form-control rounded border-0" id="bio" formControlName='bio'
+                                            aria-describedby="bioHelp"></textarea>
+                                        <label for="email" class="form-label bold">Email:</label>
+                                        <input type="email" class="form-control" id="email" formControlName='email'
+                                            aria-describedby="emailHelp">
+                                        <button type="button" data-toggle="modal" data-target="#exampleModal">Update</button>
+                                    </form>
+                                    <p>Back to   <a [routerLink]="['../']" title=""> Home</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="username" class="form-label bold">Username:</label>
-            <input type="text" class="form-control" id="username" formControlName='username'
-                aria-describedby="usernameHelp">
-            <!-- <small id="usernameHelp" class="text-danger"
-                *ngIf="settingsForm.get('username')?.errors?.required && settingsForm.get('username')?.touched">Username is
-                required!</small> -->
+    </div>
+</section>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="mb-3">
-            <label for="bio" class="form-label bold">Bio:</label>
-            <textarea type="text" class="form-control" id="bio" formControlName='bio'
-                aria-describedby="bioHelp"></textarea>
-            <!-- <small id="bioHelp" class="text-danger"
-                *ngIf="settingsForm.get('bio')?.errors?.required && settingsForm.get('bio')?.touched">Bio is
-                required!</small> -->
+        <div class="modal-body">
+            Are you sure you want to update?
         </div>
-        <div class="mb-3">
-            <label for="email" class="form-label bold">Email:</label>
-            <input type="email" class="form-control" id="email" formControlName='email'
-                aria-describedby="emailHelp">
-            <!-- <small id="emailHelp" class="text-danger"
-                *ngIf="settingsForm.get('email')?.errors?.required && settingsForm.get('email')?.touched">Email is
-                required!</small> -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" >Close</button>
+          <button type="button" class="btn btn-primary" (click)="submitForm()">Update</button>
         </div>
-        <div class="mb-3">
-            <button type="submit" class="btn btn-success" style="margin-right: 10px; "
-                [disabled]="settingsForm.invalid">Update</button>
-        </div>
-    </form>
-</div>
+      </div>
+    </div>
+  </div>

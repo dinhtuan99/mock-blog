@@ -11,6 +11,7 @@ import { ProfileModule } from './modules/profile/profile.module';
 import { EditorModule } from './modules/editor/editor.module';
 import { SharedModule } from './shared/shared.module';
 import { TokenInterceptor } from './services/token.interceptor';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TokenInterceptor } from './services/token.interceptor';
     HomeModule,
     ProfileModule,
     EditorModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ModalModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

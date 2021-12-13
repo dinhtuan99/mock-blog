@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { IUser, IUserUpdate } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
@@ -13,7 +14,8 @@ import { UserService } from 'src/app/services/user.service';
 export class SettingsComponent implements OnInit {
   currentUser!: IUser;
   settingsForm!: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private userService: UserService) { }
+  modalRef?: BsModalRef;
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private userService: UserService, private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.settingsForm = this.fb.group({
@@ -46,5 +48,6 @@ export class SettingsComponent implements OnInit {
       this.router.navigate(['profile', data.user.username])
     });
   }
+
 
 }

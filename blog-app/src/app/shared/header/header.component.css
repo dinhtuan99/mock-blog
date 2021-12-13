@@ -1,0 +1,33 @@
+@media (max-width: 992px) {
+    .dropdown-toggle {
+        display: none;
+    }
+
+    .dropdown-menu {
+        background-color: #34465d;
+        display: block;
+        position: relative;
+        border-width: 0;
+        padding: 0;
+        margin: 0;
+        left: 0 !important;
+    }
+
+    .dropdown-item {
+        padding: .5rem 0rem;
+        color: white;
+        font-size: 16px;
+    }
+
+    .search{
+        margin-right: 0px;
+    }
+}
+
+.search {
+    margin-right: 300px;
+}
+
+.dropdown-menu {
+    left: -105px;
+}

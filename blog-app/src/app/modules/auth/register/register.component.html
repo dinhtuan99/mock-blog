@@ -1,32 +1,58 @@
-<div class="container my-4">
-    <h2>Sign up</h2>
-    <form [formGroup]="registerForm" style="max-width: 400px;" (ngSubmit)="submitForm()" class="my-4">
-        <div class="mb-3">
-            <label for="username" class="form-label bold">Username:</label>
-            <input type="text" class="form-control" id="username" formControlName='username'
-                aria-describedby="usernameHelp">
-            <small id="usernameHelp" class="text-danger"
-                *ngIf="registerForm.get('username')?.errors?.required && registerForm.get('username')?.touched">Username is
-                required!</small>
+<section>
+    <div class="page-header">
+        <div class="header-inner">
+            <h2>Sign Up to Angular Blog</h2>
+            <p>
+                Discover what's happining right now in the world.
+            </p>
         </div>
-        <div class="mb-3">
-            <label for="email" class="form-label bold">Email:</label>
-            <input type="email" class="form-control" id="email" formControlName='email'
-                aria-describedby="emailHelp">
-            <small id="emailHelp" class="text-danger"
-                *ngIf="registerForm.get('email')?.errors?.required && registerForm.get('email')?.touched">Email is
-                required!</small>
+        <figure><img src="../../../../assets/images/resources/baner-forum.png" alt=""></figure>
+    </div>
+</section><!-- sub header -->
+
+<section>
+    <div class="gap gray-bg">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="offset-lg-1 col-lg-10">
+                    <div class="row border-center justify-content-center">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="logout-f">
+                                <h4><i class="fa fa-key"></i> Signup</h4>
+                                <div class="logout-form">
+                                    <form class="again-login" [formGroup]="registerForm" (ngSubmit)="submitForm()">
+                                        <input type="text" id="username" formControlName='username'
+                                            aria-describedby="usernameHelp">
+                                        <small id="usernameHelp" class="text-danger"
+                                            *ngIf="registerForm.get('username')?.errors?.required && registerForm.get('username')?.touched">Username
+                                            is
+                                            required!</small>
+                                        <input type="email" formControlName='email' placeholder="Email"
+                                            aria-describedby="emailHelp">
+                                        <small id="emailHelp" class="text-danger"
+                                            *ngIf="registerForm.get('email')?.errors?.required && registerForm.get('email')?.touched">Email
+                                            is
+                                            required!</small>
+                                        <input type="password" formControlName='password' placeholder="Password"
+                                            aria-describedby="passwordHelp">
+                                        <small id="passwordHelp" class="text-danger"
+                                            *ngIf="registerForm.get('password')?.errors?.required && registerForm.get('password')?.touched">Password
+                                            is
+                                            required!</small>
+                                        <button type="submit" [disabled]="registerForm.invalid">Register</button>
+                                    </form>
+                                    <p>Already Have An Account? <a [routerLink]="['../','login']" title="">Sign In</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="password" class="form-label bold">Password:</label>
-            <input type="password" class="form-control" id="password" formControlName='password' aria-describedby="passwordHelp">
-            <small id="passwordHelp" class="text-danger"
-                *ngIf="registerForm.get('password')?.errors?.required && registerForm.get('password')?.touched">Password is
-                required!</small>
-        </div>
-        <div class="mb-3">
-            <button type="submit" class="btn btn-success" style="margin-right: 10px; "
-                [disabled]="registerForm.invalid">Sign up</button>
-        </div>
-    </form>
-</div>
+    </div>
+</section>
+<section>
+    <div class="page-header" style="padding-top: 34px;">
+        <figure><img src="../../../../assets/images/resources/baner-forum.png" alt=""></figure>
+    </div>
+</section><!-- sub header -->
