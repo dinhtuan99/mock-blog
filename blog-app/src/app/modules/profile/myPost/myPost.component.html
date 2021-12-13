@@ -1,5 +1,5 @@
 <div *ngIf="myPost else name">
-  <app-article-list [articles]="myPost" (paging)="paging($event)"></app-article-list>
+  <app-article-list [articles]="myPost" [top]="top" [skip]="skip" (paging)="paging($event)"></app-article-list>
 </div>
 <ng-template #name>
   <div class="lodmore">

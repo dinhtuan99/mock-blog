@@ -2,6 +2,7 @@
   <app-article-list
     [articles]="results"
     (paging)="paging($event)"
+    [top]="top" [skip]="skip"
   ></app-article-list>
 </div>
 <ng-template #name>
