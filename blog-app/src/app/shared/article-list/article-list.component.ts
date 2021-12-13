@@ -7,8 +7,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { ArticlesService } from 'src/app/services/articles.service';
-import { Article, IArticles } from '../../models/articles.model';
+import { IArticles } from '../../models/articles.model';
 
 @Component({
   selector: 'app-article-list',
@@ -25,7 +24,7 @@ export class ArticleListComponent implements OnInit, OnChanges {
   totalPage: number[] = [];
   index: number = 0;
 
-  constructor(private articlesService: ArticlesService) {}
+  constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.articles) {

@@ -1,8 +1,14 @@
-.activeDanger {
-  background-color: black;
-  color: white;
-}
 * {
   color: black;
   font-weight: 600;
+}
+
+.activeDanger {
+  background-color: #fa6342;
+  color: white;
+}
+@media only screen and (max-width: 375px) {
+  .postbox {
+    margin-top: 34px;
+  }
 }

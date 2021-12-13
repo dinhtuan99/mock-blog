@@ -1,0 +1,18 @@
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+.widget-title {
+  margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+  .new-left {
+    display: none;
+  }
+  .new-right {
+    width: 100%;
+  }
+}
