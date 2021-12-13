@@ -1,56 +1,119 @@
-<div class="profile-page">
-  <div class="user-info">
+<!-- left sidebar menu -->
+<section>
+  <div class="gap2 gray-bg">
     <div class="container">
       <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <img src="{{ profile?.profile?.image }}" class="user-img" />
-          <h4>{{ profile?.profile?.username }}</h4>
-          <div *ngIf="checkUser">
-            <button
-              class="btn btn-sm btn-outline-secondary action-btn"
-              (click)="editProfile()"
-            >
-              <i class="ion-plus-round"></i>
-              &nbsp; Edit profile settings
-            </button>
-          </div>
-          <div *ngIf="!checkUser">
-            <button
-              class="btn btn-sm btn-outline-secondary action-btn"
-              *ngIf="checkFollow"
-              (click)="unFollow(profile.profile.username)"
-            >
-              <i class="ion-plus-round"></i>
-              &nbsp; Unfollow {{ profile?.profile?.username }}
-            </button>
-            <button
-              class="btn btn-sm btn-outline-secondary action-btn"
-              *ngIf="!checkFollow"
-              (click)="follow(profile.profile.username)"
-            >
-              <i class="ion-plus-round"></i>
-              &nbsp; Follow {{ profile?.profile?.username }}
-            </button>
+        <div class="col-lg-12">
+          <div class="row merged20" id="page-contents">
+            <div class="user-profile">
+              <figure>
+                <img src="../../../assets/bg-2.jpg" alt="" class="img-fluid" style="max-height: 370px">
+                <div class="profile-controls" style="background:rgba(255,255,255,0.8)">
+                  <button (click)="editProfile()" class="btn" *ngIf="checkUser"><i class="fas fa-cog"></i> Edit
+                    Profile</button>
+                  <div *ngIf="!checkUser">
+                    <button class="btn" (click)="unFollow(profile.profile.username)" *ngIf="checkFollow">
+                      Unfollow</button>
+                    <button class="btn" (click)="follow(profile.profile.username)" *ngIf="!checkFollow"><i
+                        class="fa fa-plus"></i> Follow</button>
+                  </div>
+                </div>
+              </figure>
+
+              <div class="profile-section">
+                <div class="row">
+                  <div class="col-lg-2 col-md-3">
+                    <div class="profile-author">
+                      <div class="profile-author-thumb">
+                        <img alt="author" src="{{ profile?.profile?.image }}">
+
+                      </div>
+
+                      <div class="author-content">
+                        <p class="h4 author-name">{{profile?.profile?.username}}</p>
+                        <p>
+                          {{profile?.profile?.bio}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- user profile banner  -->
+
+            <div class="col-lg-4 col-md-4">
+              <aside class="sidebar">
+                <div class="central-meta">
+                  <span class="create-post">Weather Forecast</span>
+                  <div class="personal-head">
+                    <div class="elfsight-app-4077d0c2-6b14-4483-a598-6b715291b312"></div>
+                  </div>
+                </div>
+              </aside>
+            </div>
+            <div class="col-lg-8 col-md-8">
+              <div class="feed-toggle mt-2" style="height: 50px">
+                <ul class="nav nav-pills">
+                  <li class="nav-item">
+                    <button
+                      class="nav-link h6 defaultDanger"
+                      routerLinkActive="activeDanger"
+                      [routerLinkActiveOptions]="{exact:true}"
+                      routerLink="/profile/{{ profile?.profile?.username}}"
+                    >
+                      Your Feed
+                    </button>
+                  </li>
+                  <li class="nav-item">
+                    <button
+                      class="nav-link h6 defaultDanger"
+                      routerLinkActive="activeDanger"
+                      [routerLink]="['favorites']"
+                    >
+                      Global Feed
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <div class="central-meta postbox">
+                <span class="create-post">Create post</span>
+                <div class="new-postbox" (click)="createProfile()">
+                  <figure>
+                    <img src="{{profile?.profile?.image}}" alt="" style="width: 45px; height:45px" />
+                  </figure>
+                  <div class="newpst-input">
+                    <form method="post">
+                      <textarea rows="2" placeholder="Share some what you are thinking?"></textarea>
+                    </form>
+                  </div>
+                  <div class="attachments">
+                    <button class="post-btn" type="submit" data-ripple="" [routerLink]="['/new']">
+                      Creat Post
+                    </button>
+                  </div>
+                  <div class="add-location-post">
+                    <span>Drag map point to selected area</span>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <label class="control-label">Lat :</label>
+                        <input type="text" class="" id="us3-lat" />
+                      </div>
+                      <div class="col-lg-6">
+                        <label>Long :</label>
+                        <input type="text" class="" id="us3-lon" />
+                      </div>
+                    </div>
+                    <!-- map -->
+                    <div id="us3"></div>
+                  </div>
+                </div>
+              </div>
+
+              <router-outlet></router-outlet>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <div class="posts-toggle">
-          <ul class="nav nav-pills outline-active">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/profile/{{ profile?.profile?.username}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">My Posts</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['favorites']" routerLinkActive="active">Favorited Posts</a>
-            </li>
-          </ul>
-        </div>
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-  </div>
-</div>
+</section><!-- content -->
