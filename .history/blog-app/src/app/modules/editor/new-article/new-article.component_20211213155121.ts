@@ -15,7 +15,9 @@ export class NewArticleComponent implements OnInit {
   tags: string[] = []
   constructor(private articleService: ArticlesService,
     private formBuilder: FormBuilder,
-    private router: Router) { }
+    private router: Router) {
+
+  }
 
   ngOnInit(): void {
     this.formArt = this.formBuilder.group({
@@ -39,7 +41,9 @@ export class NewArticleComponent implements OnInit {
     }
     this.articleService.createArticle(this.articles).subscribe(res => {
       this.router.navigateByUrl('/article/' + res.article.slug)
+
     })
+
   }
   onAddTag() {
 
@@ -49,6 +53,7 @@ export class NewArticleComponent implements OnInit {
       }
     }
     this.iF.tagForm.setValue('')
+
   }
   removeTag(tagName: string) {
     this.tags = this.tags.filter(tag =>

@@ -15,10 +15,7 @@ export class EditArticleComponent implements OnInit {
   tags: string[] = [];
   slugA: string = '';
 
-  constructor(private formBuilder: FormBuilder,
-    private router: Router,
-    private activateRoute: ActivatedRoute,
-    private articleService: ArticlesService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private activateRoute: ActivatedRoute, private articleService: ArticlesService) { }
 
   ngOnInit(): void {
     this.formArt = this.formBuilder.group({

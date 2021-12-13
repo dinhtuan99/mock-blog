@@ -17,7 +17,8 @@ export class EditArticleComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
-    private activateRoute: ActivatedRoute,
+    private activateRoute:
+      ActivatedRoute,
     private articleService: ArticlesService) { }
 
   ngOnInit(): void {
