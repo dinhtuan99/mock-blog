@@ -1,4 +1,4 @@
-<div class="feed-toggle mb-4" style="height: auto">
+<div class="feed-toggle mt-2" style="height: 50px">
   <ul class="nav nav-pills">
     <li class="nav-item">
       <button
@@ -31,4 +31,55 @@
     </li>
   </ul>
 </div>
+
+<div class="central-meta postbox">
+  <span class="create-post">Create post</span>
+  <div class="new-postbox">
+    <figure>
+      <img src="assets/images/resources/admin.jpg" alt="" />
+    </figure>
+    <div class="newpst-input">
+      <form method="post">
+        <textarea
+          rows="2"
+          placeholder="Share some what you are thinking?"
+        ></textarea>
+      </form>
+    </div>
+    <div class="attachments">
+      <ul>
+        <li>
+          <span class="add-loc">
+            <i class="fa fa-map-marker"></i>
+          </span>
+        </li>
+      </ul>
+      <button
+        class="post-btn"
+        type="submit"
+        data-ripple=""
+        [routerLink]="['/new']"
+      >
+        Creat Post
+      </button>
+    </div>
+    <div class="add-location-post">
+      <span>Drag map point to selected area</span>
+      <div class="row">
+        <div class="col-lg-6">
+          <label class="control-label">Lat :</label>
+          <input type="text" class="" id="us3-lat" />
+        </div>
+        <div class="col-lg-6">
+          <label>Long :</label>
+          <input type="text" class="" id="us3-lon" />
+        </div>
+      </div>
+      <!-- map -->
+      <div id="us3"></div>
+    </div>
+  </div>
+</div>
+<!-- add post new box -->
+
 <app-article-home-list></app-article-home-list>

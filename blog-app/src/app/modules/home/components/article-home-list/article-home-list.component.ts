@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { ArticleListConfig, IArticles } from 'src/app/models/articles.model';
 import { ArticlesService } from 'src/app/services/articles.service';
-
 import { HomeService } from '../services/home.service';
 
 @Component({

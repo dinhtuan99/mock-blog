@@ -1,12 +1,56 @@
 a {
   text-decoration: none;
 }
-* {
-  color: black;
+.we-video-info > ul {
+  margin-top: 0px;
 }
-li {
+.we-video-info > .users-thumb-list > span {
+  float: right;
+}
+
+.ul {
+  position: relative;
+  background: #fa6342;
+  display: flex;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+ul li {
   list-style: none;
-  background-color: rgb(24, 20, 20);
-  border-radius: 3px;
-  color: white;
+  line-height: 50px;
+  margin: 0 5px;
+} 
+
+ul li.pageNumber {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+
+ul li a {
+  display: block;
+  text-decoration: none;
+  color: #fa6342;
+  font-weight: 600;
+  border-radius: 50%;
+}
+
+ul li.pageNumber:hover a,
+ul li.pageNumber.active a {
+  background: #fa6342;
+  color: #fff;
+}
+
+ul li:first-child {
+ 
+  font-weight: 700;
+  font-size: 20px;
+}
+
+ul li:last-child {
+ 
+  font-weight: 700;
+  font-size: 20px;
 }
