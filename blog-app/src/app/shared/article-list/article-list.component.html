@@ -43,15 +43,12 @@
                           {{ article.author.username }}</a
                         >
                       </ins>
-                      <em class="verify"
-                        ><i class="fa fa-check-circle"></i> verified</em
-                      >
                       <span
                         ><i class="fa fa-clock-o"></i>
                         {{ article.createdAt | date: "longDate" }}</span
                       >
                     </div>
-                    <div class="post-meta">
+                    <div class="post-meta mt-3">
                       <h6>
                         <a [routerLink]="['/article', article.slug]">{{
                           article.title
@@ -65,15 +62,14 @@
                       </div>
                       <div class="rate-n-apply">
                         <div class="loc-cate">
-                          <ul class="loc">
-                            <li
+                          <div class="job-tgs">
+                            <span>Tags: </span>
+                            <a
                               [routerLink]="['/article', article.slug]"
-                              class="tag-default tag-pill tag-outline"
                               *ngFor="let tag of article.tagList"
-                            >
-                              <i class="fa fa-map-marker"></i> {{ tag }}
-                            </li>
-                          </ul>
+                              ><i class="fa fa-map-marker"></i> {{ tag }}
+                            </a>
+                          </div>
                         </div>
                         <a
                           class="main-btn"
