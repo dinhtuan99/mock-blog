@@ -25,6 +25,8 @@ export class ProfileComponent implements OnInit {
     this.activatedRoute.params
       .pipe(
         switchMap((data) => {
+          console.log(data);
+
           if (
             this.serviceProfile.currentUserValue().user.username ==
             data.username

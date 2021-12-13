@@ -15,13 +15,13 @@
         </div>
         <div class="col-lg-6 col-md-4">
           <div class="buttons" *ngIf="!isCurrentUser">
-            <a class="main-btn2" *ngIf="checkFollow" (click)="unFollow(articles.author.username)">
+            <a class="main-btn2" *ngIf="checkFollow" (click)="unFollow(profile.profile.username)">
               <i class="fas fa-user-plus"></i>
-              &nbsp; UnFollow {{ articles.author.username }}
+              &nbsp; UnFollow {{ profile?.profile?.username }}
             </a>
-            <a class="main-btn2" *ngIf="!checkFollow" (click)="follow(articles.author.username)">
+            <a class="main-btn2" *ngIf="!checkFollow" (click)="follow(profile.profile.username)">
               <i class="fas fa-user-plus"></i>
-              &nbsp; Follow {{ articles.author.username }}
+              &nbsp; Follow {{ profile?.profile?.username }}
             </a>
           </div>
         </div>

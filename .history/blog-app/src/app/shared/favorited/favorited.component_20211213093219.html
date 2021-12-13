@@ -1,0 +1,17 @@
+<div
+  class="likes heart broken"
+  title="Like/Dislike"
+  (click)="like()"
+  *ngIf="!article.favorited"
+>
+  <i class="fas fa-heart"></i> <span>{{ article.favoritesCount }}</span>
+</div>
+<div
+  class="likes heart happy"
+  title="Like/Dislike"
+  (click)="unLike()"
+  *ngIf="article.favorited"
+>
+  <i class="fas fa-heart" style="color: rgb(214, 77, 77)"></i>
+  <span>{{ article.favoritesCount }}</span>
+</div>

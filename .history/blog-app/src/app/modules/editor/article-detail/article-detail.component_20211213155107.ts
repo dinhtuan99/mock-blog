@@ -40,12 +40,6 @@ export class ArticleDetailComponent implements OnInit {
         this.isCurrentUser = res.article.author.username == this.userService.currentUserValue()?.user.username;
         if (res) {
           this.articles = res.article;
-          if (!this.isCurrentUser) {
-            this.getProfile(res.article.author.username).subscribe(res => {
-              this.checkFollow = res.profile.following
-            })
-          }
-
         }
         this.getComment()
       })
@@ -102,7 +96,5 @@ export class ArticleDetailComponent implements OnInit {
       this.checkFollow = data.profile.following;
     });
   }
-  getProfile(username: string) {
-    return this.userService.getProfile(username);
-  }
+
 }

@@ -43,16 +43,16 @@ Start Date:  8/August/19
 /*=============== Fonts source Muli, Hobostd ===================*/
 
 /*@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,500&display=swap');*/
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500&amp;display=swap");
+/* @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500&amp;display=swap");
 @import url("https://fonts.googleapis.com/css?family=Satisfy");
-@import url("https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap");
+@import url("https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap"); */
 
 /*===============
 ***General Styling
 ===============*/
 html,
 body {
-  font-family: "Roboto", "Segoe Ui";
+  /* font-family: "Roboto", "Segoe Ui"; */
 }
 body {
   float: left;
@@ -6109,20 +6109,17 @@ a.addnewforum {
 .employer-thmb {
   display: inline-block;
   margin-bottom: 0;
+  margin-right: 20px;
   vertical-align: middle;
-  position: relative;
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
-  border-radius: 50%;
 }
 .employer-thmb > img {
-  width: auto;
-  height: 100%;
+  max-width: 100px;
+  min-width: 100px;
+  width: 100px;
+  border-radius: 50%;
 }
 
 .employer-info {
-  margin-left: 20px;
   display: inline-block;
   vertical-align: middle;
   width: 75%;
