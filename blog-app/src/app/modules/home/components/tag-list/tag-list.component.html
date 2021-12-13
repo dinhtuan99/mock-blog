@@ -10,11 +10,11 @@
             </figure>
             <ul class="top-comuty">
               <li
-                *ngFor="let tag of tags"
+                *ngFor="let tag of tags; let i = index"
                 (click)="setListTo('', { tag: tag })"
               >
                 <i
-                  class="fa fa-rss-square"
+                  class="fas fa-tag"
                   style="
                     color: rgb(226, 116, 76);
                     font-size: 25px;

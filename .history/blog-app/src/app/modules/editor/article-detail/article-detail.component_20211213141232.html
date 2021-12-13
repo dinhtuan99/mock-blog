@@ -1,0 +1,213 @@
+<section *ngIf="articles">
+  <div class="gap2">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-8">
+          <figure class="employer-thmb">
+            <img [src]="articles.author.image" alt="">
+          </figure>
+          <div class="employer-info">
+            <a [routerLink]="['/profile/',articles.author.username ]"
+              class="text-decoration-none">{{articles.author.username}}.</a>
+            <h2>{{articles.title}}</h2>
+            <h4>{{articles.createdAt|date : 'MMMM d, y'}}</h4>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-4">
+          <div class="buttons" *ngIf="!isCurrentUser">
+            <a class="main-btn2" *ngIf="checkFollow" (click)="unFollow(articles.author.username)">
+              <i class="fas fa-user-plus"></i>
+              &nbsp; UnFollow {{ articles.author.username }}
+            </a>
+            <a class="main-btn2" *ngIf="!checkFollow" (click)="follow(articles.author.username)">
+              <i class="fas fa-user-plus"></i>
+              &nbsp; Follow {{ articles.author.username }}
+            </a>
+
+            <!-- <a class="main-btn" (click)="like()" *ngIf="!articles.favorited"><i class="fas fa-heart"></i> Favorite
+              Article
+              ({{articles.favoritesCount}})</a>
+            <a class="main-btn" (click)="disLike()" *ngIf="articles.favorited"><i class="fas fa-heart"></i> UnFavorite
+              Article
+              ({{articles.favoritesCount}})</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="gap2 gray-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row merged20" id="page-contents">
+            <div class="col-lg-12">
+              <div class="post-title gry-bg">
+                <h6><i class="fa fa-link"></i> {{articles.title}}</h6>
+                <span *ngFor="let tag of articles.tagList">{{tag}}</span>&nbsp;
+              </div>
+            </div>
+            <div class="col-lg-9">
+              <div class="central-meta item">
+                <div class="user-post">
+                  <div class="friend-info">
+                    <figure>
+                      <img [src]="articles.author.image" alt="">
+                    </figure>
+                    <div class="friend-name">
+                      <div class="more">
+                        <div class="more-post-optns" *ngIf="isCurrentUser"><i class="ti-more-alt"></i>
+                          <ul>
+                            <li [routerLink]="['/edit/', slugA]"><i class="fa fa-pencil-square-o"></i>Edit Post</li>
+                            <li (click)="deleteArticle()"><i class="far fa-trash-alt"></i>Delete Post</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <ins><a [routerLink]="['/profile/',articles.author.username ]"
+                          class="text-decoration-none">{{articles.author.username}}</a></ins>
+                      <span>{{articles.createdAt|date : 'MMMM d, y'}}</span>
+                    </div>
+
+                    <div class="post-meta">
+                      <div class="description">
+                        <p>
+                          {{articles.body}}
+                        </p>
+                      </div>
+
+                      <div class="we-video-info">
+                        <ul>
+                          <li (click)="like()" *ngIf="!articles.favorited">
+                            <div class="likes heart" title="Like/Dislike"><i class="fas fa-heart"></i>
+                              <span>{{articles.favoritesCount}}</span>
+                            </div>
+                          </li>
+                          <li (click)="disLike()" *ngIf="articles.favorited">
+                            <div class="likes heart" title="Like/Dislike"><i class="fas fa-heart like-active"></i>
+                              <span>{{articles.favoritesCount}}</span>
+                            </div>
+                          </li>
+                          <li>
+                            <span class="comment" title="Comments">
+                              <i class="fa fa-commenting"></i>
+                              <ins>{{comment.length}}</ins>
+                            </span>
+                          </li>
+                        </ul>
+
+                      </div>
+                    </div>
+                    <div class="" *ngIf="!isAuth">
+                      <span><a routerLink="/login">Sign in</a> or <a routerLink="/register">Sign up</a> to add
+                        comments on this
+                        article.</span>
+                    </div>
+                    <div class="coment-area" style="display: block">
+                      <ul class="we-comet" *ngFor="let item of comment">
+                        <li>
+                          <div class="comet-avatar">
+                            <img [src]="item.author.image" alt="">
+                          </div>
+                          <div class="we-comment">
+                            <h5><a routerLink="" title="">{{item.author.username}}</a></h5>
+                            <p>{{item.body}}</p>
+                            <div class="inline-itms">
+                              <span>{{ item.createdAt | date: 'MMMM d, y' }}</span>
+                              <!-- <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a> -->
+                              <span class="we-reply" style="cursor: pointer;" *ngIf="isCurrentUser">
+                                <i class="fas fa-trash-alt" (click)="deleteComment(item)"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="" *ngIf="isAuth">
+                        <div class="comet-avatar">
+                          <img [src]="articles.author.image" alt="">
+                        </div>
+                        <div class="post-comt-box">
+                          <form method="post">
+                            <textarea placeholder="Write a comment..." [formControl]="commentControl"></textarea>
+                          </form>
+                          <button type="button" class="btn-comment" (click)="addComment()">Post</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- centerl meta -->
+            <div class="col-lg-3">
+              <aside class="sidebar static right">
+                <div class="widget">
+                  <div class="weather-widget low-opacity bluesh">
+                    <div class="bg-image" style="background-image: url(images/resources/weather.jpg)"></div>
+                    <span class="refresh-content"><i class="fa fa-refresh"></i></span>
+                    <div class="weather-week">
+                      <div class="icon sun-shower">
+                        <div class="cloud"></div>
+                        <div class="sun">
+                          <div class="rays"></div>
+                        </div>
+                        <div class="rain"></div>
+                      </div>
+                    </div>
+                    <div class="weather-infos">
+                      <span class="weather-tem">25</span>
+                      <h3>Cloudy Skyes<i>Sicklervilte, New Jersey</i></h3>
+                      <div class="weather-date skyblue-bg">
+                        <span>MAY<strong>21</strong></span>
+                      </div>
+                    </div>
+                    <div class="monthly-weather">
+                      <ul>
+                        <li>
+                          <span>Sun</span>
+                          <a href="#" title=""><i class="wi wi-day-sunny"></i></a>
+                          <em>40°</em>
+                        </li>
+                        <li>
+                          <span>Mon</span>
+                          <a href="#" title=""><i class="wi wi-day-cloudy"></i></a>
+                          <em>10°</em>
+                        </li>
+                        <li>
+                          <span>Tue</span>
+                          <a href="#" title=""><i class="wi wi-day-hail"></i></a>
+                          <em>20°</em>
+                        </li>
+                        <li>
+                          <span>Wed</span>
+                          <a href="#" title=""><i class="wi wi-day-lightning"></i></a>
+                          <em>34°</em>
+                        </li>
+                        <li>
+                          <span>Thu</span>
+                          <a href="#" title=""><i class="wi wi-day-showers"></i></a>
+                          <em>22°</em>
+                        </li>
+                        <li>
+                          <span>Fri</span>
+                          <a href="#" title=""><i class="wi wi-day-windy"></i></a>
+                          <em>26°</em>
+                        </li>
+                        <li>
+                          <span>Sat</span>
+                          <a href="#" title=""><i class="wi wi-day-sunny-overcast"></i></a>
+                          <em>30°</em>
+                        </li>
+                      </ul>
+                    </div>
+
+                  </div><!-- Weather Widget -->
+                </div><!-- weather widget-->
+              </aside>
+            </div><!-- sidebar -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

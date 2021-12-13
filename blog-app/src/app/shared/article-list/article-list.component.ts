@@ -17,9 +17,9 @@ import { IArticles } from '../../models/articles.model';
 export class ArticleListComponent implements OnInit, OnChanges {
   isSubmitting: boolean = false;
   @Input() articles!: IArticles;
+  @Input() skip!: number;
+  @Input() top!: number;
   @Output() paging = new EventEmitter<{ top: number; skip: number }>();
-  skip: number = 0;
-  top: number = 20;
   length: number = 0;
   totalPage: number[] = [];
   index: number = 0;
