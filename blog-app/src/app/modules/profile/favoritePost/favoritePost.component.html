@@ -1,3 +1,15 @@
-<div *ngIf="favoritePost">
-  <app-article-list [articles]="favoritePost" (paging)="paging($event)"></app-article-list>
+<div *ngIf="favoritePost else name">
+  <app-article-list [articles]="favoritePost" [top]="top" [skip]="skip" (paging)="paging($event)"></app-article-list>
 </div>
+<ng-template #name>
+  <div class="lodmore">
+    <div class="auto-load">
+      <div class="wavy">
+        <span style="--i: 7; color: #fa6342">.</span>
+        <span style="--i: 8; color: #fa6342">.</span>
+        <span style="--i: 9; color: #fa6342">.</span>
+      </div>
+    </div>
+  </div>
+  <div class="theme-layout"></div>
+</ng-template>

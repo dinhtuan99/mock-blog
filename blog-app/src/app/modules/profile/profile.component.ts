@@ -25,18 +25,22 @@ export class ProfileComponent implements OnInit {
     this.activatedRoute.params
       .pipe(
         switchMap((data) => {
+
           if (
-            this.serviceProfile.currentUserValue().user.username ==
+            this.serviceProfile.currentUserValue()?.user.username ==
             data.username
           ) {
             this.checkUser = true;
           } else {
             this.checkUser = false;
           }
+
           return this.getProfile(data.username);
         })
       )
       .subscribe((data) => {
+        console.log(data);
+
         this.profile = data;
         this.checkFollow = data.profile.following;
       });
@@ -47,9 +51,13 @@ export class ProfileComponent implements OnInit {
   }
 
   follow(userName: string): void {
-    this.serviceProfile.followUser(userName).subscribe((data) => {
-      this.checkFollow = data.profile.following;
-    });
+    if (!this.checkUser) {
+      this.serviceProfile.followUser(userName).subscribe((data) => {
+        this.checkFollow = data.profile.following;
+      });
+    } else {
+      this.router.navigate(['login'])
+    }
   }
 
   unFollow(userName: string): void {
@@ -60,5 +68,9 @@ export class ProfileComponent implements OnInit {
 
   editProfile() {
     this.router.navigate(['settings']);
+  }
+
+  createProfile(){
+    this.router.navigate(['new']);
   }
 }
