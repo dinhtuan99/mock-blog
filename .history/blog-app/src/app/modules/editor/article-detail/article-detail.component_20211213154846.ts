@@ -27,11 +27,7 @@ export class ArticleDetailComponent implements OnInit {
   checkUser!: boolean;
   profile!: IProfile;
 
-  constructor(private activateRoute: ActivatedRoute,
-    private articleService: ArticlesService,
-    private userService: UserService,
-    private router: Router,
-    private commentService: CommentService) { }
+  constructor(private activateRoute: ActivatedRoute, private articleService: ArticlesService, private userService: UserService, private router: Router, private commentService: CommentService) { }
   ngOnInit(): void {
     this.isAuth = this.userService.currentUserValue() != null;
     this.activateRoute.paramMap.subscribe(params => {
@@ -40,12 +36,6 @@ export class ArticleDetailComponent implements OnInit {
         this.isCurrentUser = res.article.author.username == this.userService.currentUserValue()?.user.username;
         if (res) {
           this.articles = res.article;
-          if (!this.isCurrentUser) {
-            this.getProfile(res.article.author.username).subscribe(res => {
-              this.checkFollow = res.profile.following
-            })
-          }
-
         }
         this.getComment()
       })
@@ -102,7 +92,5 @@ export class ArticleDetailComponent implements OnInit {
       this.checkFollow = data.profile.following;
     });
   }
-  getProfile(username: string) {
-    return this.userService.getProfile(username);
-  }
+
 }

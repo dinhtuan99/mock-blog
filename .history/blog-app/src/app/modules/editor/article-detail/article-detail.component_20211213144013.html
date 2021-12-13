@@ -63,12 +63,13 @@
                       <span>{{articles.createdAt|date : 'MMMM d, y'}}</span>
                     </div>
 
-                    <div class="post-meta">
+                    <div class="job-detail">
                       <div class="description">
                         <p>
                           {{articles.body}}
                         </p>
                       </div>
+
                       <div class="we-video-info">
                         <ul>
                           <li (click)="like()" *ngIf="!articles.favorited">

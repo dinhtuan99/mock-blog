@@ -49,6 +49,7 @@ export class NewArticleComponent implements OnInit {
       }
     }
     this.iF.tagForm.setValue('')
+
   }
   removeTag(tagName: string) {
     this.tags = this.tags.filter(tag =>

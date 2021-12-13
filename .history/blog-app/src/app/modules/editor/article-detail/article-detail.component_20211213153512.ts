@@ -3,11 +3,10 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from 'src/app/models/articles.model';
 import { Comment, IComment } from 'src/app/models/comment.model';
-import { IProfile, IUser } from 'src/app/models/user.model';
+import { IUser } from 'src/app/models/user.model';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { UserService } from 'src/app/services/user.service';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-article-detail',
@@ -24,14 +23,7 @@ export class ArticleDetailComponent implements OnInit {
   isCurrentUser!: boolean;
   checkFollow!: boolean;
   isAuth!: boolean;
-  checkUser!: boolean;
-  profile!: IProfile;
-
-  constructor(private activateRoute: ActivatedRoute,
-    private articleService: ArticlesService,
-    private userService: UserService,
-    private router: Router,
-    private commentService: CommentService) { }
+  constructor(private activateRoute: ActivatedRoute, private articleService: ArticlesService, private userService: UserService, private router: Router, private commentService: CommentService) { }
   ngOnInit(): void {
     this.isAuth = this.userService.currentUserValue() != null;
     this.activateRoute.paramMap.subscribe(params => {
@@ -40,17 +32,10 @@ export class ArticleDetailComponent implements OnInit {
         this.isCurrentUser = res.article.author.username == this.userService.currentUserValue()?.user.username;
         if (res) {
           this.articles = res.article;
-          if (!this.isCurrentUser) {
-            this.getProfile(res.article.author.username).subscribe(res => {
-              this.checkFollow = res.profile.following
-            })
-          }
-
         }
         this.getComment()
       })
     })
-
   }
   deleteArticle() {
     this.articleService.deleteArticle(this.slugA).subscribe(res => {
@@ -101,8 +86,5 @@ export class ArticleDetailComponent implements OnInit {
     this.userService.unfollowUser(userName).subscribe((data) => {
       this.checkFollow = data.profile.following;
     });
-  }
-  getProfile(username: string) {
-    return this.userService.getProfile(username);
   }
 }

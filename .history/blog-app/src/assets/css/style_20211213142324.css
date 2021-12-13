@@ -68,7 +68,7 @@ p {
   font-size: 14px;
   letter-spacing: 0.1px;
   line-height: 26px;
-  color: #606372;
+  color: #959ab5;
 }
 a,
 a:hover,
@@ -6109,20 +6109,17 @@ a.addnewforum {
 .employer-thmb {
   display: inline-block;
   margin-bottom: 0;
+  margin-right: 20px;
   vertical-align: middle;
-  position: relative;
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
-  border-radius: 50%;
 }
 .employer-thmb > img {
-  width: auto;
-  height: 100%;
+  max-width: 100px;
+  min-width: 100px;
+  width: 100px;
+  border-radius: 50%;
 }
 
 .employer-info {
-  margin-left: 20px;
   display: inline-block;
   vertical-align: middle;
   width: 75%;

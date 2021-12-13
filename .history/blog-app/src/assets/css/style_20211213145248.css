@@ -6110,15 +6110,12 @@ a.addnewforum {
   display: inline-block;
   margin-bottom: 0;
   vertical-align: middle;
-  position: relative;
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
-  border-radius: 50%;
 }
 .employer-thmb > img {
-  width: auto;
-  height: 100%;
+  max-width: 100px;
+  min-width: 100px;
+  width: 100px;
+  border-radius: 50%;
 }
 
 .employer-info {
