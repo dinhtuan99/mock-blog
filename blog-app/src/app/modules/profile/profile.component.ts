@@ -25,7 +25,6 @@ export class ProfileComponent implements OnInit {
     this.activatedRoute.params
       .pipe(
         switchMap((data) => {
-
           if (
             this.serviceProfile.currentUserValue()?.user.username ==
             data.username
@@ -39,8 +38,6 @@ export class ProfileComponent implements OnInit {
         })
       )
       .subscribe((data) => {
-        console.log(data);
-
         this.profile = data;
         this.checkFollow = data.profile.following;
       });
