@@ -11,7 +11,7 @@
 
 		<div *ngIf="isLogin" class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item row align-items-center search">
+				<li class="nav-item row align-items-center">
 					<div class="col-md-4 col-6">
 						<select [(ngModel)]="selected" class="custom-select rounded-pill mx-auto"
 							aria-label="Default select example">
@@ -31,6 +31,8 @@
 						</form>
 					</div>
 				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
 				<li class="nav-item d-none d-lg-flex align-items-center">
 					<a class="nav-link " (click)="home()"><i class="fas fa-home fa-lg"></i></a>
 				</li>

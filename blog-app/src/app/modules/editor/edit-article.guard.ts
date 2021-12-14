@@ -19,6 +19,7 @@ export class EditArticleGuard implements CanDeactivate<NewArticleComponent> {
         const subject : Subject<boolean> = new Subject<boolean>();
         const modal : any = this.modalService.show(DialogComponent, { 'class': 'modal-dialog-primary' });
         modal.content.subject = subject
+        return subject.asObservable();
     }
     return true;
   }
