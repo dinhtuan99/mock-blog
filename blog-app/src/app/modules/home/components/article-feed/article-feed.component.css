@@ -7,6 +7,19 @@
   background-color: #fa6342;
   color: white;
 }
+.central-meta {
+  margin-bottom: 15px;
+  padding: 8px;
+}
+.newpst-input {
+  width: 100%;
+}
+.post-btn {
+  height: 31px;
+  width: 110px;
+  border-radius: 5px;
+  font-size: 13px;
+}
 @media only screen and (max-width: 375px) {
   .postbox {
     margin-top: 34px;

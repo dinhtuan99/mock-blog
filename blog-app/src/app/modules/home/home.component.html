@@ -1,9 +1,9 @@
-<div class="container-fluid" style="background: #edf2f6">
+<div class="container" style="background: #edf2f6">
   <div class="row">
-    <div class="col-lg-3 new-left">
+    <div class="col-lg-3 new-left" >
       <aside class="sidebar static left">
-        <div class="widget">
-          <div class="weather-widget low-opacity">
+        <div  style="height: 400px; overflow: hidden; z-index: -1">
+          <div >
             <div
               class="elfsight-app-4077d0c2-6b14-4483-a598-6b715291b312"
             ></div>
@@ -11,34 +11,15 @@
         </div>
         <!-- weather widget-->
       </aside>
-
-      <div class="widget" style="background: #fff none repeat scroll 0 0">
-        <ul class="twiter-feed mt-3">
-          <li class="mb-2" *ngFor="let article of results?.articles">
-            <i class="fab fa-twitter-square"></i>
-            <span>
-              <i> {{ article.author.username }}</i>
-              @{{ article.author.username }}
-            </span>
-            <p>
-              {{ article.description | titlecase }}
-              <a href="#" title=""
-                ><i class="fas fa-heart"></i>{{ article.favoritesCount }}
-              </a>
-            </p>
-            <em>{{ article.createdAt | date: "longDate" }}</em>
-          </li>
-        </ul>
-      </div>
-      <!-- twitter feed-->
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-6 new-mid">
       <app-article-feed></app-article-feed>
     </div>
 
-    <div class="col-lg-3 new-right">
+    <div class="col-lg-3 new-right" >
       <app-tag-list></app-tag-list>
     </div>
   </div>
 </div>
+

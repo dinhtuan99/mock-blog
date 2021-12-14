@@ -8,11 +8,25 @@ a {
   margin-bottom: 5px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1400px) {
   .new-left {
     display: none;
   }
   .new-right {
+    width: 35%;
+  }
+  .new-mid {
+    width: 65%;
+  }
+}
+@media only screen and (max-width: 999px) {
+  .new-left {
+    display: none;
+  }
+  .new-right {
+    display: none;
+  }
+  .new-mid {
     width: 100%;
   }
 }

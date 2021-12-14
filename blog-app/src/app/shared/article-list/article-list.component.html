@@ -43,10 +43,10 @@
                           {{ article.author.username }}</a
                         >
                       </ins>
-                      <span
-                        ><i class="fa fa-clock-o"></i>
-                        {{ article.createdAt | date: "longDate" }}</span
-                      >
+                      <p>
+                        <i class="fa fa-clock-o"></i>
+                        {{ article.createdAt | date: "longDate" }}
+                      </p>
                     </div>
                     <div class="post-meta mt-3">
                       <h6>
@@ -61,21 +61,26 @@
                         </p>
                       </div>
                       <div class="rate-n-apply">
-                        <div class="loc-cate">
-                          <div class="job-tgs">
-                            <span>Tags: </span>
+                        <div class="row">
+                          <div class="col-lg-10">
+                            <div class="loc-cate">
+                              <div class="job-tgs">
+                                <a
+                                  [routerLink]="['/article', article.slug]"
+                                  *ngFor="let tag of article.tagList"
+                                  ><i class="fa fa-map-marker"></i> {{ tag }}
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-2">
                             <a
+                              class="main-btn"
                               [routerLink]="['/article', article.slug]"
-                              *ngFor="let tag of article.tagList"
-                              ><i class="fa fa-map-marker"></i> {{ tag }}
-                            </a>
+                              >Read more...</a
+                            >
                           </div>
                         </div>
-                        <a
-                          class="main-btn"
-                          [routerLink]="['/article', article.slug]"
-                          >Read more...</a
-                        >
                       </div>
                       <div class="we-video-info">
                         <ul>

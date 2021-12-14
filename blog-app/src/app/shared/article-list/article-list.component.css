@@ -21,7 +21,7 @@ ul li {
   list-style: none;
   line-height: 50px;
   margin: 0 5px;
-} 
+}
 
 ul li.pageNumber {
   height: 50px;
@@ -44,13 +44,23 @@ ul li.pageNumber.active a {
 }
 
 ul li:first-child {
- 
   font-weight: 700;
   font-size: 20px;
 }
 
 ul li:last-child {
- 
   font-weight: 700;
   font-size: 20px;
+}
+.friend-info > figure {
+  vertical-align: top;
+}
+.main-btn {
+  height: 31px;
+  width: 110px;
+  border-radius: 5px;
+  margin-left: 12px;
+}
+.rate-n-apply {
+  margin-bottom: 0;
 }
