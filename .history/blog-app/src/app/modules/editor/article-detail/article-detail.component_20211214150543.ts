@@ -56,7 +56,7 @@ export class ArticleDetailComponent implements OnInit {
     this.activateRoute.paramMap.pipe(
       switchMap(params => {
         this.slugA = params.get('slug') as string;
-        return forkJoin([this.articleService.getArticleBySlug(this.slugA), this.commentService.getComment(this.slugA)]) //call 2 api 1 lúc
+        return forkJoin([this.articleService.getArticleBySlug(this.slugA), this.commentService.getComment(this.slugA)])
       }),
       map(res => {
         console.log(res);
