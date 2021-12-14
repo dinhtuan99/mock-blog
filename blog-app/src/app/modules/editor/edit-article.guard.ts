@@ -15,7 +15,7 @@ export class EditArticleGuard implements CanDeactivate<NewArticleComponent> {
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-      if (component.formArt.dirty) {
+      if (component.formArt.dirty && !component.isSubmit) {
         const subject : Subject<boolean> = new Subject<boolean>();
         const modal : any = this.modalService.show(DialogComponent, { 'class': 'modal-dialog-primary' });
         modal.content.subject = subject
