@@ -4,6 +4,7 @@ import { AuthGuard } from 'src/app/services/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { NoAuthGuard } from './no-auth.guard';
 import { RegisterComponent } from './register/register.component';
+import { SettingGuard } from './setting.guard';
 import { SettingsComponent } from './settings/settings.component';
 
 const authRoutes: Routes = [
@@ -21,7 +22,8 @@ const authRoutes: Routes = [
     {
         path: 'settings',
         component: SettingsComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        canDeactivate: [SettingGuard]
     }
 ];
 

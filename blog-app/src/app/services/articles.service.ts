@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 import { ArticleListConfig, IArticle, IArticleCreate, IArticles, IArticleUpdate } from '../models/articles.model';
 import { UserService } from './user.service';
@@ -125,6 +126,20 @@ export class ArticlesService {
     }
 
     private handleError(error: HttpErrorResponse) {
+        Swal.fire({
+            icon: 'error',
+            title:  'Oops, something went wrong. Please try again later',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#fa6342',
+            
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              return true 
+            } else {
+              return false
+            }
+          })
         if (error.status === 0) {
             // A client-side or network error occurred. Handle it accordingly.
             console.error('An error occurred:', error.error);
@@ -137,6 +152,11 @@ export class ArticlesService {
         // Return an observable with a user-facing error message.
         return throwError(
             'Something bad happened; please try again later.');
+           
+    }
+
+    private dialog(title : string){
+       
     }
 
 }

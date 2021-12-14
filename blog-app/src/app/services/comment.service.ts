@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 import { IComment, IComments } from '../models/comment.model';
 import { UserService } from './user.service';
@@ -42,6 +43,20 @@ export class CommentService {
     }
 
     private handleError(error: HttpErrorResponse) {
+        Swal.fire({
+            icon: 'error',
+            title:  'Oops, something went wrong. Please try again later',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#fa6342',
+            
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              return true 
+            } else {
+              return false
+            }
+          })
         if (error.status === 0) {
             // A client-side or network error occurred. Handle it accordingly.
             console.error('An error occurred:', error.error);

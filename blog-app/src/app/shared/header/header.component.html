@@ -47,7 +47,7 @@
               Article</a>
             <a class="dropdown-item text-nowrap" [routerLink]="['settings']" routerLinkActive="active"><i
                 class="fas fa-cog"></i> Settings</a>
-            <a class="dropdown-item text-nowrap" (click)="showChildModal()" style="color: tomato;"><i
+            <a class="dropdown-item text-nowrap" (click)="logout()" style="color: tomato;"><i
                 class="fas fa-sign-out-alt"></i>
               Logout</a>
           </div>
@@ -69,25 +69,3 @@
     </div>
   </div>
 </nav>
-
-
-<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Logout</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to logout?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="hideChildModal()">Close</button>
-        <button type="button" class="btn btn-primary" (click)="logout()">Logout</button>
-      </div>
-    </div>
-  </div>
-</div>
