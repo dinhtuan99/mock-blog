@@ -52,12 +52,12 @@ Start Date:  8/August/19
 ===============*/
 @font-face {
   font-family: montserrat;
-  src: url(../fonts/Nunito-Regular.ttf);
+  src: url(../fonts/fonr/Montserrat-Regular.ttf);
 }
 html,
 body {
   /* font-family: "Roboto", "Segoe Ui"; */
-  font-family: montserrat !important;
+  font-family: montsereat
 }
 body {
   float: left;

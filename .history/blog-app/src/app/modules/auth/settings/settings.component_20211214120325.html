@@ -1,0 +1,114 @@
+<section>
+  <div class="gap gray-bg" style="padding-bottom: 280px;">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="offset-lg-1 col-lg-10">
+          <div class="row border-center justify-content-center">
+            <div class="col-lg-6 col-md-6">
+              <div class="logout-f">
+                <h4><i class="fas fa-cog"></i> General Setting</h4>
+                <div class="logout-form">
+                  <form class="again-login" [formGroup]="settingsForm" (ngSubmit)="submitForm()">
+                    <label for="imageUrl" class="form-label bold">Image URL:</label>
+                    <input type="text" class="form-control" id="imageUrl" formControlName='imageUrl'
+                      aria-describedby="imageUrlHelp" #imagePath>
+                    <img [src]="imagePath.value" alt="">
+                    <label for="username" class="form-label bold">Username:</label>
+                    <input type="text" class="form-control" id="username" formControlName='username'
+                      aria-describedby="usernameHelp">
+                    <label for="bio" class="form-label bold">Bio:</label>
+                    <textarea type="text" class="form-control rounded border-0" id="bio" formControlName='bio'
+                      aria-describedby="bioHelp"></textarea>
+                    <label for="email" class="form-label bold">Email:</label>
+                    <input type="email" class="form-control" id="email" formControlName='email'
+                      aria-describedby="emailHelp">
+                    <button type="button" data-toggle="modal" data-target="#exampleModal">Update</button>
+                  </form>
+                  <p>Back to <a [routerLink]="['../']" title=""> Home</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to update?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="submitForm()">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<section>
+  <div class="gap gray-bg">
+    <div class="container">
+      <div class="row merged20">
+        <div class="col-lg-10">
+          <div class="forum-warper">
+            <div class="central-meta">
+              <div class="title-block">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="align-left">
+                      <h4><i class="fas fa-cog"></i> General Setting</h4>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                  </div>
+                </div>
+              </div>
+            </div><!-- title block -->
+          </div>
+          <div class="forum-form">
+            <div class="central-meta">
+              <form [formGroup]="settingsForm" (ngSubmit)="submitForm()" class="c-form">
+                <div>
+                  <label for="imageUrl">Article Title</label>
+                  <input type="text" formControlName='imageUrl' id="imageUrl" aria-describedby="imageUrlHelp"
+                    #imagePath>
+                </div>
+                <div>
+                  <label for="username">Description</label>
+                  <input type="text" placeholder="What's this article about? " id="username" formControlName='username'
+                    aria-describedby="usernameHelp">
+                </div>
+                <div>
+                  <label for="bio">Body</label>
+                  <textarea rows="3" placeholder="Write your article (in markdown)" id="bio" formControlName='bio'
+                    aria-describedby="bioHelp"></textarea>
+                </div>
+                <div>
+                  <label>Choose Optional Tags</label>
+                  <input type="email" class="form-control" id="email" formControlName='email'
+                    aria-describedby="emailHelp">
+                </div>
+                <div>
+                  <button type="button" data-toggle="modal" data-target="#exampleModal">Update</button>
+                </div>
+              </form>
+              <p>Back to <a [routerLink]="['../']" title=""> Home</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

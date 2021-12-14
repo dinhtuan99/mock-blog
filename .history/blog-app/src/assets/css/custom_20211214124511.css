@@ -79,7 +79,7 @@
   }
 }
 @media (max-width: 548px) {
-  .art-de-inf {
+  .art-de-inf .employer-thmb {
     display: flex;
   }
   .art-de-inf .employer-thmb img {

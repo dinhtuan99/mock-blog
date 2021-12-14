@@ -78,11 +78,3 @@
     display: none;
   }
 }
-@media (max-width: 548px) {
-  .art-de-inf {
-    display: flex;
-  }
-  .art-de-inf .employer-thmb img {
-    flex-shrink: 1;
-  }
-}

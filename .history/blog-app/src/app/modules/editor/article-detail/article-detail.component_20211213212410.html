@@ -2,7 +2,7 @@
   <div class="gap2">
     <div class="container">
       <div class="row">
-        <div class="col-xl-6 art-de-inf">
+        <div class="col-lg-6 col-md-8">
           <figure class="employer-thmb">
             <img [src]="articles.author.image" alt="">
           </figure>
@@ -13,7 +13,7 @@
             <h4>{{articles.createdAt|date : 'MMMM d, y'}}</h4>
           </div>
         </div>
-        <div class="col-xl-6 ">
+        <div class="col-lg-6 col-md-4">
           <div class="buttons" *ngIf="!isCurrentUser">
             <a class="main-btn2" *ngIf="checkFollow" (click)="unFollow(articles.author.username)">
               <i class="fas fa-user-plus"></i>
@@ -132,7 +132,7 @@
             </div><!-- centerl meta -->
             <div class="col-lg-3">
               <aside class="sidebar static right">
-                <div class="weather">
+                <div class="widget">
                   <div class="elfsight-app-4077d0c2-6b14-4483-a598-6b715291b312"></div><!-- widget -->
                 </div>
               </aside>

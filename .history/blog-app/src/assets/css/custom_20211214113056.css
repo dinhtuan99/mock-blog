@@ -1,9 +1,3 @@
-.cu-po {
-  cursor: pointer;
-}
-.color-oran {
-  color: #fa6342;
-}
 .tags {
   margin: 0;
   padding: 0;
@@ -48,41 +42,7 @@
   margin-top: 15px;
 }
 .bg-custom {
-  background-color: #5f748f !important;
-  color: rgb(255, 255, 255) !important;
+  background-color: #49596e;
+  color: #fff;
   border: none;
-}
-.custom-select:focus {
-  border: none !important;
-  box-shadow: none !important;
-}
-.bg-custom::placeholder {
-  color: rgb(255, 255, 255) !important;
-}
-.form-control:focus {
-  box-shadow: none !important;
-}
-.image-setting {
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  width: 200px;
-}
-.image-setting img {
-  border-radius: 10px;
-  width: auto;
-  height: 100%;
-}
-@media (max-width: 994px) {
-  .weather {
-    display: none;
-  }
-}
-@media (max-width: 548px) {
-  .art-de-inf {
-    display: flex;
-  }
-  .art-de-inf .employer-thmb img {
-    flex-shrink: 1;
-  }
 }
