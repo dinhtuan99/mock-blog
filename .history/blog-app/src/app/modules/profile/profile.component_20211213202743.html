@@ -7,7 +7,7 @@
           <div class="row merged20" id="page-contents">
             <div class="user-profile">
               <figure>
-                <img src="../../../assets/images/Blog App.png" alt="" class="img-fluid" style="max-height: 370px">
+                <img src="../../../assets/bg-2.jpg" alt="" class="img-fluid" style="max-height: 370px">
                 <div class="profile-controls" style="background:rgba(255,255,255,0.8)">
                   <button (click)="editProfile()" class="btn" *ngIf="checkUser"><i class="fas fa-cog"></i> Edit
                     Profile</button>
@@ -41,8 +41,8 @@
               </div>
             </div><!-- user profile banner  -->
 
-            <div class="col-lg-4 weather">
-              <aside class="sidebar weather">
+            <div class="col-lg-4 col-md-4">
+              <aside class="sidebar">
                 <div class="central-meta">
                   <span class="create-post">Weather Forecast</span>
                   <div class="personal-head">
@@ -51,18 +51,25 @@
                 </div>
               </aside>
             </div>
-            <div class="col-lg-8 col-md-12">
+            <div class="col-lg-8 col-md-8">
               <div class="feed-toggle mt-2" style="height: 50px">
                 <ul class="nav nav-pills">
                   <li class="nav-item">
-                    <button class="nav-link h6 defaultDanger" routerLinkActive="activeDanger"
-                      [routerLinkActiveOptions]="{exact:true}" routerLink="/profile/{{ profile?.profile?.username}}">
+                    <button
+                      class="nav-link h6 defaultDanger"
+                      routerLinkActive="activeDanger"
+                      [routerLinkActiveOptions]="{exact:true}"
+                      routerLink="/profile/{{ profile?.profile?.username}}"
+                    >
                       Your Article
                     </button>
                   </li>
                   <li class="nav-item">
-                    <button class="nav-link h6 defaultDanger" routerLinkActive="activeDanger"
-                      [routerLink]="['favorites']">
+                    <button
+                      class="nav-link h6 defaultDanger"
+                      routerLinkActive="activeDanger"
+                      [routerLink]="['favorites']"
+                    >
                       Favorites Article
                     </button>
                   </li>

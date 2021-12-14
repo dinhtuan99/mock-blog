@@ -82,7 +82,7 @@
   .art-de-inf {
     display: flex;
   }
-  .art-de-inf .employer-thmb img {
+  .art-de-inf .employer-thmb {
     flex-shrink: 1;
   }
 }

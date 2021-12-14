@@ -85,4 +85,8 @@
   .art-de-inf .employer-thmb img {
     flex-shrink: 1;
   }
+  .employer-thmb {
+    width: 99px;
+    height: 80px;
+  }
 }

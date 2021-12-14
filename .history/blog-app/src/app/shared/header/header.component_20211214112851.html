@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark shadow fixed-top" style="background-color: #34465d;">
   <div class="container-fluid">
-    <a class="navbar-brand cu-po" (click)="home()">
-      <img src="/assets/logo_2.png" width="100" height="40" alt="logo">
+    <a class="navbar-brand" (click)="home()">
+      <img src="/assets/logo_1.png" width="100" height="40" alt="logo">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +12,7 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item row align-items-center">
           <div class="col-md-4 col-6">
-            <select [(ngModel)]="selected" class="custom-select mx-auto bg-custom" aria-label="Default select example">
+            <select [(ngModel)]="selected" class="custom-select mx-auto" aria-label="Default select example">
               <option value="all" selected>Search By</option>
               <option value="tag">Tag</option>
               <option value="author">Author</option>
@@ -23,16 +23,16 @@
             <form class="ml-2">
               <div class="input-group">
                 <input type="search" (keyup.enter)="search()" [formControl]="searchControl"
-                  class="form-control border-0 bg-custom" placeholder="Search Blog" aria-label="Search"
+                  class="form-control border-0" placeholder="Search Blog" aria-label="Search"
                   aria-describedby="search-addon" style="width: 300px;" />
               </div>
             </form>
           </div>
         </li>
       </ul>
-      <ul class="navbar-nav ml-auto cu-po">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item d-none d-lg-flex align-items-center">
-          <a class="nav-link " (click)="home()"><i class="fas fa-home fa-lg text-white"></i></a>
+          <a class="nav-link " (click)="home()"><i class="fas fa-home fa-lg"></i></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"

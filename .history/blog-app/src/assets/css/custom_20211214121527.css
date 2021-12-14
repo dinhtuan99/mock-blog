@@ -64,25 +64,14 @@
 }
 .image-setting {
   display: inline-block;
+  margin-bottom: 0;
   vertical-align: middle;
   position: relative;
   width: 200px;
+  height: 200px;
 }
 .image-setting img {
   border-radius: 10px;
   width: auto;
   height: 100%;
-}
-@media (max-width: 994px) {
-  .weather {
-    display: none;
-  }
-}
-@media (max-width: 548px) {
-  .art-de-inf {
-    display: flex;
-  }
-  .art-de-inf .employer-thmb img {
-    flex-shrink: 1;
-  }
 }

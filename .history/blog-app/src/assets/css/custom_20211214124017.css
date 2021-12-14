@@ -83,6 +83,6 @@
     display: flex;
   }
   .art-de-inf .employer-thmb img {
-    flex-shrink: 1;
+    width: 25px;
   }
 }
