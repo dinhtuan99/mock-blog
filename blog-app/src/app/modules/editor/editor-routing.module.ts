@@ -15,7 +15,7 @@ const editorRoutes: Routes = [
     path: 'article/:slug', component: ArticleDetailComponent
   },
   {
-    path: 'edit/:slug', component: EditArticleComponent, canActivate: [AuthGuard]
+    path: 'edit/:slug', component: EditArticleComponent, canActivate: [AuthGuard], 
   }
 ];
 

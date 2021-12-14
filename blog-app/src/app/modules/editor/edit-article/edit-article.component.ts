@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 import { IArticle, IArticleCreate, IArticleUpdate } from 'src/app/models/articles.model';
 import { ArticlesService } from 'src/app/services/articles.service';
 
@@ -27,16 +28,16 @@ export class EditArticleComponent implements OnInit {
       body: '',
       tagForm: ''
     })
-    this.activateRoute.paramMap.subscribe(params => {
-      this.slugA = params.get('slug') as string;
-      this.articleService.getArticleBySlug(this.slugA).subscribe(res => {
-
-        this.iF.title.setValue(res.article.title);
-        this.iF.description.setValue(res.article.description);
-        this.iF.body.setValue(res.article.body);
-        this.tags = res.article.tagList
+    this.activateRoute.paramMap.pipe(
+      switchMap(params => {
+        this.slugA = params.get('slug') as string;
+        return this.articleService.getArticleBySlug(this.slugA)
       })
-
+    ).subscribe(res => {
+      this.iF.title.setValue(res.article.title);
+      this.iF.description.setValue(res.article.description);
+      this.iF.body.setValue(res.article.body);
+      this.tags = res.article.tagList
     })
 
   }
