@@ -12,7 +12,8 @@ import { ArticlesService } from 'src/app/services/articles.service';
 export class NewArticleComponent implements OnInit {
   formArt!: FormGroup;
   articles!: IArticleCreate;
-  tags: string[] = []
+  tags: string[] = [];
+  isSubmit : boolean = false;
   constructor(private articleService: ArticlesService,
     private formBuilder: FormBuilder,
     private router: Router) { }
@@ -29,6 +30,7 @@ export class NewArticleComponent implements OnInit {
     return this.formArt.controls;
   }
   onSubmit() {
+    this.isSubmit = true;
     this.articles = {
       article: {
         title: this.iF.title.value,

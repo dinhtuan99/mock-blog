@@ -7,7 +7,8 @@ import { IProfile, IUser } from 'src/app/models/user.model';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { UserService } from 'src/app/services/user.service';
-import { switchMap } from 'rxjs/operators';
+import { filter, map, switchMap } from 'rxjs/operators';
+import { forkJoin, of } from 'rxjs';
 
 @Component({
   selector: 'app-article-detail',
@@ -33,25 +34,47 @@ export class ArticleDetailComponent implements OnInit {
     private router: Router,
     private commentService: CommentService) { }
   ngOnInit(): void {
+    // this.isAuth = this.userService.currentUserValue() != null;
+    // this.activateRoute.paramMap.subscribe(params => {
+    //   this.slugA = params.get('slug') as string;
+    //   this.articleService.getArticleBySlug(this.slugA).subscribe(res => {
+    //     this.isCurrentUser = res.article.author.username == this.userService.currentUserValue()?.user.username;
+    //     if (res) {
+    //       this.articles = res.article;
+    //       if (!this.isCurrentUser) {
+    //         this.getProfile(res.article.author.username).subscribe(res => {
+    //           this.checkFollow = res.profile.following
+    //         })
+    //       }
+
+    //     }
+    //     this.getComment()
+    //   })
+    // })
+
     this.isAuth = this.userService.currentUserValue() != null;
-    this.activateRoute.paramMap.subscribe(params => {
-      this.slugA = params.get('slug') as string;
-      this.articleService.getArticleBySlug(this.slugA).subscribe(res => {
+    this.activateRoute.paramMap.pipe(
+      switchMap(params => {
+        this.slugA = params.get('slug') as string;
+        return forkJoin([this.articleService.getArticleBySlug(this.slugA), this.commentService.getComment(this.slugA)])
+      }),
+      map(res => {
+        this.comment = res[1].comments
+        return res[0]
+      }),
+      filter(res => {
         this.isCurrentUser = res.article.author.username == this.userService.currentUserValue()?.user.username;
-        if (res) {
-          this.articles = res.article;
-          if (!this.isCurrentUser) {
-            this.getProfile(res.article.author.username).subscribe(res => {
-              this.checkFollow = res.profile.following
-            })
-          }
-
-        }
-        this.getComment()
+        this.articles = res.article;
+        return !this.isCurrentUser
+      }),
+      switchMap(res => {
+        return this.getProfile(res.article.author.username)
       })
+    ).subscribe(res => {
+      this.checkFollow = res.profile.following
     })
-
   }
+
   deleteArticle() {
     this.articleService.deleteArticle(this.slugA).subscribe(res => {
       this.router.navigateByUrl('/')

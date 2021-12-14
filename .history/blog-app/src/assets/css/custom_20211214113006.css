@@ -1,0 +1,46 @@
+.tags {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  gap: 0.3rem;
+}
+
+.tag {
+  color: #d0dffc;
+  font-size: 0.65rem;
+  border-radius: 100rem;
+  border: 1px solid #808080;
+  background-color: transparent;
+  color: #283b70;
+  font-weight: bold;
+  transition: background-color 250ms ease, box-shadow 250ms ease;
+}
+
+.tag > span {
+  display: inline-block;
+  position: relative;
+  color: #5f5f5f;
+  text-decoration: none;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+}
+.buttons a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-comment {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  background-color: rgb(48, 187, 106);
+}
+.like-active {
+  color: rgb(214, 77, 77);
+}
+.weather {
+  margin-top: 15px;
+}
+.bg-custom {
+  background-color: #49596e;
+}

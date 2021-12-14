@@ -24,12 +24,12 @@ export class ArticleFeedComponent implements OnInit {
     this.homeService.tag.subscribe((res) => {
       this.listConfig = res;
     });
-    this.userService.currentUser().subscribe((authenticated) => {
-      this.isAuthenticated = !!authenticated;
-      this.homeService.tag.subscribe((res) => {
-        this.listConfig = res;
-      });
-    });
+    // this.userService.currentUser().subscribe((authenticated) => {
+    //   this.isAuthenticated = !!authenticated;
+    //   this.homeService.tag.subscribe((res) => {
+    //     this.listConfig = res;
+    //   });
+    // });
   }
 
   setListTo(type: string = '', filters: Object = {}) {
