@@ -6,7 +6,6 @@ import { IUser } from 'src/app/models/user.model';
 import { HomeService } from 'src/app/modules/home/components/services/home.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
-import { ModalDirective } from 'ngx-bootstrap/modal';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,9 +14,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  @ViewChild('childModal')
-  public childModal!: ModalDirective;
-
   isLogin: boolean = false;
   user!: IUser;
   selected: string = 'all';
@@ -31,19 +27,18 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.loadScripts();
     this.userService.currentUser().subscribe((data) => {
       if (data != null) {
-        this.user = data;
-        if (!this.isValidUrl(this.user.user.image)) {
-          this.user.user.image =
-            'https://api.realworld.io/images/smiley-cyrus.jpeg';
+        if(data?.user?.image == null) {
+          data.user.image = JSON.parse(localStorage.getItem('imageUser') || 'null');
         }
+        this.user = data;
         this.isLogin = true;
       } else {
         this.user = null as any;
         this.isLogin = false;
       }
+
     });
   }
 
