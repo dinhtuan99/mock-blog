@@ -15,11 +15,28 @@ a {
   cursor: pointer;
   transition: 0.4s;
 }
+.top-comuty:hover {
+  overflow-y: scroll !important;
+}
+.top-comuty:hover::-webkit-scrollbar {
+  width: 8px;
+  background-color: #dadada;
+}
+.top-comuty:hover::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
+}
 .sidebar .widget .top-comuty > li:hover > a {
   color: #0a58ca;
   background: #888da8;
   transition: 0.4s;
 }
+
+a.tag-list:hover {
+  color: black !important;
+}
+
 @media only screen and (max-width: 768px) {
   .new-right {
     width: 100%;

@@ -19,6 +19,12 @@
   width: 110px;
   border-radius: 5px;
   font-size: 13px;
+  background-color: #fa6342;
+  font-weight: 600;
+}
+.post-btn:hover {
+  color: black;
+  background-color: #888da8;
 }
 @media only screen and (max-width: 375px) {
   .postbox {

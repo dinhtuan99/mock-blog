@@ -19,7 +19,7 @@
                           <i class="ti-more-alt"></i>
                           <ul>
                             <li
-                              style="font-size: 14px"
+                              style="font-size: 13px"
                               [routerLink]="[
                                 '/profile',
                                 article.author.username
@@ -28,7 +28,7 @@
                               <i class="fa fa-pencil-square-o"></i>Profile Post
                             </li>
                             <li
-                              style="font-size: 14px"
+                              style="font-size: 13px"
                               [routerLink]="['/article', article.slug]"
                             >
                               <i class="fas fa-list"></i>Detail Post
@@ -38,35 +38,54 @@
                       </div>
                       <ins
                         ><a
+                          style="font-weight: 600"
                           [routerLink]="['/profile', article.author.username]"
                         >
                           {{ article.author.username }}</a
                         >
                       </ins>
                       <p>
-                        <i class="fa fa-clock-o"></i>
                         {{ article.createdAt | date: "longDate" }}
                       </p>
                     </div>
                     <div class="post-meta mt-3">
                       <h6>
-                        <a [routerLink]="['/article', article.slug]">{{
-                          article.title
-                        }}</a>
+                        <a
+                          style="font-weight: 600"
+                          [routerLink]="['/article', article.slug]"
+                          >{{ article.title }}</a
+                        >
                       </h6>
 
                       <div class="description">
-                        <p [routerLink]="['/article', article.slug]">
+                        <p>
                           {{ article.description | titlecase }}
                         </p>
                       </div>
                       <div class="rate-n-apply">
-                        <div class="row">
+                        <div
+                          class="row"
+                          style="
+                            border-bottom: 1px solid #80808017;
+                            padding-bottom: 11px;
+                          "
+                        >
                           <div class="col-lg-10">
                             <div class="loc-cate">
-                              <div class="job-tgs">
+                              <div
+                                class="job-tgs"
+                                style="
+                                  height: 3.6rem;
+                                  overflow: hidden;
+                                  display: -webkit-box;
+                                  -webkit-box-orient: vertical;
+                                  -webkit-line-clamp: 2;
+                                "
+                              >
                                 <a
                                   [routerLink]="['/article', article.slug]"
+                                  class="tag"
+                                  style="margin-right: 10px"
                                   *ngFor="let tag of article.tagList"
                                   ><i class="fa fa-map-marker"></i> {{ tag }}
                                 </a>
@@ -94,7 +113,10 @@
                 </div>
               </div>
             </div>
-            <nav aria-label="Page navigation example">
+            <nav
+              aria-label="Page navigation example"
+              *ngIf="this.articles.articlesCount > 20"
+            >
               <ul class="pagination">
                 <li
                   class="pageNumber"
