@@ -2648,8 +2648,6 @@
     width: 100%;
   }
   .employer-thmb {
-    min-width: 100px;
-    min-height: 100px;
     display: block;
     margin-right: 0;
     text-align: center;
