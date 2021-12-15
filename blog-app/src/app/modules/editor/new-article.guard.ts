@@ -3,14 +3,13 @@ import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } f
 import { Observable, Subject } from 'rxjs';
 import { NewArticleComponent } from './new-article/new-article.component';
 import Swal from 'sweetalert2'
-import { EditArticleComponent } from './edit-article/edit-article.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EditArticleGuard implements CanDeactivate<EditArticleComponent> {
+export class NewArticleGuard implements CanDeactivate<NewArticleComponent> {
   canDeactivate(
-    component: EditArticleComponent,
+    component: NewArticleComponent,
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {

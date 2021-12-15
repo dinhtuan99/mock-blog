@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { IArticle, IArticleCreate, IArticleUpdate } from 'src/app/models/articles.model';
 import { ArticlesService } from 'src/app/services/articles.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-article',
@@ -15,7 +16,7 @@ export class EditArticleComponent implements OnInit {
   articles!: IArticleCreate;
   tags: string[] = [];
   slugA: string = '';
-
+  isSubmit: boolean = false;
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private activateRoute: ActivatedRoute,
@@ -45,6 +46,7 @@ export class EditArticleComponent implements OnInit {
     return this.formArt.controls;
   }
   onSubmit() {
+    this.isSubmit = true;
     this.articles = {
       article: {
         title: this.iF.title.value,
@@ -54,6 +56,22 @@ export class EditArticleComponent implements OnInit {
       }
     }
     this.articleService.updateArticle(this.articles, this.slugA).subscribe(res => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'Update in successfully'
+      })
       this.router.navigateByUrl('/article/' + res.article.slug)
     })
   }
