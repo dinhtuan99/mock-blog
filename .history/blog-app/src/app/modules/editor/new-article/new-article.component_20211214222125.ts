@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Article, IArticleCreate } from 'src/app/models/articles.model';
 import { ArticlesService } from 'src/app/services/articles.service';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-article',
@@ -41,23 +40,6 @@ export class NewArticleComponent implements OnInit {
       }
     }
     this.articleService.createArticle(this.articles).subscribe(res => {
-
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
-
-      Toast.fire({
-        icon: 'success',
-        title: 'Add article in successfully'
-      })
 
       this.router.navigateByUrl('/article/' + res.article.slug)
     })
