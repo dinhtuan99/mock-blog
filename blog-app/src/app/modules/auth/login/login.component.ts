@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit, AfterViewInit {
   @ViewChild('input') vc: any;
   loginForm! : FormGroup;
-  constructor(private fb : FormBuilder, private authService : AuthService, private router : Router ) { }
+  constructor(private fb : FormBuilder, private authService : AuthService, private router : Router, private userService : UserService ) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
