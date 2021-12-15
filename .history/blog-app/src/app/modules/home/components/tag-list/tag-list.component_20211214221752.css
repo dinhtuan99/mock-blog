@@ -29,8 +29,8 @@ a {
   overflow-y: scroll !important;
 }
 .top-comuty:hover::-webkit-scrollbar {
-  width: 8px;
-  background-color: #dadada;
+  width: 12px;
+  background-color: #969696;
 }
 .top-comuty:hover::-webkit-scrollbar-thumb {
   border-radius: 10px;
