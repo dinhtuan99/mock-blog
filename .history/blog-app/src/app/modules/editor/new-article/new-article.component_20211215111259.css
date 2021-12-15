@@ -1,0 +1,12 @@
+.tag-inp span {
+  padding: 3px 10px;
+  margin-left: 3px;
+  display: inline-block;
+  font-size: 0.65rem;
+  border-radius: 100rem;
+  border: 1px solid #808080;
+  background-color: transparent;
+  color: #283b70;
+  font-weight: bold;
+  transition: background-color 250ms ease, box-shadow 250ms ease;
+}

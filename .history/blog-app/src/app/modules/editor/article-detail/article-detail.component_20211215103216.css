@@ -1,0 +1,13 @@
+.tags-post {
+  padding: 10px 0;
+  border-top: 1px solid #8c8c8c;
+  border-bottom: 1px solid #8c8c8c;
+}
+.tags-post span {
+  border: 1px solid #8c8c8c;
+  border-radius: 4px;
+  font-size: 11px;
+  margin-right: 4px;
+  padding: 2px 8px;
+  text-transform: capitalize;
+}

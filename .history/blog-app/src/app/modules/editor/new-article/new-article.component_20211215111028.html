@@ -1,0 +1,61 @@
+<section>
+  <div class="gap gray-bg">
+    <div class="container">
+      <div class="row merged20">
+        <div class="col-lg-10">
+          <div class="forum-warper">
+            <div class="central-meta">
+              <div class="title-block">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="align-left">
+                      <h4>Create Article Topic</h4>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                  </div>
+                </div>
+              </div>
+            </div><!-- title block -->
+          </div>
+          <div class="forum-form">
+            <div class="central-meta">
+              <form [formGroup]="formArt" class="c-form">
+                <div>
+                  <label>Article Title</label>
+                  <input type="text" placeholder="Article Title" formControlName='title'>
+                </div>
+                <div>
+                  <label>Description</label>
+                  <input type="text" placeholder="What's this article about? " formControlName='description'>
+                </div>
+                <div>
+                  <label>Body</label>
+                  <textarea rows="6" placeholder="Write your article (in markdown)" formControlName='body'></textarea>
+                </div>
+                <div>
+                  <label>Choose Optional Tags</label>
+                  <input type="text" placeholder="Enter tag" formControlName="tagForm" (keyup.enter)="onAddTag()">
+                  <div class="mt-1 tag-inp">
+                    <ul class="tags">
+                      <li class="tag" *ngFor="let tag of tags">
+                        <span><i class="fas fa-times" (click)="removeTag(tag)" style="cursor: pointer;"></i>
+                          {{tag}}</span>
+                      </li>
+                    </ul>
+                    <!-- <span *ngFor="let tag of tags"><i class="fas fa-times" (click)="removeTag(tag)"
+                        style="cursor: pointer;"></i>
+                      {{tag}}</span> -->
+                  </div>
+                </div>
+                <div>
+                  <button class="main-btn" type="button" (click)="onSubmit()">Publish Article</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

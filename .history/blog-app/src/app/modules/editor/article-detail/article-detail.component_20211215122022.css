@@ -1,0 +1,7 @@
+.inline-itms-cus {
+  display: flex;
+  justify-content: space-between;
+}
+..inline-itms-cus span {
+  color: rgb(255, 43, 43);
+}
