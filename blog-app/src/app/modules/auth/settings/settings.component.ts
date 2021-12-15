@@ -26,7 +26,6 @@ export class SettingsComponent implements OnInit {
       email: this.fb.control(''),
     })
     this.userService.getCurrentUser().subscribe(data => {
-      console.log(data);
       this.currentUser = data;
       this.settingsForm.patchValue({
         imageUrl: this.currentUser.user.image,
