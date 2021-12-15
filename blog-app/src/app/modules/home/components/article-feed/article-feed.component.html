@@ -6,7 +6,7 @@
           <div class="col-lg-2">
             <figure>
               <img
-                [src]="userImage"
+                [src]="userImage ? userImage : 'https://api.realworld.io/images/demo-avatar.png'"
                 alt=""
                 style="height: 40px; width: 40px; border-radius: 50%"
               />

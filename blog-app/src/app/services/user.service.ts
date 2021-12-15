@@ -36,6 +36,7 @@ export class UserService {
         return this.httpClient.get<IUser>(url).pipe(
             catchError(this.handleError),
             tap((user) => {
+                localStorage.setItem('imageUser', JSON.stringify(user.user.image));
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);
             })
@@ -48,6 +49,7 @@ export class UserService {
         return this.httpClient.put<IUser>(url, body).pipe(
             catchError(this.handleError),
             tap((user) => {
+                localStorage.setItem('imageUser', JSON.stringify(user.user.image));
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);
             })

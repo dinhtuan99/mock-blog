@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.userService.currentUser().subscribe((data) => {
       if (data != null) {
-        if(data?.user?.image == null) {
+        if(!this.isValidUrl(data?.user?.image)) {
           data.user.image = JSON.parse(localStorage.getItem('imageUser') || 'null');
         }
         this.user = data;
