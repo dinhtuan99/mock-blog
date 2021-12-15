@@ -10,7 +10,7 @@
             </figure>
             <ol
               class="top-comuty"
-              style="height: 300px; overflow-y: auto; padding-top: 38px"
+              style="height: 300px; padding-top: 9px; overflow-y: hidden"
             >
               <li
                 *ngFor="let tag of tags; let i = index"
@@ -24,8 +24,8 @@
                   "
                   >{{ i + 1 }}</span
                 >
-                
-                <a title="">{{ tag }}</a>
+
+                <a class="tag-list" title="">{{ tag }}</a>
               </li>
             </ol>
           </div>
