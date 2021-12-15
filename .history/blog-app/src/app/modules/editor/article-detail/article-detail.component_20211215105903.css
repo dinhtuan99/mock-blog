@@ -1,0 +1,21 @@
+.tags-post {
+  padding: 10px 10px;
+}
+.tags-post span {
+  color: red;
+  display: inline-block;
+  margin-bottom: 5px;
+  border: 1px solid #8c8c8c;
+  border-radius: 20px;
+  font-size: 11px;
+  margin-right: 4px;
+  padding: 2px 8px;
+  text-transform: capitalize;
+}
+.inline-itms-cus {
+  display: flex;
+  justify-content: space-between;
+}
+.we-dele {
+  color: red;
+}
