@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { NewArticleComponent } from './new-article/new-article.component';
 import Swal from 'sweetalert2'
-import { EditArticleComponent } from './edit-article/edit-article.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EditArticleGuard implements CanDeactivate<EditArticleComponent> {
+export class SettingGuard implements CanDeactivate<SettingsComponent> {
   canDeactivate(
-    component: EditArticleComponent,
+    component: SettingsComponent,
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-      if (component.formArt.dirty && !component.isSubmit) {
+        if (component.settingsForm.dirty && !component.isSubmit) {
         return Swal.fire({
           icon: 'question',
           title: 'The form has not been submitted yet, do you really want to leave page?',

@@ -22,33 +22,33 @@
             <div class="central-meta">
               <form [formGroup]="settingsForm" (ngSubmit)="submitForm()" class="c-form">
                 <div>
-                  <label for="imageUrl">Article Title</label>
+                  <label for="imageUrl">Image URL</label>
                   <input type="text" formControlName='imageUrl' id="imageUrl" aria-describedby="imageUrlHelp"
                     #imagePath>
                 </div>
                 <div class="image-setting">
-                  <label for="imageUrl">Image</label>
+                  <label for="imageUrl">Preview Image</label>
                   <img [src]="imagePath.value" alt="">
                 </div>
                 <div>
-                  <label for="username">Description</label>
+                  <label for="username">Username</label>
                   <input type="text" placeholder="What's this article about? " id="username" formControlName='username'
                     aria-describedby="usernameHelp">
                 </div>
                 <div>
-                  <label for="bio">Body</label>
+                  <label for="bio">Bio</label>
                   <textarea rows="3" placeholder="Write your article (in markdown)" id="bio" formControlName='bio'
                     aria-describedby="bioHelp"></textarea>
                 </div>
                 <div>
-                  <label>Choose Optional Tags</label>
+                  <label>email</label>
                   <input type="email" class="form-control" id="email" formControlName='email'
                     aria-describedby="emailHelp">
                 </div>
                 <div>
-                  <button type="button" data-toggle="modal" data-target="#exampleModal">Update</button>
+                  <button type="button" (click)="update()">Update</button>
                 </div>
-                <p><i class="fas fa-arrow-left"></i> Back to <a [routerLink]="['../']" title="" class=" color-oran">
+                <p>Back to <a [routerLink]="['../']" title="" class=" color-oran">
                     Home</a></p>
               </form>
             </div>
@@ -58,25 +58,3 @@
     </div>
   </div>
 </section>
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to update?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="submitForm()">Update</button>
-      </div>
-    </div>
-  </div>
-</div>

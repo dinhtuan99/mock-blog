@@ -5,17 +5,18 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
 import { EditArticleGuard } from './edit-article.guard';
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import { EditorComponent } from './editor.component';
+import { NewArticleGuard } from './new-article.guard';
 import { NewArticleComponent } from './new-article/new-article.component';
 
 const editorRoutes: Routes = [
   {
-    path: 'new', component: NewArticleComponent, canActivate: [AuthGuard], canDeactivate: [EditArticleGuard]
+    path: 'new', component: NewArticleComponent, canActivate: [AuthGuard], canDeactivate: [NewArticleGuard]
   },
   {
     path: 'article/:slug', component: ArticleDetailComponent
   },
   {
-    path: 'edit/:slug', component: EditArticleComponent, canActivate: [AuthGuard], 
+    path: 'edit/:slug', component: EditArticleComponent, canActivate: [AuthGuard], canDeactivate: [EditArticleGuard]
   }
 ];
 

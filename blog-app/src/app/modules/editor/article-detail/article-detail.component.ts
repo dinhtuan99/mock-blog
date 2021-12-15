@@ -9,6 +9,7 @@ import { CommentService } from 'src/app/services/comment.service';
 import { UserService } from 'src/app/services/user.service';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { forkJoin, of } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-article-detail',
@@ -76,8 +77,41 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   deleteArticle() {
-    this.articleService.deleteArticle(this.slugA).subscribe(res => {
-      this.router.navigateByUrl('/')
+    Swal.fire({
+      icon: 'question',
+      title: 'Do you really want to delete this article?',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      confirmButtonColor: '#fa6342',
+
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.articleService.deleteArticle(this.slugA).subscribe(res => {
+          if (res) {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+
+            Toast.fire({
+              icon: 'success',
+              title: 'Delete in successfully'
+            })
+          }
+          this.router.navigateByUrl('/')
+        })
+        return true
+      } else {
+        return false
+      }
     })
   }
 
@@ -96,12 +130,45 @@ export class ArticleDetailComponent implements OnInit {
       this.getComment();
     })
   }
+
   deleteComment(comment: Comment) {
-    this.commentService.deleteComment(this.slugA, comment.id).subscribe(res => {
-      this.comment = this.comment.filter((item) => item !== comment)
-      this.getComment();
+    Swal.fire({
+      icon: 'question',
+      title: 'Do you really want to delete this comment?',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      confirmButtonColor: '#fa6342',
+
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.commentService.deleteComment(this.slugA, comment.id).subscribe(res => {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Delete in successfully'
+          })
+          this.comment = this.comment.filter((item) => item !== comment)
+          this.getComment();
+        })
+        return true
+      } else {
+        return false
+      }
     })
   }
+
   like() {
     this.articleService.favoriteArticle(this.articles.slug).subscribe((data) => {
       this.articles = data.article;

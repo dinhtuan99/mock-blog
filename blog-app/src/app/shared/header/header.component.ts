@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { debounceTime } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
 import { IUser } from 'src/app/models/user.model';
 import { HomeService } from 'src/app/modules/home/components/services/home.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -46,17 +46,8 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  public showChildModal(): void {
-    this.childModal.show();
-  }
-
-  public hideChildModal(): void {
-    this.childModal.hide();
-  }
-
   logout() {
     this.authService.logOut();
-    this.hideChildModal();
   }
 
   isValidUrl(_string: string) {
