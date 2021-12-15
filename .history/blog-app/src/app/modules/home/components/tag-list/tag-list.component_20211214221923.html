@@ -1,0 +1,27 @@
+<div class="container-fluid p-0">
+  <div class="row">
+    <aside class="sidebar static right">
+      <div class="widget new-right">
+        <div class="widget">
+          <div class="top-comunitez">
+            <figure>
+              <img src="assets/images/resources/widget-baner.jpg" alt="" />
+              <span> Popular Tags</span>
+            </figure>
+            <ol class="top-comuty" style="height: 300px; overflow-y: hidden; padding-top: 38px">
+              <li *ngFor="let tag of tags; let i = index" (click)="setListTo('', { tag: tag })">
+                <span style="
+                    color: rgb(90, 85, 85);
+                    font-weight: 700;
+                    margin-right: 5px;
+                  ">{{ i + 1 }}</span>
+
+                <a title="">{{ tag }}</a>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>

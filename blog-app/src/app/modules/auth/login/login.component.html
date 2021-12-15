@@ -21,7 +21,7 @@
                                 <h4><i class="fa fa-key"></i> Login</h4>
                                 <div class="logout-form">
                                     <form class="again-login" [formGroup]="loginForm" (ngSubmit)="submitForm()">
-                                        <input type="email" formControlName='email' placeholder="Email"
+                                        <input type="email" #input formControlName='email' placeholder="Email"
                                             aria-describedby="emailHelp">
                                         <small id="emailHelp" class="text-danger"
                                             *ngIf="loginForm.get('email')?.errors?.required && loginForm.get('email')?.touched">Email

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 import { IUser } from '../models/user.model';
 import { UserService } from './user.service';
 
@@ -27,6 +28,22 @@ export class AuthService {
         return this.httpClient.post<IUser>(url, body).pipe(
             catchError(this.handleError),
             tap((user) => {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                      toast.addEventListener('mouseenter', Swal.stopTimer)
+                      toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                  })
+                  
+                  Toast.fire({
+                    icon: 'success',
+                    title: 'Signed in successfully'
+                  })
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.userService.setCurrentUser(user);
             })
@@ -45,6 +62,22 @@ export class AuthService {
         return this.httpClient.post<IUser>(url, body).pipe(
             catchError(this.handleError),
             tap((user) => {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                      toast.addEventListener('mouseenter', Swal.stopTimer)
+                      toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                  })
+                  
+                  Toast.fire({
+                    icon: 'success',
+                    title: 'Register in successfully'
+                  })
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.userService.setCurrentUser(user);
             })
@@ -58,6 +91,20 @@ export class AuthService {
     }
 
     private handleError(error: HttpErrorResponse) {
+        Swal.fire({
+            icon: 'error',
+            title:  'Oops, something went wrong. Please try again later',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#fa6342',
+            
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              return true 
+            } else {
+              return false
+            }
+          })
         if (error.status === 0) {
             // A client-side or network error occurred. Handle it accordingly.
             console.error('An error occurred:', error.error);

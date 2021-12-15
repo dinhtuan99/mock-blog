@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark shadow fixed-top" style="background-color: #34465d;">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand cu-po" (click)="home()">
       <img src="/assets/logo_2.png" width="100" height="40" alt="logo">
     </a>
@@ -9,27 +9,6 @@
     </button>
 
     <div *ngIf="isLogin" class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item row align-items-center">
-          <div class="col-md-4 col-6">
-            <select [(ngModel)]="selected" class="custom-select mx-auto bg-custom" aria-label="Default select example">
-              <option value="all" selected>Search By</option>
-              <option value="tag">Tag</option>
-              <option value="author">Author</option>
-              <option value="favorited">Favorited</option>
-            </select>
-          </div>
-          <div class="col-md-8 col-6 pl-md-0">
-            <form class="ml-2">
-              <div class="input-group">
-                <input type="search" (keyup.enter)="search()" [formControl]="searchControl"
-                  class="form-control border-0 bg-custom" placeholder="Search Blog" aria-label="Search"
-                  aria-describedby="search-addon" style="width: 300px;" />
-              </div>
-            </form>
-          </div>
-        </li>
-      </ul>
       <ul class="navbar-nav ml-auto cu-po">
         <li class="nav-item d-none d-lg-flex align-items-center">
           <a class="nav-link " (click)="home()"><i class="fas fa-home fa-lg text-white"></i></a>
@@ -47,7 +26,7 @@
               Article</a>
             <a class="dropdown-item text-nowrap" [routerLink]="['settings']" routerLinkActive="active"><i
                 class="fas fa-cog"></i> Settings</a>
-            <a class="dropdown-item text-nowrap" (click)="showChildModal()" style="color: tomato;"><i
+            <a class="dropdown-item text-nowrap" (click)="logout()" style="color: tomato;"><i
                 class="fas fa-sign-out-alt"></i>
               Logout</a>
           </div>
@@ -69,25 +48,3 @@
     </div>
   </div>
 </nav>
-
-
-<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Logout</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to logout?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="hideChildModal()">Close</button>
-        <button type="button" class="btn btn-primary" (click)="logout()">Logout</button>
-      </div>
-    </div>
-  </div>
-</div>

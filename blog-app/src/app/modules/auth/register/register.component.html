@@ -21,8 +21,8 @@
                                 <h4><i class="fa fa-key"></i> Signup</h4>
                                 <div class="logout-form">
                                     <form class="again-login" [formGroup]="registerForm" (ngSubmit)="submitForm()">
-                                        <input type="text" id="username" formControlName='username'
-                                            aria-describedby="usernameHelp">
+                                        <input type="text" #input id="username" formControlName='username'
+                                            aria-describedby="usernameHelp" placeholder="Username">
                                         <small id="usernameHelp" class="text-danger"
                                             *ngIf="registerForm.get('username')?.errors?.required && registerForm.get('username')?.touched">Username
                                             is

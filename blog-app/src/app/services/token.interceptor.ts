@@ -10,6 +10,7 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const headersConfig : any = {
         "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*"
     };
 
     const token = this.userService.currentUserValue()?.user.token;

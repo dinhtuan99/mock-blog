@@ -1,6 +1,9 @@
 a {
   text-decoration: none;
 }
+.we-video-info {
+  border: none;
+}
 .we-video-info > ul {
   margin-top: 0px;
 }
@@ -60,7 +63,17 @@ ul li:last-child {
   width: 110px;
   border-radius: 5px;
   margin-left: 12px;
+  font-weight: 600;
 }
 .rate-n-apply {
   margin-bottom: 0;
+}
+.tag:hover {
+  color: #fff;
+}
+.job-tgs {
+  margin-bottom: 0;
+}
+a.main-btn:hover {
+  color: black;
 }
