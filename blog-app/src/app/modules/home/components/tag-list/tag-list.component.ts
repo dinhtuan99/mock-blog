@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Article } from 'src/app/models/articles.model';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { HomeService } from '../services/home.service';
@@ -21,8 +21,7 @@ export class TagListComponent implements OnInit {
   constructor(
     private homeService: HomeService,
     private connectApiService: ArticlesService,
-    private router : Router,
-    private activatedRoute : ActivatedRoute
+    private router: Router
   ) {}
 
   ngOnInit(): void {

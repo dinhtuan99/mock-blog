@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
   @ViewChild('childModal')
@@ -27,23 +27,24 @@ export class HeaderComponent implements OnInit {
     private userService: UserService,
     private authService: AuthService,
     private router: Router,
-    private homeService: HomeService,
-  ) { }
+    private homeService: HomeService
+  ) {}
 
   ngOnInit(): void {
     // this.loadScripts();
-    this.userService.currentUser().subscribe(data => {
+    this.userService.currentUser().subscribe((data) => {
       if (data != null) {
         this.user = data;
         if (!this.isValidUrl(this.user.user.image)) {
-          this.user.user.image = "https://api.realworld.io/images/smiley-cyrus.jpeg";
+          this.user.user.image =
+            'https://api.realworld.io/images/smiley-cyrus.jpeg';
         }
         this.isLogin = true;
       } else {
         this.user = null as any;
         this.isLogin = false;
-      };
-    })
+      }
+    });
   }
 
   logout() {
@@ -67,12 +68,13 @@ export class HeaderComponent implements OnInit {
   }
 
   isValidUrl(_string: string) {
-    const matchpattern = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm;
+    const matchpattern =
+      /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm;
     return matchpattern.test(_string);
   }
 
   home() {
-    this.router.navigate(["/"]);
+    this.router.navigate(['/']);
     this.homeService.setTag({ type: 'all', filters: {} });
   }
 
@@ -80,13 +82,19 @@ export class HeaderComponent implements OnInit {
     if (this.searchControl.value) {
       switch (this.selected) {
         case 'tag':
-          this.router.navigate(['/'], { queryParams: { tag: this.searchControl.value } });
+          this.router.navigate(['/'], {
+            queryParams: { tag: this.searchControl.value },
+          });
           break;
         case 'author':
-          this.router.navigate(['/'], { queryParams: { author: this.searchControl.value } });
+          this.router.navigate(['/'], {
+            queryParams: { author: this.searchControl.value },
+          });
           break;
         case 'favorited':
-          this.router.navigate(['/'], { queryParams: { favorited: this.searchControl.value } });
+          this.router.navigate(['/'], {
+            queryParams: { favorited: this.searchControl.value },
+          });
           break;
       }
       this.searchControl.reset();
@@ -94,11 +102,11 @@ export class HeaderComponent implements OnInit {
       if (this.selected == 'all') {
         this.router.navigate(['/'], {
           queryParams: {
-            'tag': null,
-            'author': null,
-            'favorited': null
+            tag: null,
+            author: null,
+            favorited: null,
           },
-          queryParamsHandling: 'merge'
+          queryParamsHandling: 'merge',
         });
       }
     }
