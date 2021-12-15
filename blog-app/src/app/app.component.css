@@ -1,1 +1,3 @@
-
+.content {
+  min-height: calc(100vh - 72px - 56px) !important;
+}
