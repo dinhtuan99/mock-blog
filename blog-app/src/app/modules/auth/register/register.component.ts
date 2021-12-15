@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -8,7 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit ,AfterViewInit {
+  @ViewChild('input') vc: any;
 
   registerForm! : FormGroup;
   constructor(private fb : FormBuilder, private authService : AuthService, private router : Router ) { }
@@ -19,6 +20,10 @@ export class RegisterComponent implements OnInit {
       email: this.fb.control('', Validators.required),
       password: this.fb.control('', Validators.required),
     })
+  }
+
+  ngAfterViewInit() {            
+    this.vc.nativeElement.focus();
   }
 
   submitForm(){

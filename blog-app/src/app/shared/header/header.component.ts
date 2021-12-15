@@ -7,6 +7,7 @@ import { HomeService } from 'src/app/modules/home/components/services/home.servi
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -46,7 +47,23 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logOut();
+    Swal.fire({
+      icon: 'question',
+      title: 'Are you sure to logout?',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      confirmButtonColor: '#fa6342',
+      
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.authService.logOut();
+        return true 
+      } else {
+        return false
+      }
+    })
+    
   }
 
   isValidUrl(_string: string) {
