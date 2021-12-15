@@ -8,15 +8,24 @@
               <img src="assets/images/resources/widget-baner.jpg" alt="" />
               <span> Popular Tags</span>
             </figure>
-            <ol class="top-comuty" style="height: 300px; padding-top: 9px; overflow-y: hidden">
-              <li *ngFor="let tag of tags; let i = index" (click)="setListTo('', { tag: tag })">
-                <span style="
+            <ol
+              class="top-comuty"
+              style="height: 300px; overflow-y: auto; padding-top: 38px"
+            >
+              <li
+                *ngFor="let tag of tags; let i = index"
+                (click)="setListTo('', { tag: tag })"
+              >
+                <span
+                  style="
                     color: rgb(90, 85, 85);
                     font-weight: 700;
                     margin-right: 5px;
-                  ">{{ i + 1 }}</span>
-
-                <a class="tag-list" title="">{{ tag }}</a>
+                  "
+                  >{{ i + 1 }}</span
+                >
+                
+                <a title="">{{ tag }}</a>
               </li>
             </ol>
           </div>
