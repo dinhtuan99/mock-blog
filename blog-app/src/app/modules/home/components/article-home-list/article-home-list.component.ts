@@ -23,22 +23,6 @@ export class ArticleHomeListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((param) => {
-      this.query = {};
-      switch (Object.keys(param)[0]) {
-        case 'tag':
-          this.query.tag = param.tag;
-          break;
-        case 'author':
-          this.query.author = param.author;
-          break;
-        case 'favorited':
-          this.query.favorited = param.favorited;
-          break;
-        case undefined:
-          this.query = {};
-          break;
-      }
       this.homeService.tag
         .pipe(
           switchMap((res: any) => {
@@ -64,7 +48,6 @@ export class ArticleHomeListComponent implements OnInit {
           this.loading = false;
           this.results = data;
         });
-    });
   }
 
   paging(e: any): void {

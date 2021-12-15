@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IUser } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { HomeService } from '../services/home.service';
 
@@ -13,7 +14,7 @@ export class ArticleFeedComponent implements OnInit {
     type: 'all',
     filters: {},
   };
-
+  userImage! : string;
   isAuthenticated: boolean = false;
   constructor(
     private homeService: HomeService,
@@ -25,6 +26,7 @@ export class ArticleFeedComponent implements OnInit {
       this.listConfig = res;
     });
     this.userService.currentUser().subscribe((authenticated) => {
+      this.userImage = authenticated?.user?.image;
       this.isAuthenticated = !!authenticated;
       this.homeService.tag.subscribe((res) => {
         this.listConfig = res;

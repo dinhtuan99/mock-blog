@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, debounceTime, tap } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 
 import { IProfile, IUser, IUserUpdate } from '../models/user.model';

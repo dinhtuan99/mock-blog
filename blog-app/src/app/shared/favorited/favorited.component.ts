@@ -19,8 +19,6 @@ export class FavoritedComponent implements OnInit {
 
   like() {
     this.status = true;
-    console.log(1);
-
     this.articlesService
       .favoriteArticle(this.article.slug)
       .subscribe((data) => {
@@ -29,7 +27,6 @@ export class FavoritedComponent implements OnInit {
   }
 
   unLike() {
-    console.log(2);
     this.status = false;
     this.articlesService
       .unfavoriteArticle(this.article.slug)
