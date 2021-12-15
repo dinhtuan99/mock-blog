@@ -42,14 +42,7 @@
             </div><!-- user profile banner  -->
 
             <div class="col-lg-4 weather">
-              <aside class="sidebar weather">
-                <div class="central-meta">
-                  <span class="create-post">Weather Forecast</span>
-                  <div class="personal-head">
-                    <div class="elfsight-app-4077d0c2-6b14-4483-a598-6b715291b312"></div>
-                  </div>
-                </div>
-              </aside>
+              <div class="elfsight-app-4077d0c2-6b14-4483-a598-6b715291b312"></div>
             </div>
             <div class="col-lg-8 col-md-12">
               <div class="feed-toggle mt-2" style="height: 50px">
@@ -68,36 +61,46 @@
                   </li>
                 </ul>
               </div>
-              <div class="central-meta postbox">
-                <span class="create-post">Create post</span>
-                <div class="new-postbox" (click)="createProfile()">
-                  <figure>
-                    <img src="{{profile?.profile?.image}}" alt="" style="width: 45px; height:45px" />
-                  </figure>
-                  <div class="newpst-input">
-                    <form method="post">
-                      <textarea rows="2" placeholder="Share some what you are thinking?"></textarea>
-                    </form>
-                  </div>
-                  <div class="attachments">
-                    <button class="post-btn" type="submit" data-ripple="" [routerLink]="['/new']">
-                      Creat Post
-                    </button>
-                  </div>
-                  <div class="add-location-post">
-                    <span>Drag map point to selected area</span>
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <label class="control-label">Lat :</label>
-                        <input type="text" class="" id="us3-lat" />
-                      </div>
-                      <div class="col-lg-6">
-                        <label>Long :</label>
-                        <input type="text" class="" id="us3-lon" />
+              <div class="central-meta postbox" *ngIf="checkUser">
+                <div class="new-postbox" >
+                  <div class="row">
+                    <div class="col-lg-9" style="padding-top: 5px">
+                      <div class="row" style="margin-left:0px">
+                        <div class="col-lg-2">
+                          <figure>
+                            <img
+                              src="{{ profile?.profile?.image }}"
+                              alt=""
+                              style="height: 40px; width: 40px; border-radius: 50%"
+                            />
+                          </figure>
+                        </div>
+                        <div class="col-lg-10">
+                          <div class="newpst-input" [routerLink]="['/new']">
+                            <form method="post">
+                              <textarea
+                                style="border: 1px solid #80808024; border-radius: 5px"
+                                rows="1"
+                                placeholder="Share some what you are thinking?"
+                              ></textarea>
+                            </form>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <!-- map -->
-                    <div id="us3"></div>
+                    <div class="col-lg-3" style="margin-left: -13px">
+                      <div class="attachments" style="float: right">
+                        <button
+                          class="post-btn"
+                          type="submit"
+                          data-ripple=""
+                          [routerLink]="['/new']"
+                          style="background-color: #fa6342"
+                        >
+                          Creat Post
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
